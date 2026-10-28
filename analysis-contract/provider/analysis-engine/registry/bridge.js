@@ -21,8 +21,11 @@ export function createRegistryBridge({storageDir,exportDir}){
       // while native worker cell representations are already JSON primitives/strings.
       job=JSON.parse(JSON.stringify(job));
       const exportNode=job.pipelineDef.nodes.find(n=>n.type==='export'&&job.pipelineDef.edges.some(e=>e.source===nodeId&&e.target===n.id));
-      let exportReceipt=null;if(exportNode){const raw=exportNode.data?.path;const resolved=path.isAbsolute(raw||'')?raw:path.resolve(dataDir,path.basename(raw));exportReceipt=captureExportReceipt(job,nodeId,exportNode.id,resolved)}
-      return registry.registerResult({job,nodeId,...(exportReceipt?{exportReceipt,exportFilePath:exportReceipt.filePath}:{})});
+      let exportReceipt=null,exportFilePath=null;
+      if(exportNode){const raw=exportNode.data?.path,out=job.nodeOutputs?.[exportNode.id];exportFilePath=path.isAbsolute(raw||'')?raw:path.resolve(dataDir,path.basename(raw||''));
+        if(out&&Object.hasOwn(out,'producerExport')){exportReceipt=captureExportReceipt(job,nodeId,exportNode.id,out.producerExport?.filePath);exportFilePath=exportReceipt.filePath;}}
+      // Old jobs can retain their bounded preview, but an observer-only full-file path stays UNBOUND.
+      return registry.registerResult({job,nodeId,...(exportFilePath?{exportFilePath}:{}),...(exportReceipt?{exportReceipt}:{})});
     },
     list(){return registry.listResults()},
     open(resultId,expectedIntegrity){const r=registry.getResult(resultId);if(!r)throw Error('RESULT_NOT_FOUND');if(expectedIntegrity&&r.integritySha256!==expectedIntegrity)throw Error('RESULT_REVISION_MISMATCH');return r},

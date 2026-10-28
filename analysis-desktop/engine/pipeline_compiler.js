@@ -130,30 +130,19 @@ export class PipelineCompiler {
       case 'input': {
         if(Object.hasOwn(data,'retainedResult'))return buildRetainedInputSQL(viewNames.get(node.id),data.retainedResult,data.retainedMeasure);
         const rawPath = data.path || '';
-        if (!rawPath.trim()) {
+        if (typeof rawPath !== 'string' || !rawPath.trim()) {
           throw new Error(`Input node "${node.id}" requires a valid file path.`);
         }
 
+        // A missing source must not silently select a different file with the
+        // same basename. Compilation binds the requested path, without opening
+        // it; durable metadata may describe an absolute original that is gone.
         let resolvedPath = rawPath;
         if (!path.isAbsolute(rawPath)) {
-          const candidates = [
-            this.options.dataDir ? path.resolve(this.options.dataDir, rawPath) : null,
-            this.options.dataDir ? path.resolve(this.options.dataDir, path.basename(rawPath)) : null,
-            path.resolve(process.cwd(), rawPath),
-            path.resolve(process.cwd(), 'data', path.basename(rawPath)),
-            path.resolve(process.cwd(), 'resources/app', rawPath),
-            path.resolve(process.cwd(), 'resources/app/data', path.basename(rawPath)),
-            path.resolve(process.cwd(), '../data', path.basename(rawPath)),
-            path.resolve(process.cwd(), '../../data', path.basename(rawPath)),
-            path.resolve(process.cwd(), '../../../data', path.basename(rawPath))
-          ].filter(Boolean);
-
-          for (const cand of candidates) {
-            if (fs.existsSync(cand)) {
-              resolvedPath = cand;
-              break;
-            }
+          if (typeof this.options.dataDir !== 'string' || !path.isAbsolute(this.options.dataDir)) {
+            throw new Error('INPUT_DATA_DIR_REQUIRED: relative input paths require an explicit absolute dataDir.');
           }
+          resolvedPath = path.resolve(this.options.dataDir, rawPath);
         }
 
         // Normalize path and escape single quotes for SQL safety (e.g. D:/O'Brien.csv -> D:/O''Brien.csv)

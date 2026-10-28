@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import {validateProducedExport,parseCopy,snapshotExportFile} from '../../engine/export_identity.js';
 
 export const SCHEMA_VERSION='siren.analysis-result/2';
 export const MAX_ROWS=5000,MAX_BYTES=5*1024*1024;
@@ -29,6 +30,9 @@ export function exportStepMatches(job,exportNodeId,filePath,nodeId) {
   // It deliberately refuses comments, other views, extra options and statements.
   const m=typeof step?.sql==='string'&&/^\s*COPY\s+([A-Za-z_][A-Za-z0-9_]*)\s+TO\s+'((?:[^']|'')*)'\s+\(FORMAT\s+(PARQUET|CSV|JSON)\);\s*$/i.exec(step.sql);
   const def=job.pipelineDef?.nodes?.find(n=>n.id===exportNodeId),source=job.nodeOutputs?.[nodeId];
+  if(step?.exportDestination!==undefined){
+    try{const p=validateProducedExport(job.nodeOutputs?.[exportNodeId]?.producerExport,{jobId:job.jobId,nodeId,exportNodeId,rowCount:source?.rowCount,viewName:source?.viewName,step,filePath});return p.format===(def?.data?.format||'PARQUET').toUpperCase()}catch{return false}
+  }
   return !!m&&m[1]===source?.viewName&&path.resolve(m[2].replaceAll("''","'"))===path.resolve(filePath)&&m[3].toUpperCase()===(def?.data?.format||'PARQUET').toUpperCase();
 }
 function schemaChecked(schema) {
@@ -81,6 +85,14 @@ export function validateResultEnvelope(r) {
   if(c.transferStatus==='SAMPLED'&&(!str(c.selection?.method)||!str(c.selection?.description)))throw Error('SELECTION_REQUIRED');
   if(r.data.mode!==(c.transferStatus==='COMPLETE'?'complete':'bounded_preview')||r.data.contentSha256!==computeSha256({schema,rows}))throw Error('RESULT_CONTENT_HASH');
   if(!plain(r.lineage)||!Array.isArray(r.lineage.sources)||!Array.isArray(r.lineage.pipelineNodes)||!plain(r.exportReference))throw Error('RESULT_LINEAGE');
+  if(Object.hasOwn(r.exportReference,'producerExport')){
+    const ref=r.exportReference,p=validateProducedExport(ref.producerExport,{jobId:r.job.jobId,nodeId:r.node.nodeId,rowCount:c.resultRowCount,viewName:r.node.viewName,filePath:ref.filePath});
+    const step=r.lineage.generatedSQL?.find(s=>s.nodeId===p.exportNodeId&&s.nodeType==='export');if(!step)throw Error('EXPORT_PRODUCER_SQL_BINDING');
+    validateProducedExport(p,{step});
+    const def=r.lineage.pipelineDef?.nodes?.find(n=>n.id===p.exportNodeId),edge=r.lineage.pipelineDef?.edges?.some(e=>e.source===r.node.nodeId&&e.target===p.exportNodeId);
+    if(!edge||def?.type!=='export'||p.format!==(def.data?.format||'PARQUET').toUpperCase()||(path.isAbsolute(def.data?.path||'')&&path.resolve(def.data.path)!==path.resolve(ref.filePath))||ref.available!==true||ref.status!=='VERIFIED'||ref.fileSha256!==p.fileSha256||ref.fileSizeBytes!==p.fileSizeBytes)throw Error('EXPORT_PRODUCER_BINDING');
+  }
+
   if(r.resultId!=='res_'+computeSha256(semanticIdentity(r))||!digest(r.integritySha256)){throw Error('RESULT_SEMANTIC_ID')}
   const {integritySha256,...payload}=r;if(integritySha256!==computeSha256(payload))throw Error('RESULT_INTEGRITY_HASH');
   if(Buffer.byteLength(JSON.stringify(r,null,2))>MAX_BYTES)throw Error('RESULT_BYTE_LIMIT');return r;
@@ -99,11 +111,14 @@ export function buildResultEnvelope(params) {
   const ref={available:false,filePath:exportFilePath?path.resolve(exportFilePath):null,fileSha256:null,fileSizeBytes:null,verifiedAt:null,status:exportFilePath?'UNBOUND':'NONE'};
   if(exportReceipt){
     const e=exportReceipt;
-    if(e.schemaVersion!=='siren.analysis-export-receipt/1'||e.jobId!==job.jobId||e.nodeId!==nodeId||!str(e.filePath)||!digest(e.fileSha256)||!count(e.fileSizeBytes)||!e.fileSizeBytes||e.resultRowCount!==resultRowCount||!date(e.verifiedAt)||!str(e.exportNodeId))throw Error('EXPORT_RECEIPT_BINDING');
+    if(e.schemaVersion!=='siren.analysis-export-receipt/1'||e.jobId!==job.jobId||e.nodeId!==nodeId||!str(e.filePath)||!digest(e.fileSha256)||!count(e.fileSizeBytes)||e.resultRowCount!==resultRowCount||!date(e.verifiedAt)||!str(e.exportNodeId))throw Error('EXPORT_RECEIPT_BINDING');
     const def=nodes.find(x=>x.id===e.exportNodeId),out=job.nodeOutputs?.[e.exportNodeId],edge=job.pipelineDef?.edges?.some(x=>x.source===nodeId&&x.target===e.exportNodeId);
     if(def?.type!=='export'||out?.nodeType!=='export'||out.isOutdated!==false||!edge||!exportStepMatches(job,e.exportNodeId,e.filePath,nodeId)||(path.isAbsolute(def.data?.path||'')&&path.resolve(def.data.path)!==path.resolve(e.filePath))||(exportFilePath&&path.resolve(exportFilePath)!==path.resolve(e.filePath)))throw Error('EXPORT_JOB_BINDING');
-    const st=fs.statSync(e.filePath);if(!st.isFile()||st.size!==e.fileSizeBytes||computeFileSha256(e.filePath)!==e.fileSha256)throw Error('EXPORT_CONTENT_MISMATCH');
-    Object.assign(ref,{available:true,filePath:path.resolve(e.filePath),fileSha256:e.fileSha256,fileSizeBytes:e.fileSizeBytes,verifiedAt:e.verifiedAt,status:'VERIFIED'});
+    const step=job.generatedSQL.find(s=>s.nodeId===e.exportNodeId&&s.nodeType==='export');
+    const producerExport=validateProducedExport(out.producerExport,{jobId:job.jobId,nodeId,exportNodeId:e.exportNodeId,rowCount:resultRowCount,viewName:n.viewName,step,filePath:e.filePath});
+    if(computeSha256(e.producerExport)!==computeSha256(producerExport)||e.fileSha256!==producerExport.fileSha256||e.fileSizeBytes!==producerExport.fileSizeBytes)throw Error('EXPORT_PRODUCER_BINDING');
+    const observed=snapshotExportFile(e.filePath);if(observed.fileSizeBytes!==e.fileSizeBytes||observed.fileSha256!==e.fileSha256)throw Error('EXPORT_CONTENT_MISMATCH');
+    Object.assign(ref,{available:true,filePath:path.resolve(e.filePath),fileSha256:e.fileSha256,fileSizeBytes:e.fileSizeBytes,producerExport,verifiedAt:e.verifiedAt,status:'VERIFIED'});
   }
   const r={schemaVersion:SCHEMA_VERSION,capturedAt:new Date().toISOString(),job:{jobId:job.jobId,status:'completed',createdAt:job.createdAt,completedAt:job.completedAt,durationMs:job.telemetry?.durationMs??0},node:{nodeId,nodeType:n.nodeType||'view',viewName:n.viewName??null},lineage:{sources,pipelineNodes:nodes.map(x=>x.id),pipelineDef:clone(job.pipelineDef||{nodes:[],edges:[]}),generatedSQL:clone(job.generatedSQL||[])},counts:{sourceRowCount,resultRowCount,capturedRows,transferStatus,...(selection?{selection:clone(selection)}:{})},schema,data:{mode:transferStatus==='COMPLETE'?'complete':'bounded_preview',rows,contentSha256:computeSha256({schema,rows})},exportReference:ref};
   r.resultId='res_'+computeSha256(semanticIdentity(r));r.integritySha256=computeSha256(r);validateResultEnvelope(r);return freeze(r);

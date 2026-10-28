@@ -54,7 +54,7 @@ const initialNodes = [
     data: {
       label: 'Input Transactions (CSV)',
       format: 'csv',
-      path: 'data/correctness_transactions.csv',
+      path: 'correctness_transactions.csv',
       header: true,
       status: 'idle',
       rowCount: null,
@@ -98,7 +98,7 @@ const initialNodes = [
     data: {
       label: 'Input Customers (CSV)',
       format: 'csv',
-      path: 'data/correctness_customers.csv',
+      path: 'correctness_customers.csv',
       header: true,
       status: 'idle',
       rowCount: null,
