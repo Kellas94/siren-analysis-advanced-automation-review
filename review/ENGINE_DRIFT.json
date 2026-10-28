@@ -1,0 +1,89 @@
+{
+  "scope": "Exact two separate editions; differences are intake facts, not automatically defects",
+  "files": [
+    {
+      "path": "engine/conditional-binding.js",
+      "desktop": "0f689ed6695d89a6de554c0b489a42c089be2ae8e888fa64c3530c167b8e5941",
+      "provider": "0f689ed6695d89a6de554c0b489a42c089be2ae8e888fa64c3530c167b8e5941",
+      "same": true
+    },
+    {
+      "path": "engine/conditional-count.js",
+      "desktop": "5a3523677a2f4aa8b8b3f738d5b29ef74e9bf894a139788bf5861f2abd45dc31",
+      "provider": "5a3523677a2f4aa8b8b3f738d5b29ef74e9bf894a139788bf5861f2abd45dc31",
+      "same": true
+    },
+    {
+      "path": "engine/conditional-functions.js",
+      "desktop": "82621f5452ff66a4c3133ef4d5abbd7b513470d757d08949f1726207c799a8f3",
+      "provider": "82621f5452ff66a4c3133ef4d5abbd7b513470d757d08949f1726207c799a8f3",
+      "same": true
+    },
+    {
+      "path": "engine/data_generator.js",
+      "desktop": "daf597c4b1ed0303df0d2f0359268129153b688d7bb06e70aa357cf8944611cc",
+      "provider": "daf597c4b1ed0303df0d2f0359268129153b688d7bb06e70aa357cf8944611cc",
+      "same": true
+    },
+    {
+      "path": "engine/derived-binding.js",
+      "desktop": "9b1dd0a5095a9180eb2a11f70ded7597f3d83a19cbd5e8cba08ce930a1ffcb21",
+      "provider": "9b1dd0a5095a9180eb2a11f70ded7597f3d83a19cbd5e8cba08ce930a1ffcb21",
+      "same": true
+    },
+    {
+      "path": "engine/derived-columns.js",
+      "desktop": "617e7f08b232b1ff8e35734e057c63eccf0683bcd4b30d7baebfbc06b71da2e8",
+      "provider": "617e7f08b232b1ff8e35734e057c63eccf0683bcd4b30d7baebfbc06b71da2e8",
+      "same": true
+    },
+    {
+      "path": "engine/duckdb_runner.js",
+      "desktop": "92394cfbd0f123a8aca1f03c8d18e3feae2443f51f4f41a4b886f6dd180629fd",
+      "provider": "92394cfbd0f123a8aca1f03c8d18e3feae2443f51f4f41a4b886f6dd180629fd",
+      "same": true
+    },
+    {
+      "path": "engine/filter-binding.js",
+      "desktop": "2ccd2c0e71144bbe4226fc058f18607becca113c01d4730ca4bb6b8f57aadbae",
+      "provider": "2ccd2c0e71144bbe4226fc058f18607becca113c01d4730ca4bb6b8f57aadbae",
+      "same": true
+    },
+    {
+      "path": "engine/filter-criteria.js",
+      "desktop": "f91c3abb9008fe7fde4457fb03bb4e6a659ed62e46bc5abda1cb51378a0084c8",
+      "provider": "f91c3abb9008fe7fde4457fb03bb4e6a659ed62e46bc5abda1cb51378a0084c8",
+      "same": true
+    },
+    {
+      "path": "engine/graph-identity.js",
+      "desktop": "22ca75880c80bcdcce9fb6ab97ba4ea16e2a3edfea4326464bc6f88565be80c7",
+      "provider": "22ca75880c80bcdcce9fb6ab97ba4ea16e2a3edfea4326464bc6f88565be80c7",
+      "same": true
+    },
+    {
+      "path": "engine/pipeline_compiler.js",
+      "desktop": "d70416a3cf5e373f1ff21d4455a59c940b5da52d5cce380f0d3abd3ec56fa938",
+      "provider": "d70416a3cf5e373f1ff21d4455a59c940b5da52d5cce380f0d3abd3ec56fa938",
+      "same": true
+    },
+    {
+      "path": "engine/worker_process.js",
+      "desktop": "3d44ca209f32c7c154d9257489f9e15b7da7d74c84a0a44cf67c038cbf6124ef",
+      "provider": "3d44ca209f32c7c154d9257489f9e15b7da7d74c84a0a44cf67c038cbf6124ef",
+      "same": true
+    },
+    {
+      "path": "server/index.js",
+      "desktop": "0cabde5abefc3cc3670aa299655a7f916d5365311d180512aa443d0ac3a89502",
+      "provider": "0cabde5abefc3cc3670aa299655a7f916d5365311d180512aa443d0ac3a89502",
+      "same": true
+    },
+    {
+      "path": "server/runner_service.js",
+      "desktop": "e055a16b0f34205b6f79150ebaa3b946098088bb54d74ba7abe06a45475f3ee7",
+      "provider": "e055a16b0f34205b6f79150ebaa3b946098088bb54d74ba7abe06a45475f3ee7",
+      "same": true
+    }
+  ]
+}

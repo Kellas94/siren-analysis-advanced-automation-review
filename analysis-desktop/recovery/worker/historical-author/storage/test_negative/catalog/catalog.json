@@ -1,0 +1,34 @@
+{
+  "catalogRevision": 3,
+  "updatedAt": "2026-10-26T09:16:03.950Z",
+  "snapshots": {
+    "snap_good": {
+      "snapshotId": "snap_good",
+      "snapshotPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_negative\\storage\\sealed\\snap_good.csv",
+      "originalPath": "D:/src/good.csv",
+      "format": "csv",
+      "contentSha256": "2593c097b9dea6457fc687abf2f1e3e81e1218529b408ab3cfc7beabb198e5c3",
+      "byteCount": 16,
+      "capturedAt": "2026-10-26T09:16:03.943Z",
+      "registeredAt": "2026-10-26T09:16:03.943Z",
+      "verifiedOnRecovery": false,
+      "recoveryError": "INTEGRITY_MISMATCH: expected 2593c097b9dea6457fc687abf2f1e3e81e1218529b408ab3cfc7beabb198e5c3, got aaa3bda53628d5460843c6986a7261a108132545300ac0995139669bceb6415a"
+    },
+    "snap_verif_01": {
+      "snapshotId": "snap_verif_01",
+      "snapshotPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_negative\\fixtures\\verif_data.csv",
+      "originalPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_negative\\fixtures\\verif_data.csv",
+      "format": "csv",
+      "contentSha256": "b677bd0527f00f52ce7a3e139f67b4e77332a0bcfd57fdbfad6ba5324ea2ce77",
+      "byteCount": 17,
+      "capturedAt": "2026-10-26T09:16:03.950Z",
+      "sourceRowCount": "2",
+      "registeredAt": "2026-10-26T09:16:03.950Z"
+    }
+  },
+  "jobs": {},
+  "leases": {
+    "snap_good": [],
+    "snap_verif_01": []
+  }
+}

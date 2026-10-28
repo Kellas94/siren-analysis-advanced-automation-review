@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "siren.analysis/catalog/2.0.0",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "catalogId",
+    "contractVersion",
+    "catalogVersion",
+    "catalogSha256",
+    "owner",
+    "capabilities"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "siren.analysis-catalog/1.0.0"
+    },
+    "catalogId": {
+      "const": "siren.analysis"
+    },
+    "contractVersion": {
+      "const": "siren.analysis-execution/2.0.0"
+    },
+    "catalogVersion": {
+      "type": "string"
+    },
+    "catalogSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "version",
+          "title",
+          "description",
+          "parameters",
+          "result",
+          "availability",
+          "invocation",
+          "execution",
+          "limits",
+          "sourceEvidence",
+          "descriptorSha256"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "result": {
+            "type": "object"
+          },
+          "availability": {
+            "type": "object",
+            "properties": {
+              "prototype": {
+                "enum": [
+                  "IMPLEMENTED",
+                  "PROPOSED",
+                  "IN_CONSTRUCTION"
+                ]
+              },
+              "contract": {
+                "enum": [
+                  "IMPLEMENTED",
+                  "PROPOSED",
+                  "IN_CONSTRUCTION"
+                ]
+              },
+              "evidence": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "prototype",
+              "contract",
+              "evidence"
+            ],
+            "additionalProperties": false
+          },
+          "invocation": {
+            "type": "object"
+          },
+          "execution": {
+            "type": "object"
+          },
+          "limits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sourceEvidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "descriptorSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# Exact candidate verdict — accepted in the bounded scope
+
+28October2026. **ACCEPTED for explicit durable workflow/catalog metadata and exact saved-reference recovery in this isolated provider.** This is not acceptance of the full Analysis desktop, actual UI Builder designer adoption, Docs/Charts composition, installed SIREN, migration or release.
+
+Candidate467 files /64,303,151 bytes /roster `93ac0baf3f24b0d1acaeb9947fee3b12f1fb385f82b640e72202fd59093a4a1b`. Complete manifest and before/after/final matching identities are under evidence/identity-*. `evidence/closure-v1.json` freshly checks physical application members, indexes exact reports and saved forms; prior464/a4e1 donor unchanged. Provider e0bf/history-statee156/store53dc/bootstrap196c/transportf710. See CONTRACT for exact semantics.
+
+The demonstrated behavior is: preserve every exposed catalog and admitted workflow definition, validate trusted authority/complete history before worker/ready, run an old unchanged saved form after normal provider close and new-parent startup with no publication registry, preserve exact types/units/coverage and fresh current-data provenance, refuse missing/corrupt/incompatible metadata or unavailable current input, retain cancellation/retry/closure, and conserve acknowledged metadata through the named owned process stops/concurrent writer conflict. No silent pin migration, job/result/input replay or added formula engine.
+
+Root read **all five separate reports FULL** before this verdict. Their exact hashes are in closure-v1:
+
+- Source/model24c0fbdc: provider11groups/4mutants, bootstrap7 and transport5, separate cohorts.
+- Store/pathb202507c: pureJSON3groups/2mutants; actualFS10groups/1semantic mutant; separate actualFS/FakeRunner source-retarget RED/GREEN and5preservation/mutant records. Root operated approved host scripts; reviewer supplied independent controls/readback.
+- RPC artifact994deb66: Root actual9records,10completed jobs plus separate cancelled job/pre-job failure; independent reader7groups/14coherent corruptions. Five normal parents and four refused starts, not nine successful executions.
+- Process/final packet8f6ca832: Root/helper-author actual3metadata scenarios/9children; independent reader7groups/11corruptions, current467 membership and unchanged donor. Two controlled stops are not normal exits.
+- Browser artifact3142815b: Root actual Save/Open/newparent/Run, two distinct jobs; independent physical/source reader and13coherent corruptions. HTTP/browser/saved-file map remained alive. Parent close0 and managed worker SIGKILL remain distinct.
+
+These counts are not summed. Root's own passing tests do not constitute independent review of its fix. Retrospective artifact readers are not independently repeated native/browser runs. Three reproduced findings and original outcomes are retained in FINDINGS; all corrected on current bytes. The initial47cc/388 full-source custody gap remains explicit: selected hashes/probe/output/physical histories retained, no reconstruction claimed.
+
+Material limits: current input captures, not historical data/results/jobs; trusted fixed grant/base/executor/runtime, no migration policy; record/committed-total/count bounds and retained pending disk use; local exclusive-link/flush/process observations, no power-loss/directoryflush/global orphan/network/offline guarantee; cold valid-prefix rollback or entire coherently rewritten history needs external trusted head/authentication. Browser scalar10 alone does not discriminate empty vs default00120 because both cohorts have10rows: physical configured value, parameter/bound-definition hashes, current binding inspection and separate discriminating RPC current-data proof supplement it. Process observationv1 is invalid; v2 is bounded797/180unknown metadata visibility.
+
+UI Builder completed459/d47 remains distinct and was read as owner claims, not independently requalified here. Next controlled integration must reconcile its current hooks with accepted Count464 and this history packet in a new copy. The user subsequently authorized a dedicated GitHub review of the whole separate Analysis & Advanced Automation code, with Terminal excluded. That broader review is a new gate; this bounded metadata verdict must not stand in for it. No GitHub upload is claimed by this document.

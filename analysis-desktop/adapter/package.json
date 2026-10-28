@@ -1,0 +1,10 @@
+{
+  "name": "siren-analysis-charts-adapter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Minimal bounded adapter for transferring DuckDB/Analysis query results to siren.chart-data/1 contract",
+  "scripts": {
+    "test": "node tests/run_all_tests.mjs"
+  }
+}
