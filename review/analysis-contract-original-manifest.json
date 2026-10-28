@@ -1,0 +1,2355 @@
+{
+  "scope": "Isolated durable metadata/provider/native dependencies/reference consumer/browser startup; no Electron/main/installed",
+  "fileCount": 467,
+  "bytes": 64303151,
+  "rosterSha256": "93ac0baf3f24b0d1acaeb9947fee3b12f1fb385f82b640e72202fd59093a4a1b",
+  "added": [
+    "provider/src/history-state.mjs",
+    "provider/src/publication-store.mjs",
+    "scripts/browser-history-server.mjs"
+  ],
+  "removed": [],
+  "changed": [
+    "provider/src/provider.mjs",
+    "reference-consumer/mini_ui/analysis_node_transport.mjs",
+    "scripts/bootstrap.mjs"
+  ],
+  "old464DonorUnchanged": true,
+  "files": [
+    {
+      "path": "count-fixture.mjs",
+      "bytes": 2555,
+      "sha256": "a9dbf2da0542a88bb06834305d247dad98b3883b30276f06512e072cf68cb110"
+    },
+    {
+      "path": "count-publication-fixture.mjs",
+      "bytes": 2074,
+      "sha256": "36acb407319890227f9fa68b387f05c00229530ecd64b3e3fd275473896b86c8"
+    },
+    {
+      "path": "fixture.mjs",
+      "bytes": 5877,
+      "sha256": "66d5d0d4af445343320b2a600bdebcfd125ab36e7e7f198527f0045ffdb5253f"
+    },
+    {
+      "path": "legacy-consumer/analysis_catalog_consumer.mjs",
+      "bytes": 9281,
+      "sha256": "e05a35b14e05ae77175c5986303043bf443c393aa3bdc8a42c117c9abf018c59"
+    },
+    {
+      "path": "legacy-consumer/analysis_contract_reference.mjs",
+      "bytes": 12617,
+      "sha256": "73f7af2f629be98d5a3e516d06fc56f97ac2af8fb90ce24829c44983f6b29781"
+    },
+    {
+      "path": "package.json",
+      "bytes": 34,
+      "sha256": "cdaa846ac83a68037e2f78e9d5cef0bbb82dd50fe29ef3cf650b31c3a2011c3b"
+    },
+    {
+      "path": "provider/analysis-engine/engine/conditional-binding.js",
+      "bytes": 1439,
+      "sha256": "0f689ed6695d89a6de554c0b489a42c089be2ae8e888fa64c3530c167b8e5941"
+    },
+    {
+      "path": "provider/analysis-engine/engine/conditional-count.js",
+      "bytes": 4886,
+      "sha256": "5a3523677a2f4aa8b8b3f738d5b29ef74e9bf894a139788bf5861f2abd45dc31"
+    },
+    {
+      "path": "provider/analysis-engine/engine/conditional-functions.js",
+      "bytes": 8409,
+      "sha256": "82621f5452ff66a4c3133ef4d5abbd7b513470d757d08949f1726207c799a8f3"
+    },
+    {
+      "path": "provider/analysis-engine/engine/data_generator.js",
+      "bytes": 7498,
+      "sha256": "daf597c4b1ed0303df0d2f0359268129153b688d7bb06e70aa357cf8944611cc"
+    },
+    {
+      "path": "provider/analysis-engine/engine/derived-binding.js",
+      "bytes": 711,
+      "sha256": "9b1dd0a5095a9180eb2a11f70ded7597f3d83a19cbd5e8cba08ce930a1ffcb21"
+    },
+    {
+      "path": "provider/analysis-engine/engine/derived-columns.js",
+      "bytes": 5866,
+      "sha256": "617e7f08b232b1ff8e35734e057c63eccf0683bcd4b30d7baebfbc06b71da2e8"
+    },
+    {
+      "path": "provider/analysis-engine/engine/duckdb_runner.js",
+      "bytes": 5591,
+      "sha256": "92394cfbd0f123a8aca1f03c8d18e3feae2443f51f4f41a4b886f6dd180629fd"
+    },
+    {
+      "path": "provider/analysis-engine/engine/filter-binding.js",
+      "bytes": 1167,
+      "sha256": "2ccd2c0e71144bbe4226fc058f18607becca113c01d4730ca4bb6b8f57aadbae"
+    },
+    {
+      "path": "provider/analysis-engine/engine/filter-criteria.js",
+      "bytes": 9297,
+      "sha256": "f91c3abb9008fe7fde4457fb03bb4e6a659ed62e46bc5abda1cb51378a0084c8"
+    },
+    {
+      "path": "provider/analysis-engine/engine/graph-identity.js",
+      "bytes": 1858,
+      "sha256": "22ca75880c80bcdcce9fb6ab97ba4ea16e2a3edfea4326464bc6f88565be80c7"
+    },
+    {
+      "path": "provider/analysis-engine/engine/pipeline_compiler.js",
+      "bytes": 18524,
+      "sha256": "d70416a3cf5e373f1ff21d4455a59c940b5da52d5cce380f0d3abd3ec56fa938"
+    },
+    {
+      "path": "provider/analysis-engine/engine/worker_process.js",
+      "bytes": 7417,
+      "sha256": "3d44ca209f32c7c154d9257489f9e15b7da7d74c84a0a44cf67c038cbf6124ef"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/captured_reader_options.js",
+      "bytes": 538,
+      "sha256": "f388bb5b0cc6c3ab1fa48186858a6c4ed9e1408002ed20ab157d8801cbb8175f"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/direct_reader_binding.js",
+      "bytes": 4068,
+      "sha256": "f59b81f3af8d159f3c9d01530e6ea3113b48f960f56244198b06014daa13f174"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/producer.js",
+      "bytes": 19235,
+      "sha256": "5865b740c3abf76a3e544530b196ce1d0ceee3aeba6fbdb46656c497b8bda3b4"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/recoverable_service.js",
+      "bytes": 6241,
+      "sha256": "22f422cb35d4666232ec1a5aa432a02058b86236e46ae6e9ec824f2d37b9f286"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/saved_journal.js",
+      "bytes": 16961,
+      "sha256": "e654019ceaf4864e0d1b5da0a7af6c7b379e390c89829aa8294e096bcc835b27"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/selection.js",
+      "bytes": 6901,
+      "sha256": "2577030f7f00705224550b89959341dafbe1f0af927fd10a177e5e98f61ecb0c"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/service.js",
+      "bytes": 5284,
+      "sha256": "80d2eb6d40304a25a73b14a03b4668135d4beb2771f0c967e5de5e8a37fe9fb0"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/snapshot_service.js",
+      "bytes": 8380,
+      "sha256": "3449abc8c0647a8e0314bbc21a554f815dec643da178ffd131e78daf13d43fbd"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/typed_input.js",
+      "bytes": 1689,
+      "sha256": "93e8ee40c6ac883cfd413bc28b2d3f41707602391de72c81a4684bd0cb4b3370"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/workflow_producer.js",
+      "bytes": 32163,
+      "sha256": "45b489ef4b4b8c430cfc93ff01b9bf76ae9a54ca83cf633ea9921a3ab7c78047"
+    },
+    {
+      "path": "provider/analysis-engine/histogram/workflow_service.js",
+      "bytes": 5043,
+      "sha256": "f155259f54d27247b27f00e9f6e3b320a993000675b154bcbdbfc1ac745cab9f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/configurationOptionDescriptions.d.ts",
+      "bytes": 93,
+      "sha256": "5d6a17de5ad63a1bd52406e575bfd409b9b2e0f4fb6ec6b2639809192ce69316"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/configurationOptionDescriptions.js",
+      "bytes": 693,
+      "sha256": "58fa960bcf68bfcdf4738322560720505c1a6ef32f15ae5075646138b66a9b4f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/bytesFromString.d.ts",
+      "bytes": 66,
+      "sha256": "66c6e8d32717b9f9e8e5168dce60ca5de25e88476046d2c25a235d74736747c6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/bytesFromString.js",
+      "bytes": 229,
+      "sha256": "16b756a5eaaa0fdde63a48cc1ace7e15bef2b668da476540730772d6e94b58c9"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/dateTimeStringConversion.d.ts",
+      "bytes": 2248,
+      "sha256": "0d1a559a92f8ee7df74836c75edbb200f879e068f250374f3d140ee7b99ec627"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/dateTimeStringConversion.js",
+      "bytes": 13536,
+      "sha256": "0fd34a3e5d4d5209627e0fee155cb305861549b99dc51ba0b726e860907ec038"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/displayStringForDuckDBValue.d.ts",
+      "bytes": 122,
+      "sha256": "a96c828a7b3df1e873070ff618f9368eb2282c446670b1af8eb77db42536f788"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/displayStringForDuckDBValue.js",
+      "bytes": 398,
+      "sha256": "7c7720fb3c58c9ea101dc0992f41c90b9e86593102aa5aa006a91a2fd35672c8"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/stringFromBlob.d.ts",
+      "bytes": 284,
+      "sha256": "552f90b90eca68020003a6caeee6643a7ade39018b0961bc992efda22aba40d1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/stringFromBlob.js",
+      "bytes": 1604,
+      "sha256": "e8427c8f0a5362c858114c44ce27ab8ada91bac980aca178caa80a3bf9d3d3be"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/stringFromDecimal.d.ts",
+      "bytes": 625,
+      "sha256": "f1633316310712067956b4f1382da06f294d5d414e82043280d542d374e7ea09"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/stringFromDecimal.js",
+      "bytes": 3864,
+      "sha256": "e1476d79f98b8ab3fb3f4ac74c93f97eaec5455fbb83edffe84c8e7a36fc316e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/varintDecode.d.ts",
+      "bytes": 682,
+      "sha256": "583dd2e08aef7f2620cf414f2afd66541f9ae9849965f580496aee174b07b84d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/conversion/varintDecode.js",
+      "bytes": 1453,
+      "sha256": "a1db4619901ffff6c5402a0edf3d89ad178b44f056e3380d6f51fff37058b240"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/convertColumnsFromChunks.d.ts",
+      "bytes": 278,
+      "sha256": "d428c65b316f94b30b51105ea60e926381a4625853ccaa6679eecfd3d08198c8"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/convertColumnsFromChunks.js",
+      "bytes": 790,
+      "sha256": "59144be64b9bfec4f5da47774cb846b6775846cb896e7790e4ba9891d2d944ee"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/convertColumnsObjectFromChunks.d.ts",
+      "bytes": 309,
+      "sha256": "646d1fa9d5b0007f20d74a35224fb6abdbfaad5d46829baf15068d55eb8a24d7"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/convertColumnsObjectFromChunks.js",
+      "bytes": 884,
+      "sha256": "c0ca50d13f4e7337a0594b3d11b1fea12227d3b45ada9107e04d4749b54cfa2d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/convertRowObjectsFromChunks.d.ts",
+      "bytes": 304,
+      "sha256": "de77b8fbad9291129ef9ea611e11bdf23035d76b89267181211062432b61c6da"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/convertRowObjectsFromChunks.js",
+      "bytes": 689,
+      "sha256": "38ee7910ad1c2be26d5a16a1ff7b14705f74aea41430f73d8cda6c6baa12fdfa"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/convertRowsFromChunks.d.ts",
+      "bytes": 254,
+      "sha256": "a6b98c81ae984713a673a69e5d2a80906f641a189a708bbcc92670e1c5d61192"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/convertRowsFromChunks.js",
+      "bytes": 449,
+      "sha256": "f791a43b2ea6b362aeab9f616afb8b9c2c6802d36d2fc96ac48eb9481bff77b6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/createConfig.d.ts",
+      "bytes": 131,
+      "sha256": "73f2d63584e394022c53df45bce0fcd7b918b4e7da31d115856411a179d5b236"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/createConfig.js",
+      "bytes": 813,
+      "sha256": "dba2310fb49c3583a58c520b0d2b5157f1a83106c90926c278ca691cc2416b33"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/createDuckDBValueConverter.d.ts",
+      "bytes": 269,
+      "sha256": "9ad3bf1ac7b7a6e2f43e5be465b0fea2b89f3085195906c5bdca1df6bc3ba892"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/createDuckDBValueConverter.js",
+      "bytes": 558,
+      "sha256": "f3f80df0bf1e3a829e7b4a68914df948237908ee136d036760e2b2f9c14f0cf8"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/createResult.d.ts",
+      "bytes": 246,
+      "sha256": "fa26b27b364df9148da8cfcc0cae78359ade1f29dbae26a0b4e0de1f7d8fc7ce"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/createResult.js",
+      "bytes": 777,
+      "sha256": "667dc5aa6cb6239291f49dca23e666f48d550fa95a12bdbbe499d7beefe87022"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/createValue.d.ts",
+      "bytes": 212,
+      "sha256": "4e471fe4767036abbc08ac33819120ba270ed41310a6b6d57b0b978bcb369663"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/createValue.js",
+      "bytes": 15660,
+      "sha256": "3cf00d153c4b8d28ba3bd72735318acc6348af31a44e46d34f742eff1cdc9372"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/duckdb.d.ts",
+      "bytes": 1838,
+      "sha256": "3995dc3328314d344b54b95d5a93a1523d94e5c08b518e293edb8647abb03326"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/duckdb.js",
+      "bytes": 4025,
+      "sha256": "90d13b045cf1bed6656dc09180e67fb527b1ed3907ce3bf34a0ecbc398a5b96f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBAppender.d.ts",
+      "bytes": 3352,
+      "sha256": "9e13a0bf0919554ab933148d0b28720d41ff4a2d00c7cb809c52fafca1b0066b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBAppender.js",
+      "bytes": 5913,
+      "sha256": "3626e4d12b61930b926fda8bc30bca801fafe487c1960cd68b3d3416d44afa09"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBClientContext.d.ts",
+      "bytes": 213,
+      "sha256": "b4b1f97f13e8171ee9b498ab0edb75ea1aae6f8a95af546c69751d3be83c2e6d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBClientContext.js",
+      "bytes": 641,
+      "sha256": "a9ef42b19ea8c28ac95ab130c51641e30de996384672f09d6b1392d23470f5c5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBConnection.d.ts",
+      "bytes": 4742,
+      "sha256": "63fe39e34154c19d553f883f283f6f6c3d3801aac8c9e23ddd90725bc0e141b6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBConnection.js",
+      "bytes": 8415,
+      "sha256": "037dc8e6ca50cddd194d32e438479967c50344d0f585f89f567014a38b4aed8b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBDataChunk.d.ts",
+      "bytes": 4129,
+      "sha256": "c04f524e4e346cfb13a65527938d7f16155398cd7dc10903b42cb38fec012ec6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBDataChunk.js",
+      "bytes": 12583,
+      "sha256": "b080df369b2afc44afeae7d00a98317532cca00e64e7e280b6c7b204c30b7a71"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBDataChunkWriter.d.ts",
+      "bytes": 3146,
+      "sha256": "10c5f3972ff79217da358146826c5121724e136744a31af7831bce978e1a8ab0"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBDataChunkWriter.js",
+      "bytes": 4495,
+      "sha256": "826f749d9e230fc08d679c98bb2f5011683f1334e5c18420c2a27febc2cfca4a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBExtractedStatements.d.ts",
+      "bytes": 675,
+      "sha256": "57b10dd7cd4f0bd079d0b60c2d425f6b2b35fb4292ffae1ec42b3d3520e4ad27"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBExtractedStatements.js",
+      "bytes": 1295,
+      "sha256": "60cfd0b9c71182be60940919877359d92468b676e9a028e59a96b6d409b6b711"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBInstance.d.ts",
+      "bytes": 456,
+      "sha256": "58802e4d3e99f8ce8fa4db48282c34d7987d99d004d9ff45fcea747c1cd316c0"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBInstance.js",
+      "bytes": 1180,
+      "sha256": "f2704ba3e0d0fd8d2cc7e7481569cf01f006140a8d34f51d0afe13db0750cd53"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBInstanceCache.d.ts",
+      "bytes": 329,
+      "sha256": "ef7b821730905a5b4062e99c3a2ea53b441569c5a7a35b804feae98a2278c2a0"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBInstanceCache.js",
+      "bytes": 1159,
+      "sha256": "707ab835466fbc1ce096abd1691205c2ebd46f50c189a9bc8ad48e3f51181a5e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBLogicalType.d.ts",
+      "bytes": 3173,
+      "sha256": "064612afe8226764a50a0ff9403e00efb5ef708e479bb17299a4f3da14989dad"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBLogicalType.js",
+      "bytes": 15529,
+      "sha256": "e2e879b5b9819fa56fffb39d986034d1ffa26ba86b0d8e6739e68be55d898a99"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBMaterializedResult.d.ts",
+      "bytes": 627,
+      "sha256": "04a7fcfe743ac630fd01fdab67b980f32c30b88da4b7902b87f618b3646fb749"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBMaterializedResult.js",
+      "bytes": 1582,
+      "sha256": "544b5308c10bb730383ad47394be297f0cd76aa53b114386a1fce7a7a2543d98"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBPendingResult.d.ts",
+      "bytes": 1360,
+      "sha256": "f2225bb4c9cdeccb9222e3c548c3ed2f765c9dbdb131424abb4378987d0ba446"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBPendingResult.js",
+      "bytes": 3641,
+      "sha256": "21b08186f01d84a8f33ccfd6cf65653b0b92a281ae35037409e43d23aaa507a8"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBPreparedStatement.d.ts",
+      "bytes": 5304,
+      "sha256": "1d4b5ec121e4d6021cc1f395e9069eb06aab8e1dcbee507746cd96e5ad84e9f1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBPreparedStatement.js",
+      "bytes": 10498,
+      "sha256": "1b6d67c72043ad5939516ad859bb1833cf13e5b8c2f358be61ed1e590696649d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBPreparedStatementCollection.d.ts",
+      "bytes": 174,
+      "sha256": "7d8438655fa0f31dac337497fd14f75684956600d3c9f14c54e31afd2108a31b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBPreparedStatementCollection.js",
+      "bytes": 77,
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBPreparedStatementWeakRefCollection.d.ts",
+      "bytes": 450,
+      "sha256": "32c6cf410ce11fee43e1118c49fe2033ad7db55e1ae39ae16958e588cfb20aec"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBPreparedStatementWeakRefCollection.js",
+      "bytes": 956,
+      "sha256": "93d6c035f44eb52a00727a7839cc4226a61aea4dbaf1c1a159186d3649c01f0c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBResult.d.ts",
+      "bytes": 3924,
+      "sha256": "d250279fe82d5eb7e39d55868e4b7706eabe385c75276567502aff026a0c227c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBResult.js",
+      "bytes": 12678,
+      "sha256": "9920c741604f6fc127e9ad4513389bb34e4d1c84630475362365ca7d76c98261"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBResultReader.d.ts",
+      "bytes": 3122,
+      "sha256": "10f0e9d8076f4f7f59087422409b21f63b8bb5aa1a860fc01b74a92c3b744966"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBResultReader.js",
+      "bytes": 8148,
+      "sha256": "535d7fb430b0de69843f5f4cf0ea72aba42491a0e24373012e05e4ba2fcd19c6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBScalarFunction.d.ts",
+      "bytes": 1923,
+      "sha256": "ea1eca0071a5ba12c0023ffeece5d04ed200e8c336dc15ea1b5eeaa08258ace1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBScalarFunction.js",
+      "bytes": 4104,
+      "sha256": "34f7b100969d183a7159bb23454ae63421f947bb7d15b2276789322eb9983f2c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBScalarFunctionBindInfo.d.ts",
+      "bytes": 751,
+      "sha256": "d15feb063fd5d81c378471734682930181be08b36e5c1d0eb6320159adea17c0"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBScalarFunctionBindInfo.js",
+      "bytes": 1398,
+      "sha256": "2e8c8d0779dcd0ce94a333535538c4b4b090a1d6844d0e9ce501e32672d541e5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBScalarFunctionInfo.d.ts",
+      "bytes": 702,
+      "sha256": "7f88b292d6e9b30bc9327210f03df9b63ad06a7a2ad3a3609fe0f9852feea263"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBScalarFunctionInfo.js",
+      "bytes": 1311,
+      "sha256": "6983eab37f98f9e049b8798ee69b868245877cfb554713b78a24634543a9164f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBScalarFunctionInitInfo.d.ts",
+      "bytes": 571,
+      "sha256": "36ae56ca92c20ec505eacd984f65df55cfd25a206724f08647158a19ab99fbb5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBScalarFunctionInitInfo.js",
+      "bytes": 1434,
+      "sha256": "0e3a5355c07b952a884fcdb790e283652e92e4ec8f95c469e9359c3e9c31388f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTableFunction.d.ts",
+      "bytes": 2200,
+      "sha256": "0a9905e45f03895075dcf32cdda4cadf7539afc5d3de55d2d795d30b257f8284"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTableFunction.js",
+      "bytes": 3887,
+      "sha256": "84e116621c29fbf1e11e6c234802d3ebd1403de2dddc298621494532b8ebf1b7"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTableFunctionBindInfo.d.ts",
+      "bytes": 942,
+      "sha256": "9dab0b9bbff6c37c8c8f82755a007bef4425300edccbaa7510f9698ac7048bbd"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTableFunctionBindInfo.js",
+      "bytes": 2150,
+      "sha256": "bd759f9dd6a851d810142f5985ed91a380812b1ae7c8b758e1c08f6bdc0fdac4"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTableFunctionInfo.d.ts",
+      "bytes": 637,
+      "sha256": "ce8eb2abf73b29296bb5c5fe994bce2e7551de209f0acf7669f89b8456189c59"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTableFunctionInfo.js",
+      "bytes": 1431,
+      "sha256": "cb715101e44f5a1a27f273e4af37a284a102a5dccfff3b53605b2f968a017b48"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTableFunctionInitInfo.d.ts",
+      "bytes": 902,
+      "sha256": "863cca4310e81e996017b554a05fb7e3b005ea6f0f4a34a9f8ccd99e7b9c6e95"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTableFunctionInitInfo.js",
+      "bytes": 2015,
+      "sha256": "f1dac6b4be3a1de8a9667283ce7e7c6ac586ff49092d43c6935f1ada48231256"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBType.d.ts",
+      "bytes": 25,
+      "sha256": "d5c19655468e29f60c871b21e73af8ebc653f736e7123ade916f22c4a5f80ce5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBType.js",
+      "bytes": 800,
+      "sha256": "284ed68478b7a0e3470c155a169626e77bcf59d82083b02894c4619722ca2b3a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTypeId.d.ts",
+      "bytes": 812,
+      "sha256": "dd2b08078bc9101ca702ae6f2e0bd293a25768446573200c1b2e011c2dd66bde"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBTypeId.js",
+      "bytes": 2856,
+      "sha256": "941062488aaf5db298ad05a154962ccd3d83e83a0ec29a4adfbd617536ea78e9"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBValueConverter.d.ts",
+      "bytes": 794,
+      "sha256": "4458313358d385914d43af411fc0b60364ac6b82706bdc9b901b5700d84cc7ac"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBValueConverter.js",
+      "bytes": 77,
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBValueConverters.d.ts",
+      "bytes": 4243,
+      "sha256": "df67a06f68e4d8b1c002db0200aeb0516b0f9628e436b1910470244e7e580148"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBValueConverters.js",
+      "bytes": 14164,
+      "sha256": "e785f5ba691707e152fb94a12143de7d1c545dd134593ab2a2665d7952c34966"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBVector.d.ts",
+      "bytes": 27,
+      "sha256": "c7c5fbb504cf364f1bf8f55e587539d278b9f9a96be6533dbddecc0a7f24a259"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/DuckDBVector.js",
+      "bytes": 802,
+      "sha256": "3553b7e2e517962e388bfa8eb0ea4b04387d868737c524e0d3a57964e81b6e6c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/enums.d.ts",
+      "bytes": 274,
+      "sha256": "068a948f5394ba8521a8123c19cfc575308aa65688991f3a5f79f56cacdf283d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/enums.js",
+      "bytes": 476,
+      "sha256": "aad1185ac501beb73b7850763bc6af5257737d9fe4e9f955d9f306cc8e738094"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/getColumnsFromChunks.d.ts",
+      "bytes": 213,
+      "sha256": "9bfc1f25e7084e460ef9f0b0fde8835d55d4fe51c4872248960c5cb521558021"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/getColumnsFromChunks.js",
+      "bytes": 352,
+      "sha256": "5b882705c05b8ffee2008ee633fb10db911646b24f8629e403f482922f509031"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/getColumnsObjectFromChunks.d.ts",
+      "bytes": 244,
+      "sha256": "ede43d5f097081edd9b6e6a52ec39fe1e7ef6b081b4d4fc0d8f2cef0f8f462cb"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/getColumnsObjectFromChunks.js",
+      "bytes": 454,
+      "sha256": "4a9212ea4c59887c4a00b89298fa1c84119dba410ba29914f8a62e8ad3dc6dc2"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/getRowObjectsFromChunks.d.ts",
+      "bytes": 241,
+      "sha256": "ab5b7e958869f3444ca998d9b94f5f3af9b90022ce196b3cbb67b3d6061dee40"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/getRowObjectsFromChunks.js",
+      "bytes": 343,
+      "sha256": "d78348df1b4659b67e606d4eb00ec507cc1f806388e120be08a36cef927a2a41"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/getRowsFromChunks.d.ts",
+      "bytes": 189,
+      "sha256": "0e5b568a3957f9d8bcde1e43f1c378d2db68cb83d309fe273d41830b44aab9f5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/getRowsFromChunks.js",
+      "bytes": 275,
+      "sha256": "1e3745fa722e153f971744faf16863ea2cf51c76952aacd30b50f1345d4ac22d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/index.d.ts",
+      "bytes": 85,
+      "sha256": "24f6ce94c19e276b30c9fe39bf6e4a1e627e3d222b01ce831ced6046127cab4f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/index.js",
+      "bytes": 1759,
+      "sha256": "9d78710fc48494f42133452f3e76ad62634fe9ad50dc7d7bcc55e3bcffff95e3"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JS.d.ts",
+      "bytes": 116,
+      "sha256": "b6daff17cba23b60ac29b488fe8c5ddf12ebd755563d5cd051bbcde1aee348bb"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JS.js",
+      "bytes": 77,
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JSDuckDBValueConverter.d.ts",
+      "bytes": 131,
+      "sha256": "730932fbba91b55ceed14b3367891bbaca58edc6bc212ca34f70161eb7259a05"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JSDuckDBValueConverter.js",
+      "bytes": 4304,
+      "sha256": "023c021e0275b5f73b6279cb06d2db2b3996086728efa9b0134536d35628dae6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JSInputTypeForTypeId.d.ts",
+      "bytes": 4323,
+      "sha256": "16cbe540c5b0f5c9e786ef90555570d914534750b21f1027956f006461c05739"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JSInputTypeForTypeId.js",
+      "bytes": 127,
+      "sha256": "75ece3d7eb116d016058ad97ac01581cd4bf3f96f2e9375dd81b0792f95eda80"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/Json.d.ts",
+      "bytes": 93,
+      "sha256": "c039d4c78e7bb82745d77ba12d322a4f06aa8aeac0dc33ba99039bcb793e8ce4"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/Json.js",
+      "bytes": 77,
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JsonDuckDBValueConverter.d.ts",
+      "bytes": 139,
+      "sha256": "00e8456ad71fdf0fa85af8386598a97b8ec1bc9a27f4c1327aa3c78f33a3e60f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JsonDuckDBValueConverter.js",
+      "bytes": 4170,
+      "sha256": "e59813280ce7644b351bbc64f66763f5e184191728015314fb6083d6f7704217"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JsonTypeForTypeId.d.ts",
+      "bytes": 3623,
+      "sha256": "3b7c31288f193f53ec5352de8c74a6874ff840b48264fadcbe5bd9af92007a4d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JsonTypeForTypeId.js",
+      "bytes": 127,
+      "sha256": "75ece3d7eb116d016058ad97ac01581cd4bf3f96f2e9375dd81b0792f95eda80"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JSToDuckDBValueConverter.d.ts",
+      "bytes": 1563,
+      "sha256": "9a32f1dcf4884e77e8324ce64e2fa276b27601b72a7e3bb21d850e55d7c80e57"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JSToDuckDBValueConverter.js",
+      "bytes": 5910,
+      "sha256": "47c8ec260ac52f04431bbaa707d96a98182415725393d7c8f87d23673377e40c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JSTypeForTypeId.d.ts",
+      "bytes": 3224,
+      "sha256": "3497db023c93ad3498a7bd8c02ebb1d5d6d70faef4885f2efbc3e422f146ccd5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/JSTypeForTypeId.js",
+      "bytes": 127,
+      "sha256": "75ece3d7eb116d016058ad97ac01581cd4bf3f96f2e9375dd81b0792f95eda80"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/readValue.d.ts",
+      "bytes": 1132,
+      "sha256": "4a5589061e8b3d5b7371054675ad0aea568523c5b239ca4e42529c28904b6961"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/readValue.js",
+      "bytes": 1856,
+      "sha256": "8a5a75886cf036e9846a78376b7df73b48deb81fe09f1d41252bcb88531e4c78"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/sleep.d.ts",
+      "bytes": 61,
+      "sha256": "adefa308b0adcf20fa0a84e2c0fb2ba94d549b1c7e6e689fa89af3bf705ddbfe"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/sleep.js",
+      "bytes": 208,
+      "sha256": "cea426a53a37a1f238d180a0cdfe3800b38970fa54b54a7705da50869fafe70b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/sql.d.ts",
+      "bytes": 126,
+      "sha256": "4f913f3e396b0ef4b9a084f9b4c5bcb2081a4f524b85fc81c432612719d9ca94"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/sql.js",
+      "bytes": 323,
+      "sha256": "53c883c27ea8f214279b3e86735c6917b0016adcbfc0d2d2b820e0c7dc797533"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/ToDuckDBValueConverter.d.ts",
+      "bytes": 2326,
+      "sha256": "5f1ff8e5b97287a201cc676c53e4576781df57d0cf1e90ccf7df05b76fe56c3b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/ToDuckDBValueConverter.js",
+      "bytes": 1218,
+      "sha256": "f8632a41cf0cf51d3ce5159faf5de9b4164adc880aa7da273bc50be14dfc2e48"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/ToDuckDBValueConverters.d.ts",
+      "bytes": 3748,
+      "sha256": "a8e2b491d836279b00b3fcaebea75ec14a929f506d7a8d4ad0b074f51147bc1d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/ToDuckDBValueConverters.js",
+      "bytes": 8475,
+      "sha256": "cfed5e4d9f44437ee058cc20186cb8dd625f2056830e5d92d28090894a8449fa"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/typeForValue.d.ts",
+      "bytes": 153,
+      "sha256": "b1a79faf6ee5eb329e515f20d8af6a009d27f204d770b6e8d767834c7f16a2e8"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/typeForValue.js",
+      "bytes": 5164,
+      "sha256": "cf59b3a46281cf3119800d0a98a508695d3eaee7250cbcd4ee08d5922a46abeb"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/BaseDuckDBType.d.ts",
+      "bytes": 402,
+      "sha256": "086e8bd398ee592bd36f78e43328b638d8981c33071f447e8157676ab3c597a7"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/BaseDuckDBType.js",
+      "bytes": 1110,
+      "sha256": "ae2d822ccbf55d214753730be7188d9f5c01a9407f62a0f90e9a44a180666ad8"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBAnyType.d.ts",
+      "bytes": 348,
+      "sha256": "4a37d607995ce4d1842d60b7a50c965473edf819ffbca3865e6c8d02294d597b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBAnyType.js",
+      "bytes": 605,
+      "sha256": "97f5f2530ebe0215a6d66c0c5cc4fcdfbc87c6d43a32ca55767d1bcc59a5468d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBArrayType.d.ts",
+      "bytes": 645,
+      "sha256": "ee9cb48d619f3df83a165e7a09eea2a3b073b0450591f52a04ec98cc7cd6df40"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBArrayType.js",
+      "bytes": 1268,
+      "sha256": "aad827009ba9f53e444993dd963a0906a034ac485a95769e8955b1091e5034ee"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBigIntType.d.ts",
+      "bytes": 478,
+      "sha256": "9da90dd3694b10be904e300c21e85893a1345a5ab70b7992b53ee763aa01c497"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBigIntType.js",
+      "bytes": 820,
+      "sha256": "030cce4e640246b403ffa520c4279ff40bdd7accc7d191434276adc69396e06d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBigNumType.d.ts",
+      "bytes": 478,
+      "sha256": "bf9f445a8f892c7843f61abde2d32aad39ff90f6a34c6e2364aec804dea9d93f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBigNumType.js",
+      "bytes": 1415,
+      "sha256": "05ba529c106f202f76e5b4776a51827d4f778d8cb8f69aeae85c5073da081701"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBitType.d.ts",
+      "bytes": 348,
+      "sha256": "6bd03f72b7b36bc336d91176d28005880f692da2d6c772ba7644b519025ec0d5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBitType.js",
+      "bytes": 605,
+      "sha256": "2d5d529567e7711a8d49ab7f806c5f0dffb929c1ff379d83f4fa855ced98d305"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBlobType.d.ts",
+      "bytes": 354,
+      "sha256": "46de965183b0f30edcbd0c8be09e80386cdcac02fa069a183472e2b8845e94b1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBlobType.js",
+      "bytes": 616,
+      "sha256": "33d056d208770276f3eabb1b91b5d336f55aa7f85d89f6b817dcb2dd0681d587"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBooleanType.d.ts",
+      "bytes": 372,
+      "sha256": "f13dd31e245f1ae6f0abfbb231d70ee44feb1022d29885a7684d46fe2900f5d4"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBBooleanType.js",
+      "bytes": 649,
+      "sha256": "231699ee9ad22f79651cc441118b815a69888f9ee7e52586c2272ef9ca2a1fea"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBDateType.d.ts",
+      "bytes": 567,
+      "sha256": "de99ff43953d7413ca5d0a569dfea00b1ff139527ef48803f83a57fbc401fe0a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBDateType.js",
+      "bytes": 1006,
+      "sha256": "408fba7cca40c8a17dda2f69a61a18b9482d65834fe5fe8e782bff911fa1f94f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBDecimalType.d.ts",
+      "bytes": 628,
+      "sha256": "74f24dcb78713fedaec47ae7b46b68c3e4a105ae749f896cb059919aec2af334"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBDecimalType.js",
+      "bytes": 1436,
+      "sha256": "ddb69733e660aca0e8a75c430243689f323a91a46160d2b8be189e29e6bd081a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBDoubleType.d.ts",
+      "bytes": 478,
+      "sha256": "36c048bfc5fd8f4091e47fe929f207330b38d40247ca0728d12c486e16cd0b54"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBDoubleType.js",
+      "bytes": 827,
+      "sha256": "93cdb9def48d7ab421cd8226e24c48ae0e14b322a9673d45854410259fb67d41"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBEnumType.d.ts",
+      "bytes": 1415,
+      "sha256": "711d5400a7836b3ffb1bca8abd3aaa5b3a3e00e121b730e1c2af150b0d313f92"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBEnumType.js",
+      "bytes": 3560,
+      "sha256": "7d1ce86024d470cbc83e81fa616e14e14b64b0b05aa455bd3379132f946f8cfa"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBFloatType.d.ts",
+      "bytes": 472,
+      "sha256": "e8d2ada032c93572c05990aa3cef9af04d15f30e4fdc13e9849a7d52674a7c58"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBFloatType.js",
+      "bytes": 832,
+      "sha256": "7710fb6bdb75dc60f5deda828b4a5cc521a2792bc58af2ca14b72c1997a807eb"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBGeometryType.d.ts",
+      "bytes": 836,
+      "sha256": "ea5f95a81384bf659e8140737392eafee1e7e21a7e76879570672f3c04b75cca"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBGeometryType.js",
+      "bytes": 1403,
+      "sha256": "15d37c5e7b0740be546d60f49eb8a76b29d8dbc2c340c554d3f695564d0e017a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBHugeIntType.d.ts",
+      "bytes": 484,
+      "sha256": "e4232b1114c8570bf45b9d2b9dd8066487f3e1e9103b1404753156673004f23c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBHugeIntType.js",
+      "bytes": 835,
+      "sha256": "13fee3db746f3ba34682dee0a2ebf23c8fa72e0f2724a0ebef1c96d6e2e611f5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBIntegerLiteralType.d.ts",
+      "bytes": 416,
+      "sha256": "dfc1f7b589a544bb3851e397f5263a6523d9a8bbd8db77cbb97bec4d3c55886d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBIntegerLiteralType.js",
+      "bytes": 729,
+      "sha256": "836d3bc5401ba103b3b76267a2cb3f761a384728760888ed34d561c12c10f428"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBIntegerType.d.ts",
+      "bytes": 484,
+      "sha256": "e888fa66ebca91396baa7bc1d34f332cf2e518ff5101c1d3821284f547962ad1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBIntegerType.js",
+      "bytes": 828,
+      "sha256": "8bee0ac4d59da1c28698f4bda907e0e8c840f5518926a47e1e0cf8292f42113c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBIntervalType.d.ts",
+      "bytes": 378,
+      "sha256": "d85bf4d7870a9e9c229575f90eb704f19e6e6d16bcb44c7999a0250d72b9f360"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBIntervalType.js",
+      "bytes": 660,
+      "sha256": "75fc46d419ee44f971b15fdd7bee09c0292811feffdde38392627189ef5c9a60"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBListType.d.ts",
+      "bytes": 580,
+      "sha256": "91119426bd02250b5ac298a572b30b5d0d4ea875a04690fb488dd0dbdcf65e19"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBListType.js",
+      "bytes": 1132,
+      "sha256": "6d629c947595337613d8c38509f95ee512d9f692585c6f37b9b84c41db28bc34"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBMapType.d.ts",
+      "bytes": 652,
+      "sha256": "c8354835d5306a912e27a07249f93a41c94d932378829e8cfb025622ac8e030c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBMapType.js",
+      "bytes": 1288,
+      "sha256": "2e24dc3fc85764d9b3c16da84371ec6e008c22d1e9be5dc028ddb2942efe3567"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBSmallIntType.d.ts",
+      "bytes": 490,
+      "sha256": "8b4a902ea03ef0b27d9477c1ac0f87ae453fb032ac1eb61deddba3bee3a7abca"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBSmallIntType.js",
+      "bytes": 841,
+      "sha256": "0bbe79a3a8e95c65c0ddee2de9bd25d68842f6fc0de14e118fd2f25e46300593"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBSQLNullType.d.ts",
+      "bytes": 469,
+      "sha256": "fbc21b1538f1f99b4fd046b165af9b26d341fe4e1cb1e397d3552f76e8a8eac4"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBSQLNullType.js",
+      "bytes": 770,
+      "sha256": "49177fdf32db7711ae9abddd7aa71fb4b82dce851d769aeec54d987129edfcc2"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBStringLiteralType.d.ts",
+      "bytes": 410,
+      "sha256": "bf72f200d6aea1d7d78aee99d602aad52c9f179d96b3742ff210df65a55c01dd"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBStringLiteralType.js",
+      "bytes": 718,
+      "sha256": "39ccdb2b3b95408ee346d36303b00efdea6d6dc6a818c421b707e2b771e98778"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBStructType.d.ts",
+      "bytes": 1462,
+      "sha256": "6a9d03a729537fe5dbfdea9f9ba27ae9baf691821812538fcdf4a34343e2f941"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBStructType.js",
+      "bytes": 3227,
+      "sha256": "8bb65147ec1d533bcc659e3cc3be64553defe82f9794ff1dfb37ace88dc9aedc"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimeNSType.d.ts",
+      "bytes": 483,
+      "sha256": "95c62e0a9a39e4f3a75f19e7c47f51bc6486b074ae27fabfcc1e2d4e1423dde4"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimeNSType.js",
+      "bytes": 818,
+      "sha256": "49b9d6555e5b8528613cfb8f2f4c2fb45b1eedbc1e048abd6040b8f20f165f12"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampMillisecondsType.d.ts",
+      "bytes": 753,
+      "sha256": "33cae7f631f7caf273234c6fd2212d3c1ae930fb6c5be9c86d7a5ab948ee53ac"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampMillisecondsType.js",
+      "bytes": 1251,
+      "sha256": "f23efd751f4cd3a450712828a49cee7ed006250b19e23ab11e38aea7ad089e9d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampNanosecondsType.d.ts",
+      "bytes": 743,
+      "sha256": "0d553f3883bff29153f811a88758aef9af9514ba623dd01b071e8770b5a66335"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampNanosecondsType.js",
+      "bytes": 1238,
+      "sha256": "669d84b0578bdb3caa4fadc432b5ff703049c1689c9d164100d3f76ced07dfab"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampSecondsType.d.ts",
+      "bytes": 701,
+      "sha256": "3cb146c1bbb933889dc2b04b15a9ccc4595a049dfc0b7ab807e34afb6ad04ad4"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampSecondsType.js",
+      "bytes": 1183,
+      "sha256": "4c50e04882bf71be76065563eb89d490377d723d5a7bab840fbc9a9467145754"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampType.d.ts",
+      "bytes": 776,
+      "sha256": "1962e6bd80c7c28d3b9a2a33e51338d976054824569a5b6c099e4c9530bbf9b1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampType.js",
+      "bytes": 1191,
+      "sha256": "cc94de08fc45311a2d598fee34e7307176830a1a0b352f626cf2a9169142d50c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampTZNanosecondsType.d.ts",
+      "bytes": 792,
+      "sha256": "47a7dab5cf6e60cc3dd5845df078464025abe36fb2d5d6727eb350a301499f69"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampTZNanosecondsType.js",
+      "bytes": 1327,
+      "sha256": "44c9f9ee620a3a3b073133f85d424cfd4e90ed36c1f6b647f3495b126e4149c0"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampTZType.d.ts",
+      "bytes": 676,
+      "sha256": "c01cca1224b1b5f209c596910217881c66f77d6f1d06ea1ca0f3702a68455d90"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimestampTZType.js",
+      "bytes": 1185,
+      "sha256": "d8d6e042549cfec9e71cbf675dbef9b9a02e76db21a528b747fda390d8f3079a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimeType.d.ts",
+      "bytes": 463,
+      "sha256": "45a2e71c345b05bfbaba1afc808f28ca7607c1f9e62742f4ea3bea20e4fcd2b7"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimeType.js",
+      "bytes": 789,
+      "sha256": "e1ce4a5023ca5f00465d495acd75829daaf88232b88e7dab78a6f4b9ae2a01d6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimeTZType.d.ts",
+      "bytes": 506,
+      "sha256": "d189ae8e77e072bbffac6c64cc05de6c869c16d7626a1e591cda49c5ec59813d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTimeTZType.js",
+      "bytes": 877,
+      "sha256": "beb83f75dba08addc36154264f49dd4b51290cea2aba2c8c2ede741741d6c166"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTinyIntType.d.ts",
+      "bytes": 484,
+      "sha256": "85818f36a0b7e0081b004826e9c41ba42a54456beb111d1d37f398f8b7a0a656"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBTinyIntType.js",
+      "bytes": 826,
+      "sha256": "0961be4db6b99e390fefd9aaab7ff3fda51b3ac4cd86533b42a49348f7dc6d67"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBType.d.ts",
+      "bytes": 3576,
+      "sha256": "fc0d5b10c705147ae9160df95401ab7f72711979313bc04e675f099bb516c230"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBType.js",
+      "bytes": 77,
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUBigIntType.d.ts",
+      "bytes": 484,
+      "sha256": "2e837ce375b7d72a0879d4f8fc5c588f6c1373d9d01c297e05806f3184e17566"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUBigIntType.js",
+      "bytes": 823,
+      "sha256": "2079a9e59ba4951969f68ff0130128d3ad53530423c3dbb06edfd621cf441f2d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUHugeIntType.d.ts",
+      "bytes": 490,
+      "sha256": "d1d1b10934ff699d6d5ec6defbf1edfb6dc972a86ee418152718937c95ec9892"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUHugeIntType.js",
+      "bytes": 837,
+      "sha256": "3caf8fcfd6b6be1646117c88b763050942740f1dacef2ded872c76793a016be7"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUIntegerType.d.ts",
+      "bytes": 486,
+      "sha256": "4a5261838f9965373681b1a4efd48e6f7b0a9ff498e5a4c8e5625c3b3bb23058"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUIntegerType.js",
+      "bytes": 832,
+      "sha256": "8d464e1fe28a552057837ffd0bf64ee9d82f705e01b3b89b14ade81686a3726c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUnionType.d.ts",
+      "bytes": 886,
+      "sha256": "bc2aadd3264357c71683305654931d1d7991a1bb11eca5ce98f376cbcf7863dd"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUnionType.js",
+      "bytes": 2350,
+      "sha256": "d9dca45996736ada41a367ba096d2ed5457952079ef65cd3f397a1a85df7fc9f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUSmallIntType.d.ts",
+      "bytes": 492,
+      "sha256": "de772eace466b31103d03a08fb34a9c7679f547172c947f76ecfb36d6fbd986b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUSmallIntType.js",
+      "bytes": 845,
+      "sha256": "c2121dee72adbf5ed797d03dcef2393b65d58d531cf2c4de29f63843a8baa098"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUTinyIntType.d.ts",
+      "bytes": 486,
+      "sha256": "8d54bc47c15cb7853824e0e7afb5d82fb145f81e5ef17b242dcc8bc100143411"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUTinyIntType.js",
+      "bytes": 831,
+      "sha256": "e54487d4bd1f05ef43b87a8f7b948d57bc8b878dbd1fcfd68d661aaab837c1a3"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUUIDType.d.ts",
+      "bytes": 463,
+      "sha256": "5e4756aed67032bbe122f708cccb85e89bd08679ebc384a0629040619413a82b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBUUIDType.js",
+      "bytes": 789,
+      "sha256": "c86957d56fae0b21c8b4d4ba55eaa255a578ba34e60035e62368b0d0b6dbd8c5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBVarCharType.d.ts",
+      "bytes": 372,
+      "sha256": "068c07fd422a7ae69aaceb834bbf5473174d6b65fde0cbf7e22c9385a6f7b589"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBVarCharType.js",
+      "bytes": 649,
+      "sha256": "42bd0db9178bf7f169b5bbb7edc515ebee9bcecc116ea65beefa784468ecd341"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBVariantType.d.ts",
+      "bytes": 372,
+      "sha256": "0570c786d2935d01a3e48940f05763afd946c4082f5f559bb65d9baa6b4c6f6c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/DuckDBVariantType.js",
+      "bytes": 649,
+      "sha256": "4669d2b508b2d8f02882810ba7711377fd5d70f0996a3c9ff8104b9f7b36581a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/index.d.ts",
+      "bytes": 1654,
+      "sha256": "df2d4420a11eb2681c2bb1759be9e69477a1896d7cd3eac39b56641ec4b0cfcd"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/types/index.js",
+      "bytes": 3203,
+      "sha256": "b2fd849fd2ab61b3094eba79653b99116a7e8b37b0bcd39783a24e687ee4039d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBArrayValue.d.ts",
+      "bytes": 288,
+      "sha256": "7f104fdc6bf2ada057b2167c7f62bf6f78c97f96abf4f04f493e1509497cfe79"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBArrayValue.js",
+      "bytes": 581,
+      "sha256": "1a5994d6056c668bbf358545b6b32142cd202dca1e60324dc90fa6038c343d95"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBBitValue.d.ts",
+      "bytes": 717,
+      "sha256": "882fa53cd93746c5ea750f6022115c0e0e84dd7b18b4d6ca072e20d233fdaf7e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBBitValue.js",
+      "bytes": 3125,
+      "sha256": "3ed35d3fa433bdaa9e7f3d7a3cd8a14f5efe9c5e6bdbc5eb1b9c7de8606ad25e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBBlobValue.d.ts",
+      "bytes": 332,
+      "sha256": "cb8264bd4c245e5eaabb5e37f70dde5bd2d360242dbc1a10365e4dbee9b2e63a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBBlobValue.js",
+      "bytes": 860,
+      "sha256": "7d80620fa5f899756a4f3d806248cbdccc3fa343ab63e38ee4752ccb48ff2600"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBDateValue.d.ts",
+      "bytes": 640,
+      "sha256": "e895ee67e3d2b35f47b4d824c71d9198682b7975d06ef2c480196650d3c8cf94"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBDateValue.js",
+      "bytes": 1414,
+      "sha256": "8d3cd233c7cc088ffc890efe9e8ac4fec92374cb6b751231a2613e8f83ce10ef"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBDecimalValue.d.ts",
+      "bytes": 1000,
+      "sha256": "e854d6a5fb3b58633d78aac2a5e111046f9bf0b05900fa80b31fdfe71f0a1c0e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBDecimalValue.js",
+      "bytes": 1801,
+      "sha256": "5fdb46018962a0a2cf47ba56c72ce27d88dcd0c3e490caa5bc393f6b33cb792c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBGeometryValue.d.ts",
+      "bytes": 553,
+      "sha256": "dbf83a6a6a4ebd40f832d71197a43e877f1d15efab8d941680cfde3d38b7254e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBGeometryValue.js",
+      "bytes": 1105,
+      "sha256": "9b6714fa24d21745da9088388a09685eaca3a486c0d5a1f1bac75cce79f80683"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBIntervalValue.d.ts",
+      "bytes": 393,
+      "sha256": "71e6b0f71980eafc6e69f8c26439d6cf940e692944c52a80c4f94e679e028805"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBIntervalValue.js",
+      "bytes": 726,
+      "sha256": "aad9b06eb58ce3294c4574e8b6fddd0712b5123bb1c1a78c5a0907d828f29d84"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBListValue.d.ts",
+      "bytes": 285,
+      "sha256": "8d79ed54e6bb33555eacfe7aacefd112a1d0eb27036bf01b18c964879ed29c5d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBListValue.js",
+      "bytes": 573,
+      "sha256": "6fec431179d89e9dc6504fa2991ddb95cea2202193397528340b512d7ea621b0"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBMapValue.d.ts",
+      "bytes": 352,
+      "sha256": "94c0c82d9317e3ad31c336ad20dd4af8fe4813dd45e4f949d83bba2bb6ab67f9"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBMapValue.js",
+      "bytes": 688,
+      "sha256": "eba5414c74ad2fb8cfdb079170491f79f10145f21196afdbcb85cc6bd592fc62"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBStructValue.d.ts",
+      "bytes": 342,
+      "sha256": "b473e9de0a98f908d0e96d326df711295a1d152b4c86fc8772a0344cd042ef61"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBStructValue.js",
+      "bytes": 798,
+      "sha256": "dedbf5df2cadafefa5f539f0e3d5ccf6810a39dfbb2e048b864a6940841d4039"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimeNSValue.d.ts",
+      "bytes": 352,
+      "sha256": "0551e8c2cad54434ab88a2548aecefb8846b32f7eda07b9da1a4025e140518a6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimeNSValue.js",
+      "bytes": 700,
+      "sha256": "70dc845736064d7717135fb15e7ed699366421832a1c32db3d3cac1ffe82ea0a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampMillisecondsValue.d.ts",
+      "bytes": 668,
+      "sha256": "20421a7597bc3a0b8ac84cfec1add521d36380c301a8c25ab2e78f63370e3dce"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampMillisecondsValue.js",
+      "bytes": 1502,
+      "sha256": "7fdf0b72af55e597498a832e3d2c390a2b8e692b51365b29eb9844687c4ed69f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampNanosecondsValue.d.ts",
+      "bytes": 655,
+      "sha256": "20936a5840162148c8669a490ff3823c5b25c3453c3b1fc2f02fed7bdcfb7f43"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampNanosecondsValue.js",
+      "bytes": 1335,
+      "sha256": "31b6adca733d70180b7b82aecf2a62c31262d39a10a7dd63eed2b6a7058c1d94"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampSecondsValue.d.ts",
+      "bytes": 627,
+      "sha256": "4a5d68c097a0de6098d67f324b25ce3ae8896c70e0c78325a68a63e826cc4fff"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampSecondsValue.js",
+      "bytes": 1364,
+      "sha256": "04e29d4feab88ebf75ab85eab78805f15cc61c56a324d34828e94670d6ce516a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampTZNanosecondsValue.d.ts",
+      "bytes": 764,
+      "sha256": "db4e3412b380c16028c499cb252ef2c3becb9a0623de5d11e8861f448f71ae0d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampTZNanosecondsValue.js",
+      "bytes": 1925,
+      "sha256": "d6052939767212697de128899d99216af54dacd11c9a5362af916ef22a69f5c5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampTZValue.d.ts",
+      "bytes": 754,
+      "sha256": "c375c02d02a1d2ad059a79136846b81935f58886d2d657002aab0d6d230dad51"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampTZValue.js",
+      "bytes": 1924,
+      "sha256": "7588a75533812ef1e0bcdf40113c2f2412e24ae938a588000e53b77121c50efc"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampValue.d.ts",
+      "bytes": 877,
+      "sha256": "fa017d1a2f0265ac952d803169bb90ebc4a714e287d062580a9c988c6e33118e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimestampValue.js",
+      "bytes": 1817,
+      "sha256": "0214c81dfe27c2161597ea26b7846818c4f5cbe774c3deab559199b64b3aeb4f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimeTZValue.d.ts",
+      "bytes": 1461,
+      "sha256": "2fa3459742774b2fef12859db3f6889795b680a6d5fdc366cba0599bf37b630c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimeTZValue.js",
+      "bytes": 2976,
+      "sha256": "d503bd7a074f09a8dc638be9fe1478b240b087df40e87c2459b95f2a0826b3f5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimeValue.d.ts",
+      "bytes": 481,
+      "sha256": "21a3e805dd9ef61d39e84036e08f2c34e3974f761cf769c96b0214da7e883d59"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTimeValue.js",
+      "bytes": 1213,
+      "sha256": "8dd0911b20d6deb2a2ed8ed2974fe14ceb891055a1e14f69ff17d585184a94ec"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTupleValue.d.ts",
+      "bytes": 413,
+      "sha256": "41bddc6e590b69d30fb09c71f0e695f866369fb827279701cc6c6603cd4c07ed"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBTupleValue.js",
+      "bytes": 706,
+      "sha256": "f9b6c5e160906c13730352b7f20a2b01b0bd1680a680e250bc557b040bf89b61"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBUnionValue.d.ts",
+      "bytes": 307,
+      "sha256": "40c121d27aa7b1f95390121564f47a1eaad83d85d27702704b4a002ceeb09885"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBUnionValue.js",
+      "bytes": 538,
+      "sha256": "7990ab00df26ab56b3199b9185943e135378d55ec352dbdfaef8ef409ce160c0"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBUUIDValue.d.ts",
+      "bytes": 863,
+      "sha256": "794695936c9afdd61f348a4bf6f14bc87df5390774129123cf3c9d2003aad192"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBUUIDValue.js",
+      "bytes": 2163,
+      "sha256": "defa7248d6ef5b14d40e590b1e7d6f75be552131f2b0f57412a72de4984c768c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBValue.d.ts",
+      "bytes": 1990,
+      "sha256": "f1580497f27d8462dbfc9e0d5df528bc06d58f6fb6ba65af8851edfab9d98ad1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBValue.js",
+      "bytes": 77,
+      "sha256": "d43aa81f5bc89faa359e0f97c814ba25155591ff078fbb9bfd40f8c7c9683230"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBVariantValue.d.ts",
+      "bytes": 882,
+      "sha256": "60392c0f7cdee829356c4497828e9ef72c6575180c3090a6175f2fc365b0fa0c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/DuckDBVariantValue.js",
+      "bytes": 1136,
+      "sha256": "b51ff59998430283f86893f2adb250bb80f2908006072f364835410e3ad8215b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/index.d.ts",
+      "bytes": 932,
+      "sha256": "0cc53624114a32bc61460d26b63a02c14e6c8de12045f3f9e755718d0fbd2b8b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/values/index.js",
+      "bytes": 2121,
+      "sha256": "ac9d79e7d7e57cc357c40826d5dcfe69102ebd3d94968a71fde7eb8ed04979b6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/createVector.d.ts",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/createVector.js",
+      "bytes": 13074,
+      "sha256": "88ee7fd39bfe50102f01ccedd8224f551ecbd3920e3c2ed67910bff0b1e3feb7"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/dataAccessors.d.ts",
+      "bytes": 3803,
+      "sha256": "e581fbc703d8c0f2ffc721a5f53a337e6a2c0818ed16c90754021e4d2596e08b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/dataAccessors.js",
+      "bytes": 12226,
+      "sha256": "60570df29f03ca9bf4641a62e4a1de80d16e7251e253d37940b8f7d996540697"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBArrayVector.d.ts",
+      "bytes": 1028,
+      "sha256": "807d6d1c3317d4fe0beaddaebfa289c68e71a9c6102148c8469d4b65e793d981"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBArrayVector.js",
+      "bytes": 3105,
+      "sha256": "8a88178ec1af1dab79978afbafd6de6cc6ee83776c98f7269a908e57959bf238"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBigIntVector.d.ts",
+      "bytes": 781,
+      "sha256": "266e5e5d431e74fc7e4c927391ab468248f492751d3443d3fa8774eb3dda92cd"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBigIntVector.js",
+      "bytes": 2317,
+      "sha256": "a9b5c358ca64276e33481dfa7a74bbd971d7e1f9127b145e2a2daa2e3f316324"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBigNumVector.d.ts",
+      "bytes": 956,
+      "sha256": "6e5460cb2458a9c13c54d7d1ae65ba3f609d5ff55e6bb78b18f028cc394a8d31"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBigNumVector.js",
+      "bytes": 2898,
+      "sha256": "bacb0fad2f0524063e582b942de68e6162a7c9f45d14d63dc615cb4bf95c5272"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBitVector.d.ts",
+      "bytes": 1009,
+      "sha256": "acfbee618222df5348fae417beacecac896db95ffb8cd0e93c2e8c0f49c139cd"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBitVector.js",
+      "bytes": 3117,
+      "sha256": "bab555133901c6c804a54c7a0fed1e31c761aff75868267b08662633843cf143"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBlobVector.d.ts",
+      "bytes": 1513,
+      "sha256": "8a1d93012dc6a36824a6e423101ebd92fee4e88610acddc814ecba53586de38f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBlobVector.js",
+      "bytes": 3436,
+      "sha256": "1e35361d8d2f0ac7e11794935d461c04941e911d6233c59273681176a2f95d35"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBooleanVector.d.ts",
+      "bytes": 842,
+      "sha256": "967d577a85947b93c52a0fb890a8914a1c1703cfdd6b9693e21c82c9feabafcc"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBBooleanVector.js",
+      "bytes": 2511,
+      "sha256": "6e3c4899e0bcecbce43c47f433be205ae17dcd98082f98d61cc855937ea47a74"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDateVector.d.ts",
+      "bytes": 840,
+      "sha256": "0e0c7541a62ddd7202774483f5ce76117bbdf46ddda7527e0d6a248574286b85"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDateVector.js",
+      "bytes": 2536,
+      "sha256": "36ab89b90b44fc0e4ac3cf31e8ef5381efe0bc7d522b5c57e48b49bf7cb58c3d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDecimal128Vector.d.ts",
+      "bytes": 1084,
+      "sha256": "96ba5b262fe31fb8871a18acc447ca643dd2067d61feb11267073aa978b31606"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDecimal128Vector.js",
+      "bytes": 2618,
+      "sha256": "a17e15fc37bb1ccf924229a37ac844a1f3d429ac90d264b0a007a97a9a61a8db"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDecimal16Vector.d.ts",
+      "bytes": 1081,
+      "sha256": "cb625ad2a33c8c2a4c3941c8b296652464bb2e61a193e988005a230384fcc3c2"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDecimal16Vector.js",
+      "bytes": 2611,
+      "sha256": "bdf7e76b26de79a2c35ffd0fa66499213d34020bbe8dbd292f5c43a1dd318f81"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDecimal32Vector.d.ts",
+      "bytes": 1081,
+      "sha256": "fc702d28b2a1c8d1cfe2a1e154362089e63e7379d6595ede92b3675afdc9511e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDecimal32Vector.js",
+      "bytes": 2611,
+      "sha256": "9d2cde4fb1bf408618a47d243df5c3bff2f9ae8babf636e7e1ea8420b01ef9e1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDecimal64Vector.d.ts",
+      "bytes": 1081,
+      "sha256": "5a9a3d42fa2ad03b275d63b4c861052052c562c7daa1b42418b05d2738b680f8"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDecimal64Vector.js",
+      "bytes": 2603,
+      "sha256": "5344e9dc507b7cf058d28c09d9df94c6af9aadbf5b8d7ef9a53da8b1e343625b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDoubleVector.d.ts",
+      "bytes": 780,
+      "sha256": "40b01e6440ccd87e0922579f2614194e2700c33e7c76b2d193426f1447fdc22d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBDoubleVector.js",
+      "bytes": 2106,
+      "sha256": "5008ccda7c79b61875fd996ee1ae045accb37f015adf902ca8c63325956c8888"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBEnum16Vector.d.ts",
+      "bytes": 858,
+      "sha256": "7ad903cb83cea8ece8ed0227d73f78ce876a67c8e18b2c79cc3970a2b741aaf1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBEnum16Vector.js",
+      "bytes": 2172,
+      "sha256": "6aa6c1438eaaf6da90f1fd9f7b45228a42ff9152e6149a1a5318fa68ec83c950"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBEnum32Vector.d.ts",
+      "bytes": 858,
+      "sha256": "44484d7f3c3e5cc124efeb11280f2a95fe3ed5640453dd834d92f12ebae054bf"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBEnum32Vector.js",
+      "bytes": 2172,
+      "sha256": "0fff89cce1f48ddc79cbf472afad6f0352db86a6864659f96dca61b8a74aae31"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBEnum8Vector.d.ts",
+      "bytes": 854,
+      "sha256": "92c08f976e853e2230c3900abee7b70dc7c74d020f1e258dcb55471be9aba788"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBEnum8Vector.js",
+      "bytes": 2161,
+      "sha256": "493011da49af7adc857c4c5e6a9909786567aca8e0623c513559180b691f5063"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBFloatVector.d.ts",
+      "bytes": 775,
+      "sha256": "05e07ac91036c4659adc4abb2eb1559bfeb5de2ce19bd4cb44b5d79415ad90fe"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBFloatVector.js",
+      "bytes": 2099,
+      "sha256": "c978b5ec7023ff124aaee86870549b0b153aa37af8b9543f3b5ddbc20553eb96"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBGeometryVector.d.ts",
+      "bytes": 1054,
+      "sha256": "a29d8f1657a8232c70f7d1c888a03cfd721c0f5b7d4ca3f04a81426d22a6191e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBGeometryVector.js",
+      "bytes": 2842,
+      "sha256": "0bb6c919865021a0f4c4194d22dd982731e0ef5dfdde71a7d20cb4cf7d47b4b6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBHugeIntVector.d.ts",
+      "bytes": 888,
+      "sha256": "7577357a7e36603bdba9caf0004966c51b91470bdba28ea37ee25e30f21ff583"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBHugeIntVector.js",
+      "bytes": 2566,
+      "sha256": "aa35340429f27e8e8b63822d8999143e343e3ea0e5f23116c7696bc34906c53c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBIntegerVector.d.ts",
+      "bytes": 783,
+      "sha256": "7f6ab3bebb101d273f0a7eea1af565653c7e53c310ab2226c49ab4970bf84186"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBIntegerVector.js",
+      "bytes": 2444,
+      "sha256": "16acf3d9fb1deb69a8c84dcc61b551b1e6f404b804e5da1b7d4e36d4e85bf30e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBIntervalVector.d.ts",
+      "bytes": 932,
+      "sha256": "3b3204162a8e5898c09a949aaa45fdc0feff8c78215ce073a142919cf71aa95f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBIntervalVector.js",
+      "bytes": 2908,
+      "sha256": "b2ebf7f9ce611e0c9457f18c6004ac2d244cb51cd0cabc3dd278007f8385ee50"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBListVector.d.ts",
+      "bytes": 1778,
+      "sha256": "bf4130c6df434b4a388a3278d64967b94c5fd00c7e841ed17b0db46bcec1569e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBListVector.js",
+      "bytes": 6629,
+      "sha256": "4307e1514755e788546888a0b203c3a60269665601c6421279231b10b51c0d0f"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBMapVector.d.ts",
+      "bytes": 820,
+      "sha256": "504c35ff5c8c9a61076015d5b27d2ba1258425617853ea0ff10e97dd37a502d3"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBMapVector.js",
+      "bytes": 2335,
+      "sha256": "b3c59dda16f0beff2f3c0ddef50c79ba535aaa6131d88fd003dfb6fd8fc0d835"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBSmallIntVector.d.ts",
+      "bytes": 788,
+      "sha256": "936f5279dcf2f36acd5628b60bb39cddfc3361f33ccf56e54132f62db5a4ac12"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBSmallIntVector.js",
+      "bytes": 2441,
+      "sha256": "9e1b0b9a5c346cb6c38aeeb3fd41993228b30e284ea2d934074c6835a12d8ed0"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBSQLNullVector.d.ts",
+      "bytes": 832,
+      "sha256": "7d1bde5c1d4a3d5d80f9bd10df005ade4e72fb8eec42b8af26cff371eff926c1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBSQLNullVector.js",
+      "bytes": 1466,
+      "sha256": "3d7d90b3ae025c3018a92e38acb00bbe9742b38b383490ae0d72df6c60b59e8d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBStructVector.d.ts",
+      "bytes": 1793,
+      "sha256": "7ab861603399eb416d91e973e1511f9520bc13264297aa5bc00981357e62845b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBStructVector.js",
+      "bytes": 4070,
+      "sha256": "27cc5357f32ac304d1d30cc9621dc928b5fd2358fea1cd9f7b1c300417055b8e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimeNSVector.d.ts",
+      "bytes": 861,
+      "sha256": "9bddb2e717b6123187f6b82e4c46c324b101da7574f027cec70c3bfc1a240406"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimeNSVector.js",
+      "bytes": 2430,
+      "sha256": "7e473b0558867c17e6e7400712ed2748e1cc6e58378e2e50fdb60d6a8d28915d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampMillisecondsVector.d.ts",
+      "bytes": 996,
+      "sha256": "fb56a02f3bd401a0700d1d269483723262cc9a4942d3c35fcf569cbc4adc6119"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampMillisecondsVector.js",
+      "bytes": 2553,
+      "sha256": "bd8ed395adcf78f1518740fce502625d5dfde7f0d86a5736aa9708ea4d040124"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampNanosecondsVector.d.ts",
+      "bytes": 987,
+      "sha256": "4b35eb08635cf55c22e946084f97cc7b88430122c0904697529acaa6c12f9ad1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampNanosecondsVector.js",
+      "bytes": 2542,
+      "sha256": "bc87df7c51928e7fe5d4787502a5bbd0a1c4b2a11cf024930533ebe71fa166f3"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampSecondsVector.d.ts",
+      "bytes": 951,
+      "sha256": "b7416a4aa3cd3fc3b4c18c8d7207e5133b8491e45d8f14321450939b36eb4490"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampSecondsVector.js",
+      "bytes": 2516,
+      "sha256": "eee547bf03b3ee47d5b06243f9b0bde258afc7b02bc09da0ce8eccf1196b25e5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampTZNanosecondsVector.d.ts",
+      "bytes": 1005,
+      "sha256": "f6b1b56f80359ee061e1f13f93934c5162a46ae5f6ca3a2986c87c2d25d95f47"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampTZNanosecondsVector.js",
+      "bytes": 2558,
+      "sha256": "10f0a56be5be60033c0f7e0782e325eacbbeb2166517f9e260acbcf2735ce60d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampTZVector.d.ts",
+      "bytes": 906,
+      "sha256": "462f7c257284a5764db2b07abb089440ed7cd488f3e519927af345bd225377f6"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampTZVector.js",
+      "bytes": 2473,
+      "sha256": "846062c2c7708ecf9f89bcc4b6370c702ddfe878c234760bf962625f135bfdb7"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampVector.d.ts",
+      "bytes": 888,
+      "sha256": "9a8d8c1085d68c73b0bf1a024153aab11fd4df2b948534197461eef2a8b4ecef"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimestampVector.js",
+      "bytes": 2457,
+      "sha256": "0e3386d5c4c0eaf2cd1e99ddfbd9c983a116e8e66e751e935836c03669e1304c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimeTZVector.d.ts",
+      "bytes": 862,
+      "sha256": "3239ce3746c60e59a9382d56e7dfa4cdf88219f6857f7ed01bfb843b6b672bfa"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimeTZVector.js",
+      "bytes": 2436,
+      "sha256": "cb72c6e3e37e9564c593274b035cab9715fc2d182b62dc9c19cce2ed53b84d45"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimeVector.d.ts",
+      "bytes": 843,
+      "sha256": "12da2f199843b2c7171c0ac2d93b882242c819eeb9fcdeb449ce735eec69eb40"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTimeVector.js",
+      "bytes": 2417,
+      "sha256": "86b12598dc7149d1b809a6c40f03131d169a56019ab85f6c42226349beb3d10b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTinyIntVector.d.ts",
+      "bytes": 782,
+      "sha256": "6324dcbafe323507b73698e0504bbca1ed361c7650eb5d933278d6333a59a5a4"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTinyIntVector.js",
+      "bytes": 2427,
+      "sha256": "0e1040f1ffb83e1dcc6c66489a10c83cdd99ad264f6194257caffc68b591fda2"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTupleVector.d.ts",
+      "bytes": 1339,
+      "sha256": "f9cd2ae274ce8f2b579bd45292f123f252f4ca483d8d33acb53b8d690d32d283"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBTupleVector.js",
+      "bytes": 3608,
+      "sha256": "3c3930835d2b8a925c91275ce1b2105333a195032a312fe2e5c51f831cf2a741"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUBigIntVector.d.ts",
+      "bytes": 787,
+      "sha256": "6b22bad12f0c5c24a50543124e167d0abfd04294e0a78e838c83d6f141025ebc"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUBigIntVector.js",
+      "bytes": 2328,
+      "sha256": "da92f670022913a08e5efbf31874b21ed6e00b8585594c352dfc9e7aa85e1b61"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUHugeIntVector.d.ts",
+      "bytes": 893,
+      "sha256": "779035d13b3610363a8eae16d7c1e2be39b874fdcf76fd083c98bd695bfb2097"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUHugeIntVector.js",
+      "bytes": 2577,
+      "sha256": "ddabda7e94290b85a9fd9c14f891922e65402d555cdbbd3569e04ab9450d4189"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUIntegerVector.d.ts",
+      "bytes": 789,
+      "sha256": "7f8896cc3bba0126497d87c1801a3ff940334f9f47452466695cf37cc0f41d6a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUIntegerVector.js",
+      "bytes": 2444,
+      "sha256": "67b6e8d73b0b9728fadc77dfd0d961f9811800c66b089c5e868fbd4c58f20d8a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUnionVector.d.ts",
+      "bytes": 858,
+      "sha256": "a1e8d9dd34e22806653cdff3d1602473d0df848828e0f9cc8ec6f4e28ebae8c1"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUnionVector.js",
+      "bytes": 2771,
+      "sha256": "5764b67e81cdb03b3f59197636b565f3d8e1d93a3f07d79272f16f5191c71faf"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUSmallIntVector.d.ts",
+      "bytes": 794,
+      "sha256": "12fa993381e0886173d35eb1c76ecff94d856cc4728370b8a79f414c7b356d0a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUSmallIntVector.js",
+      "bytes": 2446,
+      "sha256": "9d01833b5aadabc25b56247cbb936b05a492ccc9b6b26f2721dfccf815c8352c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUTinyIntVector.d.ts",
+      "bytes": 788,
+      "sha256": "a5cacd7a7e5915fed15f2be54bfcc773659849a6d4f696f994dcad598fa21146"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUTinyIntVector.js",
+      "bytes": 2434,
+      "sha256": "e58dd4faa6fe7da4380d47b06d177ca6c5bd77a0210ab69ac1fefac64bea387c"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUUIDVector.d.ts",
+      "bytes": 896,
+      "sha256": "8a1c06adbdf88a994bbc4e65cde302976b4d06fc69baa67376f554badf4d0c50"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBUUIDVector.js",
+      "bytes": 2414,
+      "sha256": "4146008b849773916cc8df86562aef662ecec802a962d4bc19b325ecc5064512"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBValidity.d.ts",
+      "bytes": 475,
+      "sha256": "a650bd6b635a1c46dc11013fc4746fa3490a29486c5179aa9c7c0174466e9985"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBValidity.js",
+      "bytes": 3845,
+      "sha256": "9f70499344881c32397963772eabff457cb9daaf5e1109cfd777bc820c99f2f5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBVarCharVector.d.ts",
+      "bytes": 961,
+      "sha256": "9fa6bff47ecf22abac520683cfc6ee3cd000af143fecaa054d859b99fc83238d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBVarCharVector.js",
+      "bytes": 2956,
+      "sha256": "20f77f4ada5481bc1fb75aea95c8d0bc23d967ae22732305b85382927e6d2c71"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBVariantVector.d.ts",
+      "bytes": 1983,
+      "sha256": "db125ac4bbea6d741decfd7f5e2f4e0f2034f99e7e0b1691d4e2c1d26a99181a"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBVariantVector.js",
+      "bytes": 23918,
+      "sha256": "a7834c0af61044679847ef26b979a7b28aaba3b85c294713c48564e8d8da0210"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBVector.d.ts",
+      "bytes": 688,
+      "sha256": "1e14302bf3e3c1315ad1c100f01fd99537c16ae4044300d91eb665f309ef00ea"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/DuckDBVector.js",
+      "bytes": 979,
+      "sha256": "72cfeda244d4c5507b14915d8959b5de732e70a0f759ad954556184a7da565c2"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/index.d.ts",
+      "bytes": 1845,
+      "sha256": "08644e3ebd7e71a128937a36e157aef56ddc6fe3c137ef369bb7e8cbad417669"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/index.js",
+      "bytes": 3578,
+      "sha256": "d005f366ae589cede3ef2b85b9c9af19e9614fb68790d39392d7c940a8b37f08"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/vectorRegistry.d.ts",
+      "bytes": 978,
+      "sha256": "905c92f466f705a9a9d48fcf4682908c28554beed23f0d36283f8f74a4b1a4f4"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/vectors/vectorRegistry.js",
+      "bytes": 712,
+      "sha256": "7c4cc6668e66f12487280681e5ae4f3d9d9fc268983e0251f4a17cd27f4e53b7"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/version.d.ts",
+      "bytes": 43,
+      "sha256": "6844151c4e63abe36d3d3a4795685f7dc1dff4291fff86d0f830682d7c0eca65"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/lib/version.js",
+      "bytes": 395,
+      "sha256": "6877a1da7cc1c857b0338f765af0a1c3a00a0e7e858d63ba54e329894be0a9c5"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/LICENSE",
+      "bytes": 1072,
+      "sha256": "7e17fd31249fa875cb3b1c5e05c6c3e99b75509f6a2804ca176c217834de1dcb"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/package.json",
+      "bytes": 304,
+      "sha256": "b0b1c99a1ef7e82f3cda76f0db866d4c369da95aa28f3685812a417c92d26e32"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-api/README.md",
+      "bytes": 42622,
+      "sha256": "7932ce0cf162e0f97ad399192361939925a3fdd87fcfdad47c4b8eb7b9cd42a3"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings/duckdb.d.ts",
+      "bytes": 90649,
+      "sha256": "9b2dc73aa46de42376b738b945f42a80c788f992d8fed031215bd69a639c718e"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings/duckdb.js",
+      "bytes": 2003,
+      "sha256": "19451f98da76e7db519b909d98a4401c92ffb14df5bc1c48ad7ce5b7b67113ce"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings/LICENSE",
+      "bytes": 1072,
+      "sha256": "7e17fd31249fa875cb3b1c5e05c6c3e99b75509f6a2804ca176c217834de1dcb"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings/package.json",
+      "bytes": 758,
+      "sha256": "246a791958af5484b7a7ce27630353cd500060357d18d42bc00da09c00833645"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings/README.md",
+      "bytes": 472,
+      "sha256": "21585dd14fc111c06b99d5b576d8b1a9d8c2ecc8f6ae1d129dc0d50661e52edb"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings-win32-x64/duckdb.dll",
+      "bytes": 61311784,
+      "sha256": "8785bcbb0f4570c9662c4c890f9fa5c7cfb3239ce25e589c29693ce2139f9897"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings-win32-x64/duckdb.node",
+      "bytes": 1561600,
+      "sha256": "c704a3013536579f1a38fcd47c37bc30e1e631af8fa211d4b8550588fc07fc8b"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings-win32-x64/LICENSE",
+      "bytes": 1079,
+      "sha256": "4000856a8f007e53fc53150533d644bcaefc64b7461e43c14ccb9d3d66a59cd2"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings-win32-x64/package.json",
+      "bytes": 247,
+      "sha256": "c001482c3c4f04e0ca085b784fe77dbab51d262057846ab172fbe145d24e0d0d"
+    },
+    {
+      "path": "provider/analysis-engine/node_modules/@duckdb/node-bindings-win32-x64/README.md",
+      "bytes": 428,
+      "sha256": "eb7da2032a24f9839f066597e1a4ebe361b71f4e1e99f3bd5f0fffda8b9315a7"
+    },
+    {
+      "path": "provider/analysis-engine/package.json",
+      "bytes": 34,
+      "sha256": "cdaa846ac83a68037e2f78e9d5cef0bbb82dd50fe29ef3cf650b31c3a2011c3b"
+    },
+    {
+      "path": "provider/analysis-engine/registry/bridge.js",
+      "bytes": 5638,
+      "sha256": "06b406320d48ed9280e1233ed51e375ce13c529d5f73f6150a4574167ba82ff0"
+    },
+    {
+      "path": "provider/analysis-engine/registry/package.json",
+      "bytes": 100,
+      "sha256": "eaadd3c9a97d000c4b83c960f52c6a9a9e623c62646a58b4831c5aa9bce38ded"
+    },
+    {
+      "path": "provider/analysis-engine/registry/src/atomic_fs.js",
+      "bytes": 1588,
+      "sha256": "0a5a16523cca5e8a1aabae8cd4726f11446d48a1d2ea8e12b0c4d107aaa969b5"
+    },
+    {
+      "path": "provider/analysis-engine/registry/src/export_receipt.js",
+      "bytes": 1655,
+      "sha256": "d97b1dd213ae8db67b8baffbaf53331ffaefcafe6ff15d8c71795361769b04ab"
+    },
+    {
+      "path": "provider/analysis-engine/registry/src/result_envelope.js",
+      "bytes": 11406,
+      "sha256": "573b676a6861403ef4bd8532564926dc77e09fcbd591077b6db3e62958c3d872"
+    },
+    {
+      "path": "provider/analysis-engine/registry/src/result_registry.js",
+      "bytes": 3434,
+      "sha256": "e6a2da9b1a3d3712017bfb0260f01c9811a4591c414d28d28b9d69b1a9080b7c"
+    },
+    {
+      "path": "provider/analysis-engine/server/index.js",
+      "bytes": 13513,
+      "sha256": "0cabde5abefc3cc3670aa299655a7f916d5365311d180512aa443d0ac3a89502"
+    },
+    {
+      "path": "provider/analysis-engine/server/runner_service.js",
+      "bytes": 13589,
+      "sha256": "e055a16b0f34205b6f79150ebaa3b946098088bb54d74ba7abe06a45475f3ee7"
+    },
+    {
+      "path": "provider/catalog.base.json",
+      "bytes": 165453,
+      "sha256": "30a1b086c370dce3f3cf06c54526b8775694bcb660b477a7f856a29f08d2c42e"
+    },
+    {
+      "path": "provider/package.json",
+      "bytes": 84,
+      "sha256": "94ff8ff6015854cb4b7a83995c2acb9562e8047ea55889c381cc7635b9c82b79"
+    },
+    {
+      "path": "provider/schemas/binding.schema.json",
+      "bytes": 1526,
+      "sha256": "b2db9623dfa291fd5e1a59338d5759dcd4597b02ddb5ddc82333d71244653e27"
+    },
+    {
+      "path": "provider/schemas/catalog.schema.json",
+      "bytes": 2914,
+      "sha256": "124f845ffdf54b0a182c47719fd99d1e3a3bb7713f9c9904d380f85731576886"
+    },
+    {
+      "path": "provider/schemas/execute-request.schema.json",
+      "bytes": 2130,
+      "sha256": "77b0e689313ab8a38f9deccebb98eceb731d54276880abe3b3f1c8d33d7106b0"
+    },
+    {
+      "path": "provider/src/consumer-form.mjs",
+      "bytes": 2108,
+      "sha256": "5e7049263ffb0237fd2659d61b6364c4175daf8fe8347823126a7637db1e80f0"
+    },
+    {
+      "path": "provider/src/contract.mjs",
+      "bytes": 13741,
+      "sha256": "b52ff1742a87f91450d16d39ec35158f60b7edb9066df95e83a0418a5d6916fe"
+    },
+    {
+      "path": "provider/src/demo-workflows.mjs",
+      "bytes": 1609,
+      "sha256": "24a0bf6a20a2676692a2e9d31a61f5329d8e0fbd60bc256d73abcc84784ce9ce"
+    },
+    {
+      "path": "provider/src/history-state.mjs",
+      "bytes": 5106,
+      "sha256": "e1563b88e8fd8e2a446e3e0900e9dd20af7c64330b6b4f1820b5cc64ca1a7d24"
+    },
+    {
+      "path": "provider/src/provider.mjs",
+      "bytes": 26287,
+      "sha256": "e0bf44b4386f837bfa40a29e44c76d58d727a8cacc5b1d9a07369a32bf709873"
+    },
+    {
+      "path": "provider/src/publication-store.mjs",
+      "bytes": 14980,
+      "sha256": "53dc5bb2d94a677ace57f50ada422c6f5b53a0fbb791dbc4ee6935ffd6b12618"
+    },
+    {
+      "path": "provider/src/ui-consumer.mjs",
+      "bytes": 2905,
+      "sha256": "ca753836da668ba8f8fe21327655025610df4b661106bc0e14e3781370a96d44"
+    },
+    {
+      "path": "reference-consumer/mini_ui/analysis_catalog_consumer.mjs",
+      "bytes": 9408,
+      "sha256": "5bf9da4db35d94df6afce8803e67c49348e024a8b26c5aaaeba370b07e9eca57"
+    },
+    {
+      "path": "reference-consumer/mini_ui/analysis_contract_reference.mjs",
+      "bytes": 13741,
+      "sha256": "b52ff1742a87f91450d16d39ec35158f60b7edb9066df95e83a0418a5d6916fe"
+    },
+    {
+      "path": "reference-consumer/mini_ui/analysis_node_transport.mjs",
+      "bytes": 4191,
+      "sha256": "f7106e2367f6858065dcde8bfd6ce54acbb068128fece1da1dd268dd08005ec8"
+    },
+    {
+      "path": "reference-consumer/mini_ui/analysis_rpc_host.mjs",
+      "bytes": 1966,
+      "sha256": "4cace738aa2924372b88f8b796d01221f49cb9bfe03bcea5b9e364d17d853a83"
+    },
+    {
+      "path": "reference-consumer/mini_ui/binding.js",
+      "bytes": 6476,
+      "sha256": "04f1db65c05a8e0abef13fb001af9e190e07b3ade2187bcdac76b4a31f025840"
+    },
+    {
+      "path": "reference-consumer/mini_ui/form_model.js",
+      "bytes": 11259,
+      "sha256": "1f93b09f601245e2d5709887dc6b5ba922de41bea04d2d0021ceabf6b93620b8"
+    },
+    {
+      "path": "reference-consumer/mini_ui/form_store.mjs",
+      "bytes": 2223,
+      "sha256": "3b5c9cbb1557cbb43796a15b4b0a33bc7ce8e11297257dc7ee58fa2d2ad48260"
+    },
+    {
+      "path": "reference-consumer/mini_ui/ui_form_model.js",
+      "bytes": 12294,
+      "sha256": "a95cb0125278386e8e6497157b433148418eac8271e4371a959a9260f5387559"
+    },
+    {
+      "path": "reference-consumer/mini_ui/ui_function_binding.js",
+      "bytes": 2670,
+      "sha256": "b5720215f10f1ad7ec4d87607d8490f87fff9c4a93d059e33a1b8707ed29abdb"
+    },
+    {
+      "path": "reference-consumer/mini_ui/ui_function_runner.mjs",
+      "bytes": 4282,
+      "sha256": "71062208f904c6399a83bb81bb8459b7bc9891a657fff79eb58c51405bf455ed"
+    },
+    {
+      "path": "reference-consumer/mini_ui/ui_function_service.mjs",
+      "bytes": 2639,
+      "sha256": "c4a3a83c673a056901680b1179796bf6c52be2d229f14912bafd032c690d4424"
+    },
+    {
+      "path": "reference-consumer/mini_ui/ui_python_generator.js",
+      "bytes": 4429,
+      "sha256": "437d7b74daf438d604d85528d2044edea81b725a0b7700fbbf97ce9064e677e4"
+    },
+    {
+      "path": "reference-consumer/mini_ui/ui_runner.mjs",
+      "bytes": 2825,
+      "sha256": "3672f07c7eedf592b89403e8bbd00de6a0f65d8b3138bdfae7bdfe0603d20c11"
+    },
+    {
+      "path": "reference-consumer/mini_ui/ui_schema.js",
+      "bytes": 2239,
+      "sha256": "192dd83b14722ff9b364eba38d1c3480ae5f1b94a1abc173f723b53632fc8ca6"
+    },
+    {
+      "path": "reference-consumer/mini_ui/ui_values.js",
+      "bytes": 3067,
+      "sha256": "2e5c3bb264d1217a6f5118d3236cf9e1da835720998b34f6c2b5ba1a249b3dd3"
+    },
+    {
+      "path": "reference-consumer/src/model/canvas_document.js",
+      "bytes": 2116,
+      "sha256": "3d010e1748cf930273be836665190036aada5d83d22317b2736af87b9de1ef38"
+    },
+    {
+      "path": "reference-consumer/src/model/history.js",
+      "bytes": 1697,
+      "sha256": "e55ea7b3160bcc19001e91bbdfd3de916e228901e2e3dbc76947e73da985d265"
+    },
+    {
+      "path": "reference-consumer/src/model/logic_revision.js",
+      "bytes": 1033,
+      "sha256": "8b32e62e906ac517487bdac6f914246573ba9fd6871e26b7c5f64d0a18105b69"
+    },
+    {
+      "path": "reference-consumer/src/model/schema.js",
+      "bytes": 4262,
+      "sha256": "a212acbb14da9af5f96a05ca0973b2a3ee10d9836806fddd05688b6a5760b6d1"
+    },
+    {
+      "path": "reference-consumer/src/model/validator.js",
+      "bytes": 8792,
+      "sha256": "4385dd65d87689abf70ba9635db9f6a231d1767eea668d576d96e38af8ece085"
+    },
+    {
+      "path": "reference-consumer/src/model/value_integrity.js",
+      "bytes": 656,
+      "sha256": "9897380564ac254e778a13b011b584520bfc699b2ed7d4ff78ed6209bcf0d808"
+    },
+    {
+      "path": "scripts/bootstrap.mjs",
+      "bytes": 4132,
+      "sha256": "196c7d4c78afc178a8764387d1960719590ce46afacf1cb7c1a30f1f39e3be33"
+    },
+    {
+      "path": "scripts/browser-history-server.mjs",
+      "bytes": 8250,
+      "sha256": "dab5f240a6411ef270816b167f47838384face354c525a1a58c040522c3cb1df"
+    },
+    {
+      "path": "scripts/workbench-server.mjs",
+      "bytes": 7021,
+      "sha256": "4de6af0c73c1c571969c82b51a341587965994c2ed5c87cc7f07b188f9cac34a"
+    },
+    {
+      "path": "source-fixture.mjs",
+      "bytes": 5095,
+      "sha256": "915e67b01fa9abdbcdb9b405634d8346c1da3f1b95a59bf86896c628affe43ab"
+    },
+    {
+      "path": "text-fixture.mjs",
+      "bytes": 4394,
+      "sha256": "b6eb10f91206ffafb0aa3e2002b23db08bdc25cbb4c9dba1d13608b5e84c71be"
+    },
+    {
+      "path": "workbench/app.mjs",
+      "bytes": 6001,
+      "sha256": "5f5c5328d71fd8445b658fe72dce1f637cf3d2f7cc35b9f484dee09807d1c971"
+    },
+    {
+      "path": "workbench/form.mjs",
+      "bytes": 2186,
+      "sha256": "596e4d7d9500bb783128035c2fee146da3c4a69ccd3b4902565d6c9f47fbfe2e"
+    },
+    {
+      "path": "workbench/index.html",
+      "bytes": 1649,
+      "sha256": "ec07573c8f1064a6303ccc482da0b06d2e25587f7a95c01381679458b70bd78b"
+    },
+    {
+      "path": "workbench/style.css",
+      "bytes": 1512,
+      "sha256": "91660d1faf9b8e263704362128c56ce2dc12dbeb312987c1bbea84ebb97e8778"
+    }
+  ]
+}

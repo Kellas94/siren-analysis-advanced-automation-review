@@ -1,0 +1,4505 @@
+{
+  "schemaVersion": "siren.analysis-catalog/1.0.0",
+  "contractVersion": "siren.analysis-execution/1.0.0",
+  "catalogVersion": "1.11.0",
+  "owner": "Analysis and Advanced automation",
+  "status": "PROVISIONAL_ISOLATED_EXPLICIT_INTAKE_REQUIRED",
+  "scope": "Isolated provisional local capability metadata for text COUNT; not common-provider publication or saved-pin migration. Current actual IPC and desktop/files are separate cohorts in analysis-count-text-v2/evidence; verdict controls acceptance.",
+  "capabilities": [
+    {
+      "id": "analysis.source.csv",
+      "version": "1.1.0",
+      "title": "CSV source",
+      "description": "Read CSV with explicit reader policy; default all fields as VARCHAR.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "csv"
+            ],
+            "default": "csv"
+          },
+          "header": {
+            "type": "boolean",
+            "default": true
+          },
+          "delimiter": {
+            "type": "string",
+            "default": ","
+          },
+          "allVarchar": {
+            "type": "boolean",
+            "default": true
+          },
+          "nullStr": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js:121",
+        "src/App.jsx:918"
+      ],
+      "notes": [
+        "Source selection is a separate local editor action; selection-time path existence is not captured file-byte/schema authority or completed execution"
+      ],
+      "uiExposure": "Input node manual path or native Choose source file; extension selects CSV/Parquet; existing reader options retained; no automatic Run/Save"
+    },
+    {
+      "id": "analysis.source.parquet",
+      "version": "1.1.0",
+      "title": "Parquet source",
+      "description": "Read native Parquet schema; preserve source identity.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "parquet"
+            ],
+            "default": "parquet"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js:155",
+        "src/App.jsx:918"
+      ],
+      "notes": [
+        "Source selection is a separate local editor action; selection-time path existence is not captured file-byte/schema authority or completed execution"
+      ],
+      "uiExposure": "Input node manual path or native Choose source file; extension selects CSV/Parquet; existing reader options retained; no automatic Run/Save"
+    },
+    {
+      "id": "analysis.select",
+      "version": "1.2.0",
+      "title": "Select / cast / rename",
+      "description": "Project columns, optional TRY_CAST and aliases; invalid casts become NULL.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "alias": {
+                  "type": "string"
+                },
+                "castType": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 256,
+            "default": []
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js",
+        "src/App.jsx",
+        "src/flow/NodeEditor.jsx",
+        "src/flow/schema.js"
+      ],
+      "notes": [
+        "interactive-native-v4 actual Select editor and native exact result; historical prior accepted interactive copy, preserved in new candidate",
+        "schema-select native-schema-v3: actual schema choices/Add, ASCII-case default alias collision refusal, Undo/Redo, pending manual draft/Escape, exact typed run, error/retry, native Save/Quit/new process/Open",
+        "Captured schema is session-local; reopening requires fresh Run; external file freshness not authenticated"
+      ],
+      "uiExposure": "Manual columns/aliases/explicit TRY_CAST plus all real upstream column names/types from last successful matching job; explicit Add begins selection without inferred cast"
+    },
+    {
+      "id": "analysis.filter",
+      "version": "1.0.0",
+      "title": "Filter",
+      "description": "Filter rows using an Analysis-authored SQL predicate. Consumer values use registered typed bindings, never SQL templates.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "condition": {
+            "type": "string",
+            "default": "TRUE"
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js:193",
+        "src/App.jsx:1010"
+      ],
+      "notes": [],
+      "uiExposure": "SQL condition text editor; no arbitrary SQL service"
+    },
+    {
+      "id": "analysis.join",
+      "version": "1.0.0",
+      "title": "Join",
+      "description": "Join two inputs using explicit left/right ports and keys.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "joinType": {
+            "type": "string",
+            "enum": [
+              "INNER",
+              "LEFT",
+              "RIGHT",
+              "FULL"
+            ],
+            "default": "INNER"
+          },
+          "leftKey": {
+            "type": "string",
+            "default": "id"
+          },
+          "rightKey": {
+            "type": "string",
+            "default": "id"
+          },
+          "leftSourceNodeId": {
+            "type": "string"
+          },
+          "rightSourceNodeId": {
+            "type": "string"
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js:198",
+        "src/App.jsx:1024"
+      ],
+      "notes": [
+        "UI supports INNER/LEFT/RIGHT/FULL; compiler interpolates other names without complete admission. Other joins are not catalogued as supported."
+      ],
+      "uiExposure": "UI INNER/LEFT/RIGHT/FULL and keys; explicit two-port mapping definition/API only"
+    },
+    {
+      "id": "analysis.aggregate",
+      "version": "1.1.0",
+      "title": "Aggregate",
+      "description": "Group rows and compute Analysis-authored aggregate expressions.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "groupBy": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "maxItems": 256,
+            "default": []
+          },
+          "aggregations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "expr": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 128
+                },
+                "alias": {
+                  "type": "string",
+                  "default": "agg"
+                }
+              },
+              "required": [
+                "expr"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 256,
+            "default": [
+              {
+                "expr": "COUNT(*)",
+                "alias": "row_count"
+              }
+            ]
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js:248",
+        "src/App.jsx:1062"
+      ],
+      "notes": [
+        "Absent aggregations defaults to COUNT(*) AS row_count.",
+        "interactive-native-v4 actual COUNT/SUM native result; join-native-v1 grouped aggregates; historical prior accepted interactive copy, preserved in new candidate"
+      ],
+      "uiExposure": "Edit grouping plus add/remove expressions and aliases"
+    },
+    {
+      "id": "analysis.pivot",
+      "version": "1.1.0",
+      "title": "Pivot",
+      "description": "Pivot categories, with prefiltered source CTE; dynamic categories materialize a temp table.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "default": [
+              "id"
+            ]
+          },
+          "column": {
+            "type": "string",
+            "default": "category"
+          },
+          "measure": {
+            "type": "string",
+            "default": "amount"
+          },
+          "agg": {
+            "type": "string",
+            "default": "SUM"
+          },
+          "filterCondition": {
+            "type": "string"
+          },
+          "inCategories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 256
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js:270",
+        "src/App.jsx:1080"
+      ],
+      "notes": [
+        "Source implementation; this increment does not qualify a new native Pivot authoring cohort; historical prior accepted interactive copy, preserved in new candidate"
+      ],
+      "uiExposure": "Rows/categories/prefilter fields now present in owned editor"
+    },
+    {
+      "id": "analysis.unpivot",
+      "version": "1.1.0",
+      "title": "Unpivot",
+      "description": "Unpivot selected columns; compiler path exists; dedicated editor not established.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "maxItems": 256,
+            "default": []
+          },
+          "nameColumn": {
+            "type": "string",
+            "default": "attribute"
+          },
+          "valueColumn": {
+            "type": "string",
+            "default": "value"
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js:322"
+      ],
+      "notes": [
+        "Compiler implemented; source inventory does not establish dedicated UI editor.",
+        "Source implementation; dedicated native Unpivot authoring not run in this increment; historical prior accepted interactive copy, preserved in new candidate"
+      ],
+      "uiExposure": "Dedicated column/name/value parameter editor now present"
+    },
+    {
+      "id": "analysis.export.file",
+      "version": "1.1.0",
+      "title": "Export CSV / Parquet / JSON",
+      "description": "Native DuckDB COPY to explicit destination.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "PARQUET",
+              "CSV",
+              "JSON"
+            ],
+            "default": "PARQUET"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "file",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "node-definition",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "workflow-step",
+        "cancel": "workflow job cancellation"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "engine/pipeline_compiler.js:338",
+        "src/App.jsx:1120"
+      ],
+      "notes": [
+        "Existing COPY path is not a new transactional export guarantee.",
+        "Actual copied native CSV output qualified here; no new universal format or transactional-writer acceptance; historical prior accepted interactive copy, preserved in new candidate"
+      ],
+      "uiExposure": "CSV/Parquet/JSON selection now exposed"
+    },
+    {
+      "id": "analysis.workflow.execute",
+      "version": "1.0.0",
+      "title": "Execute workflow",
+      "description": "Execute a registered immutable Analysis workflow with typed configured parameters.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "pipelineDef": {
+            "type": "object",
+            "properties": {
+              "nodes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "input",
+                        "select",
+                        "filter",
+                        "join",
+                        "aggregate",
+                        "pivot",
+                        "unpivot",
+                        "export"
+                      ]
+                    },
+                    "data": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                "maxItems": 256
+              },
+              "edges": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "target": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "targetHandle": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target"
+                  ],
+                  "additionalProperties": false
+                },
+                "default": []
+              }
+            },
+            "required": [
+              "nodes"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "pipelineDef"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job-receipt",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "success": {
+              "type": "boolean"
+            },
+            "jobId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "queued",
+                "running"
+              ]
+            },
+            "createdAt": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "success",
+            "jobId",
+            "status",
+            "createdAt"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope",
+        "legacyArguments": [
+          "pipelineDef"
+        ]
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "server/runner_service.js:255",
+        "desktop/main.cjs:171"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.job.status",
+      "version": "1.0.0",
+      "title": "Job status",
+      "description": "Read actual queued/running/completed/failed/cancelled status.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "jobId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "RunnerService job state"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:192"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.job.cancel",
+      "version": "1.0.0",
+      "title": "Cancel job",
+      "description": "Request cancellation; queued removal versus running worker termination.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "jobId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "cancellation",
+        "schema": "request and termination receipt"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "server/runner_service.js:301",
+        "desktop/main.cjs:200"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.result.preview",
+      "version": "1.0.0",
+      "title": "Typed bounded preview",
+      "description": "Read already captured bounded preview; never implies all rows.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "nodeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "limit": {
+            "type": "integer",
+            "default": 50,
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "jobId",
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "table",
+        "schema": "dynamic: DESCRIBE actual DuckDB result",
+        "wirePolicy": "BIGINT and DECIMAL strings; NULL distinct from empty and zero",
+        "coverage": "explicit COMPLETE/SAMPLED/TRUNCATED; existing preview bounded to 50"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:206"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.workflow.save",
+      "version": "1.2.0",
+      "title": "Save workflow",
+      "description": "Save workflow definition, independently of captured run or result.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "targetPath": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "workflow": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "workflow"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "file",
+        "schema": "workflow definition"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Current copied Electron Windows dialogs and physical file readback; native-current-dialogs-v3/native-cold-open-v1; separate source/state and physical review"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs",
+        "src/App.jsx",
+        "src/flow/history.js"
+      ],
+      "notes": [
+        "Actual Save/Open toolbar and Windows dialogs are observed in this isolated package; cancellation, read-only own-file write failure/retry, malformed Open recovery and cold reopen are bounded evidence",
+        "Common execute adapter remains unavailable; these native routes must not appear remotely executable in UI Builder"
+      ],
+      "uiExposure": "Save definition with native chooser, confirmed path reuse, dirty/pending/saving/saved/cancelled/failed/unknown states"
+    },
+    {
+      "id": "analysis.workflow.open",
+      "version": "1.2.0",
+      "title": "Open workflow",
+      "description": "Open saved workflow definition; does not execute.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "sourcePath": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "sourcePath"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "workflow",
+        "schema": "nodes/edges"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Current copied Electron Windows dialogs and physical file readback; native-current-dialogs-v3/native-cold-open-v1; separate source/state and physical review"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs",
+        "src/App.jsx",
+        "src/flow/history.js"
+      ],
+      "notes": [
+        "Actual Save/Open toolbar and Windows dialogs are observed in this isolated package; cancellation, read-only own-file write failure/retry, malformed Open recovery and cold reopen are bounded evidence",
+        "Common execute adapter remains unavailable; these native routes must not appear remotely executable in UI Builder"
+      ],
+      "uiExposure": "Load with native chooser; dirty confirmation, cancel and parse-error preservation; no implicit execution"
+    },
+    {
+      "id": "analysis.docs.export",
+      "version": "1.0.0",
+      "title": "Export typed result to Docs",
+      "description": "Create versioned Docs snapshot, explicit bounded coverage and exact types.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "nodeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "jobId",
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "file",
+        "schema": "Docs envelope; typed cells and lineage"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:212"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.result.capture",
+      "version": "1.0.0",
+      "title": "Capture result",
+      "description": "Capture completed node result into immutable integrity-checked registry.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "nodeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "definition": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "jobId",
+          "nodeId",
+          "definition"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "result",
+        "schema": "registry/src/result_envelope.js"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:365"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.result.list",
+      "version": "1.0.0",
+      "title": "List retained results",
+      "description": "List saved bounded result records.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "list",
+        "schema": "registry index"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:368"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.result.open",
+      "version": "1.0.0",
+      "title": "Open retained result",
+      "description": "Open exact retained result and optionally require integrity hash.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "resultId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "expectedIntegrity": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "resultId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "result",
+        "schema": "registry/src/result_envelope.js"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:369"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.charts.snapshot",
+      "version": "1.0.0",
+      "title": "Create Charts snapshot",
+      "description": "Project retained typed result into validated saved Charts snapshot.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "resultId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "expectedIntegrity": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "dimension": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "measure": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "resultId",
+          "dimension",
+          "measure"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "file",
+        "schema": "siren.chart-data/1 + .sirenchart.json"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:370",
+        "registry/bridge.js:29"
+      ],
+      "notes": [
+        "Requires distinct dimension/measure, known source count and non-TRUNCATED coverage."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.histogram.describe",
+      "version": "1.0.0",
+      "title": "Describe histogram source",
+      "description": "Engine aggregation with exact numeric admission; full data remains in engine, interval and NULL policy explicit.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "nodeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "jobId",
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "source-descriptor",
+        "schema": "histogram/selection.js descriptor + recoverable_service.js recoverableDirect",
+        "fields": {
+          "jobId": "string",
+          "nodeId": "string",
+          "completedAt": "ISO string",
+          "definitionSha256": "sha256",
+          "priorRowCount": "integer",
+          "sourceSchema": "typed column array",
+          "measures": "admitted numeric column array",
+          "selectionSha256": "sha256",
+          "physicalIdentity": "NOT_CAPTURED_AT_EXECUTION",
+          "inputBindings": "executed file/reader binding array",
+          "recoverableDirect": "supported/measures/format/readerBindingSha256/reason"
+        }
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:372"
+      ],
+      "notes": [
+        "Legacy route descriptors are discovery metadata; common adapter NOT_IMPLEMENTED. Exact route-specific constraints remain in source.",
+        "Direct recoverable source restricted to single input and <=20 bins; typed Select uses captured workflow route.",
+        "Other histogram routes allow <=50 bins; exact decimal-string edges; last interval includes right endpoint."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.histogram.direct",
+      "version": "1.0.0",
+      "title": "Histogram from retained result",
+      "description": "Engine aggregation with exact numeric admission; full data remains in engine, interval and NULL policy explicit.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "pattern": "^[a-f0-9-]{36}$"
+          },
+          "resultId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "expectedIntegrity": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "measure": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            "minItems": 2,
+            "maxItems": 51
+          }
+        },
+        "required": [
+          "operationId",
+          "resultId",
+          "expectedIntegrity",
+          "measure",
+          "edges"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "saved-snapshot-and-receipt",
+        "schema": "route-specific histogram receipt + validated Charts file",
+        "fields": {
+          "status": "saved",
+          "chartFilePath": "string",
+          "receiptPath": "string",
+          "snapshotSha256": "sha256",
+          "integritySha256": "sha256",
+          "bins": "array of start/end/count (safe finite coordinates and integer counts)",
+          "nullCount": "integer",
+          "observationCount": "integer",
+          "retainedCounts": "retained source/result/captured row counts and transferStatus; Charts snapshot file separately carries coverage"
+        },
+        "rowsPolicy": "Returns admitted engine bins, never a copy of all source rows"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:378"
+      ],
+      "notes": [
+        "Legacy route descriptors are discovery metadata; common adapter NOT_IMPLEMENTED. Exact route-specific constraints remain in source.",
+        "Direct recoverable source restricted to single input and <=20 bins; typed Select uses captured workflow route.",
+        "Other histogram routes allow <=50 bins; exact decimal-string edges; last interval includes right endpoint."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.histogram.workflow",
+      "version": "1.0.0",
+      "title": "Histogram from completed workflow",
+      "description": "Engine aggregation with exact numeric admission; full data remains in engine, interval and NULL policy explicit.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "pattern": "^[a-f0-9-]{36}$"
+          },
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "nodeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "expectedSelectionSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "expectedReaderBindingSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "measure": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            "minItems": 2,
+            "maxItems": 51
+          }
+        },
+        "required": [
+          "operationId",
+          "jobId",
+          "nodeId",
+          "expectedSelectionSha256",
+          "measure",
+          "edges"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "saved-snapshot-and-receipt",
+        "schema": "route-specific histogram receipt + validated Charts file",
+        "fields": {
+          "status": "saved",
+          "chartFilePath": "string",
+          "receiptPath": "string",
+          "snapshotSha256": "sha256",
+          "integritySha256": "sha256",
+          "coverage": "typed source/result/transferred counts and aggregation population",
+          "bins": "array of start/end/count (safe finite coordinates and integer counts)",
+          "nullCount": "integer",
+          "observationCount": "integer"
+        },
+        "rowsPolicy": "Returns admitted engine bins, never a copy of all source rows"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:377"
+      ],
+      "notes": [
+        "Legacy route descriptors are discovery metadata; common adapter NOT_IMPLEMENTED. Exact route-specific constraints remain in source.",
+        "Direct recoverable source restricted to single input and <=20 bins; typed Select uses captured workflow route.",
+        "Other histogram routes allow <=50 bins; exact decimal-string edges; last interval includes right endpoint."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.histogram.recoverable",
+      "version": "1.0.0",
+      "title": "Recoverable direct-source histogram",
+      "description": "Engine aggregation with exact numeric admission; full data remains in engine, interval and NULL policy explicit.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "pattern": "^[a-f0-9-]{36}$"
+          },
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "nodeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "expectedSelectionSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "expectedReaderBindingSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "measure": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            "minItems": 2,
+            "maxItems": 21
+          }
+        },
+        "required": [
+          "operationId",
+          "jobId",
+          "nodeId",
+          "expectedSelectionSha256",
+          "measure",
+          "edges"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "saved-snapshot-and-receipt",
+        "schema": "route-specific histogram receipt + validated Charts file",
+        "fields": {
+          "status": "saved",
+          "chartFilePath": "string",
+          "receiptPath": "string",
+          "snapshotSha256": "sha256",
+          "integritySha256": "sha256",
+          "coverage": "typed source/result/transferred counts and aggregation population",
+          "bins": "array of start/end/count (safe finite coordinates and integer counts)",
+          "nullCount": "integer",
+          "observationCount": "integer"
+        },
+        "rowsPolicy": "Returns admitted engine bins, never a copy of all source rows"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:375"
+      ],
+      "notes": [
+        "Legacy route descriptors are discovery metadata; common adapter NOT_IMPLEMENTED. Exact route-specific constraints remain in source.",
+        "Direct recoverable source restricted to single input and <=20 bins; typed Select uses captured workflow route.",
+        "Other histogram routes allow <=50 bins; exact decimal-string edges; last interval includes right endpoint."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.histogram.captured",
+      "version": "1.0.0",
+      "title": "Histogram with captured input snapshots",
+      "description": "Engine aggregation with exact numeric admission; full data remains in engine, interval and NULL policy explicit.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string",
+            "pattern": "^[a-f0-9-]{36}$"
+          },
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "nodeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "expectedSelectionSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "expectedReaderBindingSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "measure": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            "minItems": 2,
+            "maxItems": 51
+          }
+        },
+        "required": [
+          "operationId",
+          "jobId",
+          "nodeId",
+          "expectedSelectionSha256",
+          "measure",
+          "edges"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "saved-snapshot-and-receipt",
+        "schema": "route-specific histogram receipt + validated Charts file",
+        "fields": {
+          "status": "saved",
+          "chartFilePath": "string",
+          "receiptPath": "string",
+          "snapshotSha256": "sha256",
+          "integritySha256": "sha256",
+          "coverage": "typed source/result/transferred counts and aggregation population",
+          "bins": "array of start/end/count (safe finite coordinates and integer counts)",
+          "nullCount": "integer",
+          "observationCount": "integer"
+        },
+        "rowsPolicy": "Returns admitted engine bins, never a copy of all source rows"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:376"
+      ],
+      "notes": [
+        "Legacy route descriptors are discovery metadata; common adapter NOT_IMPLEMENTED. Exact route-specific constraints remain in source.",
+        "Direct recoverable source restricted to single input and <=20 bins; typed Select uses captured workflow route.",
+        "Other histogram routes allow <=50 bins; exact decimal-string edges; last interval includes right endpoint."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.histogram.cancel",
+      "version": "1.0.0",
+      "title": "Cancel histogram",
+      "description": "Cancel histogram worker with existing service semantics.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "cancellation",
+        "schema": "service receipt"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:379"
+      ],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.journal.list",
+      "version": "1.0.0",
+      "title": "List captured input snapshots",
+      "description": "Read saved source snapshot journal.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "default": 0,
+            "minimum": 0
+          },
+          "expectedListingRevision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "requestId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+          }
+        },
+        "required": [
+          "requestId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "list",
+        "schema": "histogram/saved_journal.js; page size20"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Full existing desktop wrapper request; includes transport-owned requestId",
+        "transportOwnedParameters": [
+          "requestId"
+        ]
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:373",
+        "histogram/saved_journal.js:71"
+      ],
+      "notes": [
+        "UUID requestId is required by desktop wrapper and echoed; list/open logical service arguments exclude it."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.journal.open",
+      "version": "1.0.0",
+      "title": "Open captured input snapshot",
+      "description": "Open saved source snapshot journal entry.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "entryId": {
+            "type": "string",
+            "pattern": "^[a-f0-9-]{36}$"
+          },
+          "expectedEntrySha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "requestId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+          }
+        },
+        "required": [
+          "entryId",
+          "expectedEntrySha256",
+          "requestId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "snapshot",
+        "schema": "histogram/saved_journal.js"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Full existing desktop wrapper request; includes transport-owned requestId",
+        "transportOwnedParameters": [
+          "requestId"
+        ]
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:374",
+        "histogram/saved_journal.js:78"
+      ],
+      "notes": [
+        "UUID requestId is required by desktop wrapper and echoed; list/open logical service arguments exclude it."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.charts.docs.insert",
+      "version": "1.0.0",
+      "title": "Insert Charts snapshot in Docs",
+      "description": "Analysis produces immutable snapshot; Docs owns insertion/save/reopen.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "snapshotFile": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "snapshotFile"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "document",
+        "schema": "saved Docs chart block"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "consumer-owned",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "../docs/prototype/src/main.js"
+      ],
+      "notes": [
+        "Implemented isolated composed route, no Analysis-side UI Builder adapter."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.sync.live",
+      "version": "1.0.0",
+      "title": "Live bidirectional result synchronization",
+      "description": "Not implemented in this candidate. No user action may imply availability.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.workflow.schedule",
+      "version": "1.0.0",
+      "title": "Scheduled workflow execution",
+      "description": "Not implemented in this candidate. No user action may imply availability.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [],
+      "notes": [],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.desktop.quit",
+      "version": "1.0.0",
+      "title": "Quit Analysis desktop",
+      "description": "Normal shutdown retires services and child processes; lifecycle action, not an analytical workflow binding.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "lifecycle",
+        "schema": "desktop process exit"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "lifecycle",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:380"
+      ],
+      "notes": [
+        "No renderer Quit button in inspected source. No common UI Builder adapter."
+      ],
+      "uiExposure": "Lifecycle IPC/OS quit; no dedicated renderer button"
+    },
+    {
+      "id": "analysis.workflow.canvas",
+      "version": "1.2.0",
+      "title": "Workflow canvas and parameter inspector",
+      "description": "Select, position and connect existing nodes; cycle rejection; parameters invalidate downstream previews.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "editor",
+        "schema": "workflow definition edit"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "editor",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "src/App.jsx",
+        "src/flow/NodeEditor.jsx",
+        "src/flow/model.js"
+      ],
+      "notes": [
+        "Eight-operation library/inspectors and authoring history are implemented in this candidate; see exact interactive/history packets for their earlier native acceptance",
+        "Current retained JOIN pointer/engine/Charts-file/Docs-envelope probe preserves exact source12/result3 coverage; this is not Charts paint or Docs editor acceptance"
+      ],
+      "uiExposure": "Eight-operation library; click/drag add; pointer/keyboard compatible connection controls; node removal; explicit JOIN ports; stale-result invalidation"
+    },
+    {
+      "id": "analysis.job.sql",
+      "version": "1.1.0",
+      "title": "Generated SQL and telemetry readback",
+      "description": "Job status includes SQL/schema/telemetry. No generated-SQL viewer in current renderer.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "jobId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "generatedSQL, telemetry"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "service",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs:192",
+        "server/runner_service.js:139"
+      ],
+      "notes": [
+        "interactive-native-v4 and join-native-v1 actual worker readback; historical prior accepted interactive copy, preserved in new candidate"
+      ],
+      "uiExposure": "Read-only actual captured job SQL/schema in inspector, cleared on workflow replacement"
+    },
+    {
+      "id": "analysis.journal.preview",
+      "version": "1.0.0",
+      "title": "Preview saved verified histogram",
+      "description": "Accessible SVG/table projection of admitted saved engine bins.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "entryId": {
+            "type": "string",
+            "pattern": "^[a-f0-9-]{36}$"
+          },
+          "expectedEntrySha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "entryId",
+          "expectedEntrySha256"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "view",
+        "schema": "read-only saved chart preview"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "editor",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "src/components/SavedHistogramPreview.jsx",
+        "src/components/histogram_preview.js"
+      ],
+      "notes": [
+        "Journal viewer <=20 bins; separate from general <=50-bin producer."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.union",
+      "version": "1.0.0",
+      "title": "Union / append operator",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.formula",
+      "version": "1.0.0",
+      "title": "Calculated column operator",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.sort",
+      "version": "1.0.0",
+      "title": "Sort operator",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.profile",
+      "version": "1.0.0",
+      "title": "Data quality profiler",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.source.multifile",
+      "version": "1.0.0",
+      "title": "Multi-file source selector",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.deduplicate",
+      "version": "1.0.0",
+      "title": "Deduplication tool",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.missing",
+      "version": "1.0.0",
+      "title": "Missing-value / coalesce tool",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.string",
+      "version": "1.0.0",
+      "title": "String transformation tools",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.date",
+      "version": "1.0.0",
+      "title": "Date transformation tools",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.window",
+      "version": "1.0.0",
+      "title": "Window-function tools",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.source.database",
+      "version": "1.0.0",
+      "title": "External database connectors",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.script",
+      "version": "1.0.0",
+      "title": "Arbitrary scripting action",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.stream",
+      "version": "1.0.0",
+      "title": "Streaming execution",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.collaboration",
+      "version": "1.0.0",
+      "title": "Multi-user collaboration",
+      "description": "Historical roadmap/author matrix claim; no dedicated current compiler/UI/API capability established by independent inventory.",
+      "kind": "function",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "unknown",
+        "schema": null
+      },
+      "availability": {
+        "prototype": "PROPOSED",
+        "contract": "PROPOSED",
+        "evidence": "source-inventory; native qualification is capability-specific"
+      },
+      "invocation": {
+        "kind": "unavailable",
+        "endpoint": null,
+        "parameterScope": "Named logical legacy arguments; not the new execute request envelope"
+      },
+      "execution": {
+        "mode": "existing-desktop-api",
+        "cancel": "see existing route; no common adapter yet"
+      },
+      "limits": [
+        "Prototype scope only; no general volume acceptance",
+        "Not directly invocable through the new contract until an adapter is published"
+      ],
+      "sourceEvidence": [
+        "CAPABILITY_MATRIX.md (historical claim only)"
+      ],
+      "notes": [
+        "No executable parameter/result schema exists yet; empty object is not a callable signature."
+      ],
+      "uiExposure": "See independent capability map and source evidence; contract action disabled until adapter publication"
+    },
+    {
+      "id": "analysis.workflow.definition.undo",
+      "version": "1.1.0",
+      "title": "Undo definition change",
+      "description": "Restore the previous authored definition; semantic restoration invalidates runtime previews.",
+      "kind": "ui-action",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "ui-state",
+        "schema": "Observed authored graph/history/dirty state; no data result, rows, schema or job receipt is returned"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Root history-native-v5; separate source/state/physical review"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active Analysis editor context only; no common execute adapter"
+      },
+      "execution": {
+        "mode": "synchronous-renderer-action",
+        "cancel": "No job is created; Revert confirmation can be cancelled"
+      },
+      "limits": [
+        "100 definition entries, not a byte-size/performance guarantee",
+        "No common remote adapter; UI Builder must display this as non-executable via the execution contract",
+        "History is session state; no durable history. Native close protection is a separate local capability."
+      ],
+      "sourceEvidence": [
+        "src/flow/history.js",
+        "src/App.jsx"
+      ],
+      "notes": [
+        "Text input Undo and composition retain native editor ownership",
+        "No engine/workflow execution is started by history navigation"
+      ],
+      "uiExposure": "Toolbar Undo definition change; observed in isolated copied Electron"
+    },
+    {
+      "id": "analysis.workflow.definition.redo",
+      "version": "1.1.0",
+      "title": "Redo definition change",
+      "description": "Reapply an undone definition; new authored changes clear redo.",
+      "kind": "ui-action",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "ui-state",
+        "schema": "Observed authored graph/history/dirty state; no data result, rows, schema or job receipt is returned"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Root history-native-v5; separate source/state/physical review"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active Analysis editor context only; no common execute adapter"
+      },
+      "execution": {
+        "mode": "synchronous-renderer-action",
+        "cancel": "No job is created; Revert confirmation can be cancelled"
+      },
+      "limits": [
+        "100 definition entries, not a byte-size/performance guarantee",
+        "No common remote adapter; UI Builder must display this as non-executable via the execution contract",
+        "History is session state; no durable history. Native close protection is a separate local capability."
+      ],
+      "sourceEvidence": [
+        "src/flow/history.js",
+        "src/App.jsx"
+      ],
+      "notes": [
+        "Text input Undo and composition retain native editor ownership",
+        "No engine/workflow execution is started by history navigation"
+      ],
+      "uiExposure": "Toolbar Redo definition change; observed in isolated copied Electron"
+    },
+    {
+      "id": "analysis.workflow.definition.revert",
+      "version": "1.1.0",
+      "title": "Revert definition changes",
+      "description": "After explicit confirmation, restore the last loaded/confirmed saved definition as an undoable edit.",
+      "kind": "ui-action",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "ui-state",
+        "schema": "Observed authored graph/history/dirty state; no data result, rows, schema or job receipt is returned"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Root history-native-v5; separate source/state/physical review"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active Analysis editor context only; no common execute adapter"
+      },
+      "execution": {
+        "mode": "synchronous-renderer-action",
+        "cancel": "No job is created; Revert confirmation can be cancelled"
+      },
+      "limits": [
+        "100 definition entries, not a byte-size/performance guarantee",
+        "No common remote adapter; UI Builder must display this as non-executable via the execution contract",
+        "History is session state; no durable history. Native close protection is a separate local capability."
+      ],
+      "sourceEvidence": [
+        "src/flow/history.js",
+        "src/App.jsx"
+      ],
+      "notes": [
+        "Text input Undo and composition retain native editor ownership",
+        "No engine/workflow execution is started by history navigation"
+      ],
+      "uiExposure": "Toolbar Revert definition changes; observed in isolated copied Electron"
+    },
+    {
+      "id": "analysis.workflow.close",
+      "version": "1.0.0",
+      "title": "Close Analysis workflow window",
+      "description": "Protect authored unsaved or pending edits when native X or application Quit requests closing the active Analysis editor.",
+      "kind": "ui-action",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "ui-state",
+        "schema": "Keep editing preserves the current editor/job; explicit approval waits for owned services/worker closure before normal exit. No analytical rows or remote execution receipt."
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "native-current-dialogs-v3/native-active-close-v1/native-saving-close-v1 and separate source/state/physical review"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active native Analysis window only; no common execute adapter"
+      },
+      "execution": {
+        "mode": "native-window-consent-and-owned-cleanup",
+        "cancel": "Keep editing cancels before cleanup. Discard is disabled while a definition save is outstanding; busy approved cleanup cannot be dismissed."
+      },
+      "limits": [
+        "Bounded responsive-renderer/native Windows prototype qualification only",
+        "No force-close timeout, OS termination/shutdown guarantee, crash recovery or durable unsaved drafts",
+        "Cleanup failure leaves work state unknown; rescue Save allowed, restart required before new execution; fresh explicit close consent can retry cleanup",
+        "Unavailable for remote execution through the common contract; do not silently migrate existing saved form pins"
+      ],
+      "sourceEvidence": [
+        "src/App.jsx",
+        "src/flow/DefinitionConfirm.jsx",
+        "desktop/main.cjs",
+        "desktop/preload.cjs",
+        "desktop/close_coordinator.cjs"
+      ],
+      "notes": [
+        "Request identity/current window owner checked by main; duplicate approval shares cleanup promise",
+        "The underlying prototype runtime does not qualify the SIREN Electron migration"
+      ],
+      "uiExposure": "Native X or application Quit; Keep editing is the default confirmation action"
+    },
+    {
+      "id": "analysis.source.choose-file",
+      "version": "1.0.0",
+      "title": "Choose Analysis source file",
+      "description": "Choose an existing CSV/Parquet path in the active input-node editor as one undoable definition change, preserving reader options.",
+      "kind": "ui-action",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "ui-state",
+        "schema": "Chosen path/extension-driven format in authored input definition; no rows/schema/fingerprint/immutable-copy receipt"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "native-picker-v2 actual Windows chooser/Cancel/refusal/retry/CSV/Parquet; native-source-cold-v1 physical save/reopen; separate reviews"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active native Analysis input node only; no common execute adapter"
+      },
+      "execution": {
+        "mode": "native-dialog-and-definition-edit",
+        "cancel": "Cancel preserves current definition/runtime; late response discarded after view/node/edit changes; no job created"
+      },
+      "limits": [
+        "Existing regular .csv or .parquet file only; format inferred from extension, not content",
+        "No automatic run, save, data preview, schema inference or immutable source-copy claim",
+        "One pending chooser; pending text must finish first; stale node/view requests cannot alter another target",
+        "Browser keeps manual path editing; native chooser unavailable without desktop API",
+        "Unavailable via common execute contract; preserve saved form/catalog pins"
+      ],
+      "sourceEvidence": [
+        "desktop/main.cjs",
+        "desktop/preload.cjs",
+        "src/App.jsx",
+        "src/flow/NodeEditor.jsx"
+      ],
+      "notes": [
+        "CSV options remain stored when Parquet is chosen and return on Undo",
+        "A changed source invalidates its node and reachable descendants; recorded snapshots remain distinct"
+      ],
+      "uiExposure": "Input-node Choose source file button, busy/disabled states and plain refusal guidance"
+    },
+    {
+      "id": "analysis.select.add-upstream-column",
+      "version": "1.0.0",
+      "title": "Choose an upstream Analysis column",
+      "description": "Explicitly add a source column and default alias from the last successful matching upstream execution schema, without an inferred cast.",
+      "kind": "ui-action",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "ui-state",
+        "schema": "One authored Select column {name,alias:name}; upstream type retained; not a new execution/result/schema receipt"
+      },
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "native-schema-v3 actual completed job→schema→Add/alias/draft/UndoRedo/error/retry/native Save/cold Open; separate source and physical review"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active Analysis Select editor and captured own upstream schema only; no common execute adapter"
+      },
+      "execution": {
+        "mode": "definition-edit",
+        "cancel": "No job created; pending text blocks Add; Undo restores authored selection; no automatic Run/Save"
+      },
+      "limits": [
+        "Requires completed non-outdated upstream and matching captured ancestor definition, workflow view and job",
+        "Zero rows may still supply actual schema; missing/duplicate/malformed/cyclic/ambiguous dependency refuses",
+        "ASCII-case equivalent default output aliases refused; Unicode identifiers preserved; existing manual editing remains",
+        "Capture is session-local and removed on new Run/load; external same-path file changes are unknown until re-execution",
+        "New result remains distinct from saved registry/Charts/Docs snapshots; bulk data remains engine-side",
+        "Local action only; unavailable through common execute until explicit adapter intake; preserve saved form/catalog pins"
+      ],
+      "sourceEvidence": [
+        "src/flow/schema.js",
+        "src/App.jsx",
+        "src/flow/NodeEditor.jsx"
+      ],
+      "notes": [
+        "All actual upstream schema fields are offered, not a hardcoded subset",
+        "No implicit cast, source inference, live reference or bidirectional synchronization"
+      ],
+      "uiExposure": "Upstream column chooser with real type labels and explicit Add selected column button"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "native-table-v2 and independent exact source/artifact review, bounded scope"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active Analysis view only; no new common execute adapter"
+      },
+      "sourceEvidence": [
+        "src/App.jsx",
+        "src/flow/table.js",
+        "src/flow/TableInspector.jsx",
+        "src/flow/run-prefix.js"
+      ],
+      "notes": [
+        "Existing provider/adapters/logical schemas/saved form pins unchanged; explicit future intake required"
+      ],
+      "id": "analysis.result.inspect-table",
+      "title": "Inspect Analysis table",
+      "description": "Inspect actual typed schema and bounded captured rows of the selected completed current output.",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "ui-state",
+        "schema": "Read-only actual output schema and at most50 captured rows,24 rendered columns per page, all columns accessible by search/page"
+      },
+      "execution": {
+        "mode": "read-only-local-view",
+        "cancel": "Close/Escape restores focus; no job/run/save created"
+      },
+      "limits": [
+        "Matching job/view/node/dependency and completed non-outdated output required; pending draft blocks opening",
+        "Zero rows retain schema; NULL/empty/zero and exact BIGINT/DECIMAL strings distinct",
+        "Search filters column names only; no full-data search, sorting, editing, paging or freshness verification",
+        "Rows/counts are result rows; source/result/transferred semantics not conflated",
+        "Local action not executable by common consumer until adapter publication"
+      ],
+      "uiExposure": "Inspect table button, large typed table dialog, column search/pages, scope/count details"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "native-table-v2 and independent exact source/artifact review, bounded scope"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active Analysis view only; no new common execute adapter"
+      },
+      "sourceEvidence": [
+        "src/App.jsx",
+        "src/flow/table.js",
+        "src/flow/TableInspector.jsx",
+        "src/flow/run-prefix.js"
+      ],
+      "notes": [
+        "Existing provider/adapters/logical schemas/saved form pins unchanged; explicit future intake required"
+      ],
+      "id": "analysis.workflow.run-to-node",
+      "title": "Run to selected Analysis node",
+      "description": "Explicitly execute the selected node and exact ancestors through the existing native job lifecycle before downstream configuration.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "Existing native jobId/status/pipelineDef/schema/results for exact executed ancestor graph; full authored definition unchanged"
+      },
+      "execution": {
+        "mode": "existing-native-workflow-job",
+        "cancel": "Existing Cancel after accepted jobId; old job retired on new execution/load/close"
+      },
+      "limits": [
+        "Execute exact selected ancestors only; validate graph/cycle/connections before dispatch",
+        "Excluded output runtime becomes outdated; failure marks only executed current nodes failed",
+        "Save always retains full authored graph; actual result provenance uses executed prefix",
+        "Run is explicit, respects pending draft; normal full Run still executes full graph",
+        "Local command only; common consumer needs explicit adapter and reference/pin validation"
+      ],
+      "uiExposure": "Run to selected node toolbar control, status and inspector disclose execution scope"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "native-join-keys-v4 plus separate exact source/physical review"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active selected Analysis Join and captured own schemas only"
+      },
+      "sourceEvidence": [
+        "src/flow/join-schema.js",
+        "src/App.jsx",
+        "src/flow/NodeEditor.jsx"
+      ],
+      "notes": [
+        "Local command only; common provider/adapter intake and saved reference migration remain explicit future work"
+      ],
+      "id": "analysis.join.run-inputs",
+      "title": "Run Join inputs",
+      "description": "Execute exact union of both input ancestor graphs through existing job/cancel lifecycle without executing the target Join.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "Actual executed input-only pipelineDef, jobId, typed source outputs/schema; full authored workflow preserved"
+      },
+      "execution": {
+        "mode": "existing-native-workflow-job",
+        "cancel": "Existing accepted-job cancellation/load/close retirement"
+      },
+      "limits": [
+        "Exactly two validated Join ports; legacy ordering follows existing compiler; mixed/ambiguous/conflicting/missing/cyclic inputs refused",
+        "Shared ancestors deduplicated; self-join source executes once",
+        "Keys need not be configured to run inputs; input run never rewrites keys",
+        "Excluded outputs outdated; no completed Join/export authority invented",
+        "Pending drafts block dispatch; Save retains full graph; external source freshness unknown"
+      ],
+      "uiExposure": "Run Join inputs in Join inspector, input-only status and scope"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "native-join-keys-v4 plus separate exact source/physical review"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active selected Analysis Join and captured own schemas only"
+      },
+      "sourceEvidence": [
+        "src/flow/join-schema.js",
+        "src/App.jsx",
+        "src/flow/NodeEditor.jsx"
+      ],
+      "notes": [
+        "Local command only; common provider/adapter intake and saved reference migration remain explicit future work"
+      ],
+      "id": "analysis.join.choose-key",
+      "title": "Choose typed Join key",
+      "description": "Choose an exact left or right column name from actual same-job input schemas as one authored history edit.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "side": {
+            "type": "string",
+            "enum": [
+              "left",
+              "right"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "nodeId",
+          "side",
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "ui-state",
+        "schema": "One existing leftKey/rightKey changed; no implicit cast/run/save or result created"
+      },
+      "execution": {
+        "mode": "definition-edit",
+        "cancel": "Undo/Redo; pending draft prevents dispatch; stale intent refused"
+      },
+      "limits": [
+        "Both completed non-outdated source schemas must match same capture/view and current ancestor semantics",
+        "Dispatch revalidates selected Join, side, exact membership, ports/job/view/dependency and authored sequence",
+        "Choosing one key preserves other input schema; manual fields and Join type remain",
+        "Zero-row sources may provide schema; actual schema used, not inferred preview columns",
+        "Common endpoint null; local prototype implementation is not a published execution adapter"
+      ],
+      "uiExposure": "Left/right input key dropdowns with exact column names/types; manual fields retained"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Current native-filter-v2; independent exact-source/physical gates required for final acceptance"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active selected Analysis Filter; current captured actual input schema required for editing"
+      },
+      "sourceEvidence": [
+        "src/flow/filter-schema.js",
+        "src/flow/FilterCriteriaEditor.jsx",
+        "src/App.jsx",
+        "engine/filter-criteria.js",
+        "engine/filter-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "execution": {
+        "mode": "existing-native-workflow-job",
+        "cancel": "Existing accepted-job cancel/retirement; authored edit uses Undo/Redo"
+      },
+      "notes": [
+        "Provisional local descriptor only; common adapter/provider intake and explicit saved-reference pin changes remain separate. No publication or silent form migration."
+      ],
+      "id": "analysis.filter.run-input",
+      "title": "Run Filter input",
+      "description": "Execute only the Filter input ancestry with existing job/cancel flow to capture actual types before configuring rules.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "jobId; actual input-only pipelineDef; typed outputs/schema. Selected Filter and downstream remain OUTDATED; Save keeps full graph."
+      },
+      "limits": [
+        "One valid connected Filter input; exclude selected Filter and descendants; cycles refuse",
+        "Pending field edits block dispatch; external source bytes can change outside the app"
+      ],
+      "uiExposure": "Run Filter input in Filter inspector"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Current native-filter-v2; independent exact-source/physical gates required for final acceptance"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Active selected Analysis Filter; current captured actual input schema required for editing"
+      },
+      "sourceEvidence": [
+        "src/flow/filter-schema.js",
+        "src/flow/FilterCriteriaEditor.jsx",
+        "src/App.jsx",
+        "engine/filter-criteria.js",
+        "engine/filter-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "execution": {
+        "mode": "existing-native-workflow-job",
+        "cancel": "Existing accepted-job cancel/retirement; authored edit uses Undo/Redo"
+      },
+      "notes": [
+        "Provisional local descriptor only; common adapter/provider intake and explicit saved-reference pin changes remain separate. No publication or silent form migration."
+      ],
+      "id": "analysis.filter.configure-criteria",
+      "title": "Configure multiple filter criteria",
+      "description": "Author versioned AND/OR criteria from exact captured column names/types, including repeated same-column rules and literal exclusion lists. Existing engine evaluates all source rows.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "criteria": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "const": "analysis.criteria/1"
+              },
+              "op": {
+                "type": "string",
+                "enum": [
+                  "and",
+                  "or"
+                ],
+                "default": "and"
+              },
+              "rules": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "column": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "operator": {
+                      "type": "string",
+                      "enum": [
+                        "eq",
+                        "ne",
+                        "lt",
+                        "lte",
+                        "gt",
+                        "gte",
+                        "in",
+                        "notIn",
+                        "contains",
+                        "startsWith",
+                        "endsWith",
+                        "isNull",
+                        "isNotNull",
+                        "isEmpty",
+                        "isNotEmpty"
+                      ]
+                    },
+                    "value": {
+                      "type": [
+                        "string",
+                        "boolean"
+                      ]
+                    },
+                    "values": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "boolean"
+                        ]
+                      },
+                      "minItems": 1,
+                      "maxItems": 100
+                    },
+                    "nulls": {
+                      "type": "string",
+                      "enum": [
+                        "include",
+                        "exclude"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "column",
+                    "operator"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Runtime validates fields by actual operator/type: NULL ops accept no value/list/nulls; empty ops require explicit nulls but no value; other comparisons need exactly scalar/list and nulls. Numeric values are exact serialized strings; BOOLEAN uses booleans. No raw NULL in equality/list."
+                },
+                "minItems": 1,
+                "maxItems": 20
+              }
+            },
+            "required": [
+              "version",
+              "op",
+              "rules"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "nodeId",
+          "criteria"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "definition-edit",
+        "schema": "Persisted criteria + captured criteriaSchema; full graph preserved. On Run, actual referenced schema checked before Filter SQL; actual typed result schema/coverage follows existing output pipeline."
+      },
+      "limits": [
+        "1..20 actual dense rules;1..100 list entries; flat AND/OR only",
+        "Type-specific operators; integer/DECIMAL strings with exact range/scale, BOOLEAN bool, explicitly approximate finite FLOAT/DOUBLE; unsupported temporal/complex values expose NULL predicates only",
+        "Explicit per-rule NULL policy; NULL differs from empty text/zero; text comparisons do not infer numeric types or Excel wildcards",
+        "Values/list editing exact; one literal per UI line; empty line represents empty string; newline-containing list literal requires another authored interface",
+        "No automatic Run/Save. Malformed criteria refuse, never silently become legacy TRUE",
+        "Structured mode uses criteria as sole authority. Explicit SQL switch restores separate manual condition; Undo restores rules",
+        "Schema callbacks check selected node/job/view/dependency/authored sequence; worker checks actual referenced name/type. Captured schemas do not authenticate external file bytes."
+      ],
+      "uiExposure": "Filter rule cards: schema column/condition/value/list/Keep NULL rows, Add/Remove, All/Any, explicit SQL mode"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Exact new-column source/native/physical gates required; native-derived-v1"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected Analysis New columns node and actual current input capture"
+      },
+      "sourceEvidence": [
+        "src/flow/DerivedColumnsEditor.jsx",
+        "src/flow/derived-schema.js",
+        "src/App.jsx",
+        "engine/derived-columns.js",
+        "engine/derived-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Local prototype descriptor only; unchanged common provider cannot execute this action. Explicit adapter/provider/consumer and saved reference pins required; no silent migration."
+      ],
+      "id": "analysis.derive.run-input",
+      "title": "Run New columns input",
+      "description": "Execute only the one input ancestry to obtain actual ordered schema; selected derive and descendants remain OUTDATED.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "jobId, actual input-only pipelineDef and typed outputs/schema, full authored Save retained"
+      },
+      "execution": {
+        "mode": "existing-native-workflow-job",
+        "cancel": "Existing accepted-job cancel/retirement; no new runner"
+      },
+      "limits": [
+        "One valid connected input; missing/multiple/cyclic input refused",
+        "No autoRun/Save or source-byte freshness claim; pending edits block dispatch"
+      ],
+      "uiExposure": "Run New columns input in New columns inspector"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Exact new-column source/native/physical gates required; native-derived-v1"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected Analysis New columns node and actual current input capture"
+      },
+      "sourceEvidence": [
+        "src/flow/DerivedColumnsEditor.jsx",
+        "src/flow/derived-schema.js",
+        "src/App.jsx",
+        "engine/derived-columns.js",
+        "engine/derived-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Local prototype descriptor only; unchanged common provider cannot execute this action. Explicit adapter/provider/consumer and saved reference pins required; no silent migration."
+      ],
+      "id": "analysis.derive.configure-columns",
+      "title": "Configure new columns",
+      "description": "Append entered VARCHAR/typedNULL or LEFT/RIGHT/MID columns, preserving every original column and executing over all engine rows.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "derivedColumns": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "const": "analysis.derived-columns/1"
+              },
+              "columns": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 20,
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "alias": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operation": {
+                          "const": "literal"
+                        },
+                        "type": {
+                          "const": "VARCHAR"
+                        },
+                        "value": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "alias",
+                        "operation",
+                        "type",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "alias": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operation": {
+                          "enum": [
+                            "left",
+                            "right"
+                          ]
+                        },
+                        "source": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "count": {
+                          "type": "string",
+                          "pattern": "^(0|[1-9][0-9]*)$"
+                        }
+                      },
+                      "required": [
+                        "alias",
+                        "operation",
+                        "source",
+                        "count"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "alias": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operation": {
+                          "const": "mid"
+                        },
+                        "source": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "count": {
+                          "type": "string",
+                          "pattern": "^(0|[1-9][0-9]*)$"
+                        },
+                        "start": {
+                          "type": "string",
+                          "pattern": "^[1-9][0-9]*$"
+                        }
+                      },
+                      "required": [
+                        "alias",
+                        "operation",
+                        "source",
+                        "count",
+                        "start"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "version",
+              "columns"
+            ],
+            "additionalProperties": false,
+            "description": "Actual runtime applies count0..1000000, MIDstart1..1000000, exact VARCHAR source and ASCII alias uniqueness; the schema pattern alone is not a runtime range checker."
+          }
+        },
+        "required": [
+          "nodeId",
+          "derivedColumns"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "definition-edit",
+        "schema": "Saved versioned derivedColumns and full ordered derivedSchema. Run returns all originals in order plus appended VARCHAR fields; actual result schema/provenance/coverage from existing engine pipeline."
+      },
+      "execution": {
+        "mode": "definition-edit-then-explicit-existing-workflow-run",
+        "cancel": "Undo/Redo and existing accepted-job cancellation"
+      },
+      "limits": [
+        "1..20 newcolumns, unique aliases under DuckDB ASCII comparison; never overwrite/drop originals",
+        "LEFT/RIGHT/MID original VARCHAR source only, no implicit numericcast; same-node alias chaining refused, following node may consume output",
+        "Canonical string character counts0..1000000, MID one-based start1..1000000; Unicode codepoints not grapheme clusters; NULL propagates, nonNULL zeroCount→emptytext",
+        "Literal requires explicit VARCHAR and string or NULL; zero-looking/equals text remains text",
+        "Worker checks full actual ordered original name/type schema before projection, refusing added/dropped/reordered/type-changed inputs instead of silently dropping fields",
+        "Editing/reset/explicit captured-schema rebind guarded by selected node/job/view/dependency/authored sequence; malformed imported values retain rawmodel until recovery action",
+        "No automatic Save/Run, live binding, runtime migration or common execution publication"
+      ],
+      "uiExposure": "New columns operation library/card and schema-driven LEFT/RIGHT/MID/Entered text rows; derived output appears in table and downstream Filter choices"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Current source/state, service integration-v1 and desktop native-functions-v2; physical review required"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected Analysis node plus actual current captured schema"
+      },
+      "execution": {
+        "mode": "definition-edit or input-only existing-native-workflow-job; full Run explicit",
+        "cancel": "Existing accepted-job cancel/retirement and Undo/Redo; no new engine"
+      },
+      "sourceEvidence": [
+        "src/App.jsx",
+        "src/flow/functions-schema.js",
+        "src/flow/SumEditor.jsx",
+        "src/flow/LookupEditor.jsx",
+        "engine/conditional-functions.js",
+        "engine/conditional-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Local prototype only. Common provider does not expose these actions yet. No silent saved-form pin migration."
+      ],
+      "id": "analysis.conditional-sum.run-input",
+      "title": "Run Sum input",
+      "description": "Execute input ancestry without selected Sum or descendants.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "jobId/pipelineDef/typed outputs and actual input schema; full Save retained"
+      },
+      "limits": [
+        "Exactly1valid input",
+        "Pending drafts/busy/stale owner block action"
+      ],
+      "uiExposure": "Run Sum input in schema-driven Analysis node inspector"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Current source/state, service integration-v1 and desktop native-functions-v2; physical review required"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected Analysis node plus actual current captured schema"
+      },
+      "execution": {
+        "mode": "definition-edit or input-only existing-native-workflow-job; full Run explicit",
+        "cancel": "Existing accepted-job cancel/retirement and Undo/Redo; no new engine"
+      },
+      "sourceEvidence": [
+        "src/App.jsx",
+        "src/flow/functions-schema.js",
+        "src/flow/SumEditor.jsx",
+        "src/flow/LookupEditor.jsx",
+        "engine/conditional-functions.js",
+        "engine/conditional-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Local prototype only. Common provider does not expose these actions yet. No silent saved-form pin migration."
+      ],
+      "id": "analysis.conditional-sum.configure",
+      "title": "Configure SUMIF/SUMIFS",
+      "description": "Configure exact conditional aggregate over full engine rows.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sumModel": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "const": "analysis.conditional-sum/1"
+              },
+              "operation": {
+                "enum": [
+                  "sumif",
+                  "sumifs"
+                ],
+                "default": "sumifs"
+              },
+              "measure": {
+                "type": "string",
+                "minLength": 1
+              },
+              "criteria": {
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "const": "analysis.criteria/1"
+                  },
+                  "op": {
+                    "type": "string",
+                    "enum": [
+                      "and",
+                      "or"
+                    ],
+                    "default": "and"
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "column": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operator": {
+                          "type": "string",
+                          "enum": [
+                            "eq",
+                            "ne",
+                            "lt",
+                            "lte",
+                            "gt",
+                            "gte",
+                            "in",
+                            "notIn",
+                            "contains",
+                            "startsWith",
+                            "endsWith",
+                            "isNull",
+                            "isNotNull",
+                            "isEmpty",
+                            "isNotEmpty"
+                          ]
+                        },
+                        "value": {
+                          "type": [
+                            "string",
+                            "boolean"
+                          ]
+                        },
+                        "values": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "string",
+                              "boolean"
+                            ]
+                          },
+                          "minItems": 1,
+                          "maxItems": 100
+                        },
+                        "nulls": {
+                          "type": "string",
+                          "enum": [
+                            "include",
+                            "exclude"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "column",
+                        "operator"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Runtime validates fields by actual operator/type: NULL ops accept no value/list/nulls; empty ops require explicit nulls but no value; other comparisons need exactly scalar/list and nulls. Numeric values are exact serialized strings; BOOLEAN uses booleans. No raw NULL in equality/list."
+                    },
+                    "minItems": 1,
+                    "maxItems": 20
+                  }
+                },
+                "required": [
+                  "version",
+                  "op",
+                  "rules"
+                ],
+                "additionalProperties": false,
+                "description": "SUMIF requires exactly1rule; SUMIFS requires AND1..20. Runtime enforces operator-specific field/type rules against captured schema."
+              }
+            },
+            "required": [
+              "version",
+              "operation",
+              "measure",
+              "criteria"
+            ],
+            "additionalProperties": false,
+            "description": "New UI node starts with operation=sumifs, empty measure and empty AND rules; that unconfigured draft cannot execute until explicitly completed."
+          }
+        },
+        "required": [
+          "nodeId",
+          "sumModel"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "definition-edit",
+        "schema": "Saved sumModel/sumSchema; execution returns1row conditional_sum, actual DESCRIBE type and coverage"
+      },
+      "limits": [
+        "Exact signed integer/unsigned<=64/DECIMAL measures only; FLOAT/DOUBLE/UHUGEINT refused",
+        "Native widening and overflow errors retained; no matches/allNULL returns typedNULL",
+        "One aggregate row is not1 matched row; dedicated matchedRowCount unavailable",
+        "Referenced measure/criteria schema checked before SQL; unrelated columns may change",
+        "No arbitrarySQL fallback, autoRun/Save or renderer calculations"
+      ],
+      "uiExposure": "Configure SUMIF/SUMIFS in schema-driven Analysis node inspector"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Current source/state, service integration-v1 and desktop native-functions-v2; physical review required"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected Analysis node plus actual current captured schema"
+      },
+      "execution": {
+        "mode": "definition-edit or input-only existing-native-workflow-job; full Run explicit",
+        "cancel": "Existing accepted-job cancel/retirement and Undo/Redo; no new engine"
+      },
+      "sourceEvidence": [
+        "src/App.jsx",
+        "src/flow/functions-schema.js",
+        "src/flow/SumEditor.jsx",
+        "src/flow/LookupEditor.jsx",
+        "engine/conditional-functions.js",
+        "engine/conditional-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Local prototype only. Common provider does not expose these actions yet. No silent saved-form pin migration."
+      ],
+      "id": "analysis.lookup.run-inputs",
+      "title": "Run Lookup inputs",
+      "description": "Execute union of both explicit left/right ancestries without selected Lookup or descendants.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "jobId/pipelineDef/typed outputs and both actual schemas from same capture"
+      },
+      "limits": [
+        "Explicit oneleft/oneright ports required; no ambiguous legacy fallback",
+        "Pending drafts/busy/stale owner block action"
+      ],
+      "uiExposure": "Run Lookup inputs in schema-driven Analysis node inspector"
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Current source/state, service integration-v1 and desktop native-functions-v2; physical review required"
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected Analysis node plus actual current captured schema"
+      },
+      "execution": {
+        "mode": "definition-edit or input-only existing-native-workflow-job; full Run explicit",
+        "cancel": "Existing accepted-job cancel/retirement and Undo/Redo; no new engine"
+      },
+      "sourceEvidence": [
+        "src/App.jsx",
+        "src/flow/functions-schema.js",
+        "src/flow/SumEditor.jsx",
+        "src/flow/LookupEditor.jsx",
+        "engine/conditional-functions.js",
+        "engine/conditional-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Local prototype only. Common provider does not expose these actions yet. No silent saved-form pin migration."
+      ],
+      "id": "analysis.lookup.configure",
+      "title": "Configure exact Lookup",
+      "description": "Append typed matched value while retaining all left fields/rows.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lookupModel": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "const": "analysis.lookup/1"
+              },
+              "leftKey": {
+                "type": "string",
+                "minLength": 1
+              },
+              "rightKey": {
+                "type": "string",
+                "minLength": 1
+              },
+              "valueColumn": {
+                "type": "string",
+                "minLength": 1
+              },
+              "alias": {
+                "type": "string",
+                "minLength": 1,
+                "default": "lookup_value"
+              },
+              "duplicates": {
+                "const": "error",
+                "default": "error"
+              },
+              "unmatched": {
+                "const": "null",
+                "default": "null"
+              },
+              "textMatch": {
+                "const": "binary"
+              }
+            },
+            "required": [
+              "version",
+              "leftKey",
+              "rightKey",
+              "valueColumn",
+              "alias",
+              "duplicates",
+              "unmatched"
+            ],
+            "additionalProperties": false,
+            "description": "New UI node starts with empty left/right/value selectors and alias lookup_value. It cannot execute until configured. Selecting VARCHAR key adds explicit binary textMatch; nontext keys must omit it."
+          }
+        },
+        "required": [
+          "nodeId",
+          "lookupModel"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "definition-edit",
+        "schema": "Saved lookupModel/lookupSchemas; actual execution names/types, full left rows plus unique output alias"
+      },
+      "limits": [
+        "Exact key types includingDECIMAL precision/scale; VARCHAR binaryUTF8 policy required; no implicitcast/trimming/casefold/normalization",
+        "Matching right duplicate errors globally even beyond preview or identical values; unrelated/NULL duplicates harmless; no first/last",
+        "Unmatched typedNULL, NULL keys do notmatch; emptytext matches emptytext; roworder unspecified",
+        "v1 VARCHAR/integer/DECIMAL/BOOLEAN key/value types; other types refused",
+        "Full ordered left schema checked to avoid silent data loss; rightkey/value subset checked",
+        "No automaticSave/Run/livebinding or completeExcelXLOOKUP compatibility"
+      ],
+      "uiExposure": "Configure exact Lookup in schema-driven Analysis node inspector"
+    },
+    {
+      "version": "1.1.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Text COUNT helper5a352367/editor e9df8dac; separate source/state and engine reviews. Actual ipc-v2 and native-v1 GUI/Save/Quit/cold/old-numeric reopen plus Docs files are retained; final independent physical gate and verdict govern acceptance. No common execution adapter."
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected local Analysis Count node plus actual current captured schema"
+      },
+      "execution": {
+        "mode": "explicit definition edit or input-only existing-native workflow job; full Run remains explicit",
+        "cancel": "Existing job cancellation and retirement; actual terminal receipt remains authoritative"
+      },
+      "sourceEvidence": [
+        "src/flow/CountEditor.jsx",
+        "src/flow/FilterCriteriaEditor.jsx",
+        "src/flow/functions-schema.js",
+        "src/flow/schema.js",
+        "src/App.jsx",
+        "engine/conditional-count.js",
+        "engine/conditional-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Provisional metadata only; frozen contract2 provider allowlist does not admit conditional_count. No automatic common publication, saved-pin migration, grant change or actual UI Builder adoption.",
+        "Capability1.1.0 broadens configured COUNT column admission; model analysis.conditional-count/1 and operation count remain unchanged. Existing numeric models need no migration. The old numeric capability1.0.0 is preserved in its frozen catalog."
+      ],
+      "id": "analysis.count.configure",
+      "title": "Configure COUNT",
+      "description": "Count non-NULL values in one actual supported numeric, VARCHAR or BOOLEAN column. Empty text, zero and false count as values; original contents are not converted.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "countModel": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "const": "analysis.conditional-count/1"
+              },
+              "operation": {
+                "const": "count",
+                "default": "count"
+              },
+              "column": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Exact actual upstream column name: numeric types from isCountNumericType, VARCHAR or BOOLEAN. No implicit conversion. DATE, TIMESTAMP, BLOB, JSON and composite types are not admitted by this Count helper."
+              }
+            },
+            "required": [
+              "version",
+              "operation",
+              "column"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "nodeId",
+          "countModel"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "definition-edit",
+        "schema": "Saved countModel/countSchema; full native execution yields one conditional_count BIGINT row, including0 for no matches or empty input"
+      },
+      "limits": [
+        "One supported scalar column for COUNT, including VARCHAR and BOOLEAN; COUNTIF remains exactly one typed rule under its separate unchanged capability. No arbitrary Excel ranges, COUNTIFS or wildcard/formula parser.",
+        "Count value differs from source population, preview count and aggregate resultRows1",
+        "Input schema rechecked by native worker; no stale-schema success or data narrowing",
+        "No direct scalar Count Charts route: current Charts requires distinct dimension and measure",
+        "COUNT(column) excludes NULL but includes empty text, zero and false; COUNT(*) row population and Excel numeric COUNT are distinct. Unsupported types refuse rather than being converted."
+      ],
+      "uiExposure": "Count node inspector: COUNT values operation and actual-schema column picker; explicit selection, no automatic run or save."
+    },
+    {
+      "version": "1.0.1",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Own source/state and engine reviews; actual IPC/native proofs retained in analysis-count-functions-v1. Local capability, not common-provider execution."
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected local Analysis Count node plus actual current captured schema"
+      },
+      "execution": {
+        "mode": "explicit definition edit or input-only existing-native workflow job; full Run remains explicit",
+        "cancel": "Existing job cancellation and retirement; actual terminal receipt remains authoritative"
+      },
+      "sourceEvidence": [
+        "src/flow/CountEditor.jsx",
+        "src/flow/FilterCriteriaEditor.jsx",
+        "src/flow/functions-schema.js",
+        "src/flow/schema.js",
+        "src/App.jsx",
+        "engine/conditional-count.js",
+        "engine/conditional-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Provisional metadata only; frozen contract2 provider allowlist does not admit conditional_count. No automatic common publication, saved-pin migration, grant change or actual UI Builder adoption.",
+        "Descriptor1.0.1 removes obsolete cross-family numeric-only COUNT wording. COUNTIF model, validation, parameters and runtime semantics are unchanged."
+      ],
+      "id": "analysis.countif.configure",
+      "title": "Configure COUNTIF",
+      "description": "Count all input rows satisfying exactly one typed condition; explicit NULL, empty and multi-value-list policies.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "countModel": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "const": "analysis.conditional-count/1"
+              },
+              "operation": {
+                "const": "countif",
+                "default": "countif"
+              },
+              "criteria": {
+                "type": "object",
+                "properties": {
+                  "version": {
+                    "const": "analysis.criteria/1"
+                  },
+                  "op": {
+                    "type": "string",
+                    "enum": [
+                      "and",
+                      "or"
+                    ],
+                    "default": "and"
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "column": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "operator": {
+                          "type": "string",
+                          "enum": [
+                            "eq",
+                            "ne",
+                            "lt",
+                            "lte",
+                            "gt",
+                            "gte",
+                            "in",
+                            "notIn",
+                            "contains",
+                            "startsWith",
+                            "endsWith",
+                            "isNull",
+                            "isNotNull",
+                            "isEmpty",
+                            "isNotEmpty"
+                          ]
+                        },
+                        "value": {
+                          "type": [
+                            "string",
+                            "boolean"
+                          ]
+                        },
+                        "values": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "string",
+                              "boolean"
+                            ]
+                          },
+                          "minItems": 1,
+                          "maxItems": 100
+                        },
+                        "nulls": {
+                          "type": "string",
+                          "enum": [
+                            "include",
+                            "exclude"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "column",
+                        "operator"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Runtime validates fields by actual operator/type: NULL ops accept no value/list/nulls; empty ops require explicit nulls but no value; other comparisons need exactly scalar/list and nulls. Numeric values are exact serialized strings; BOOLEAN uses booleans. No raw NULL in equality/list."
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  }
+                },
+                "required": [
+                  "version",
+                  "op",
+                  "rules"
+                ],
+                "additionalProperties": false,
+                "description": "Exactly one existing typed criteria rule; actual captured column type governs values and explicit NULL/empty/list policies. No Excel wildcard/formula parser."
+              }
+            },
+            "required": [
+              "version",
+              "operation",
+              "criteria"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "nodeId",
+          "countModel"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "definition-edit",
+        "schema": "Saved countModel/countSchema; full native execution yields one conditional_count BIGINT row, including0 for no matches or empty input"
+      },
+      "limits": [
+        "Exactly one typed COUNTIF rule; no arbitrary Excel ranges, COUNTIFS or wildcard/formula-string parser. Separate COUNT capability1.1.0 supports numeric, VARCHAR and BOOLEAN columns.",
+        "Count value differs from source population, preview count and aggregate resultRows1",
+        "Input schema rechecked by native worker; no stale-schema success or data narrowing",
+        "No direct scalar Count Charts route: current Charts requires distinct dimension and measure"
+      ],
+      "uiExposure": "Count node inspector operation selector and one actual-schema typed COUNTIF rule; switching to COUNT uses its separate supported-column policy."
+    },
+    {
+      "version": "1.0.0",
+      "kind": "ui-action",
+      "availability": {
+        "prototype": "IMPLEMENTED",
+        "contract": "IN_CONSTRUCTION",
+        "evidence": "Own source/state and engine reviews; actual IPC/native proofs retained in analysis-count-functions-v1. Local capability, not common-provider execution."
+      },
+      "invocation": {
+        "kind": "renderer-owned-action",
+        "endpoint": null,
+        "parameterScope": "Selected local Analysis Count node plus actual current captured schema"
+      },
+      "execution": {
+        "mode": "explicit definition edit or input-only existing-native workflow job; full Run remains explicit",
+        "cancel": "Existing job cancellation and retirement; actual terminal receipt remains authoritative"
+      },
+      "sourceEvidence": [
+        "src/flow/CountEditor.jsx",
+        "src/flow/FilterCriteriaEditor.jsx",
+        "src/flow/functions-schema.js",
+        "src/flow/schema.js",
+        "src/App.jsx",
+        "engine/conditional-count.js",
+        "engine/conditional-binding.js",
+        "engine/pipeline_compiler.js",
+        "engine/worker_process.js"
+      ],
+      "notes": [
+        "Provisional metadata only; frozen contract2 provider allowlist does not admit conditional_count. No automatic common publication, saved-pin migration, grant change or actual UI Builder adoption."
+      ],
+      "id": "analysis.count.run-input",
+      "title": "Run Count input",
+      "description": "Run the upstream branch to capture its actual schema without executing the incomplete Count node or editing the full workflow.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "nodeId"
+        ],
+        "additionalProperties": false
+      },
+      "result": {
+        "kind": "job",
+        "schema": "jobId and actual upstream typed schema under current job/view/dependency token"
+      },
+      "limits": [
+        "Pending drafts, busy/closed/stale ownership refuse",
+        "Explicit Count-input prefix excludes Count and descendants; full authored graph is preserved"
+      ],
+      "uiExposure": "Run Count input in Count node inspector"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "catalogRevision": 3,
+  "updatedAt": "2026-10-26T09:12:31.391Z",
+  "snapshots": {
+    "snap_1793005951347_e4c3e55211de": {
+      "snapshotId": "snap_1793005951347_e4c3e55211de",
+      "snapshotPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_tmp_orch\\storage\\sealed\\snap_1793005951347_e4c3e55211de.csv",
+      "originalPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_tmp_orch\\test.csv",
+      "nodeId": null,
+      "format": "csv",
+      "contentSha256": "b6905220f2319aa9e84f7e7812b38356f13917d5d230c302197ef0ce29aee9ee",
+      "byteCount": 12,
+      "capturedAt": "2026-10-26T09:12:31.352Z",
+      "originalBeforeStat": {
+        "size": 12,
+        "mtimeMs": 1793005951350.1729,
+        "ctimeMs": 1793005951350.1729
+      },
+      "originalAfterStat": {
+        "size": 12,
+        "mtimeMs": 1793005951350.1729,
+        "ctimeMs": 1793005951350.1729
+      },
+      "originalModifiedDuringCapture": false,
+      "status": "SEALED",
+      "leases": {},
+      "registeredAt": "2026-10-26T09:12:31.352Z"
+    }
+  },
+  "jobs": {
+    "j1": {
+      "jobId": "j1",
+      "status": "CRASHED",
+      "currentAttemptId": "attempt_1",
+      "currentSessionToken": "2e77172d-12ae-41fa-9fed-1541778d8903",
+      "createdAt": "2026-10-26T09:12:31.353Z",
+      "attempts": [
+        {
+          "attemptId": "attempt_1",
+          "sessionToken": "2e77172d-12ae-41fa-9fed-1541778d8903",
+          "workerPid": null,
+          "startedAt": "2026-10-26T09:12:31.353Z",
+          "completedAt": "2026-10-26T09:12:31.390Z",
+          "status": "CRASHED",
+          "error": "WORKER_PROCESS_CRASHED: Child process 20608 exited (code: 1, signal: null)"
+        }
+      ],
+      "receipt": null,
+      "capturedRows": null,
+      "error": "WORKER_PROCESS_CRASHED: Child process 20608 exited (code: 1, signal: null)"
+    }
+  },
+  "leases": {
+    "snap_1793005951347_e4c3e55211de": []
+  }
+}

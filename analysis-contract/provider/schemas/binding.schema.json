@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "siren.analysis/binding/2.0.0",
+  "type": "object",
+  "properties": {
+    "catalogId": {
+      "const": "siren.analysis"
+    },
+    "catalogVersion": {
+      "type": "string"
+    },
+    "catalogSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "contractVersion": {
+      "const": "siren.analysis-execution/2.0.0"
+    },
+    "capabilityId": {
+      "type": "string"
+    },
+    "capabilityVersion": {
+      "type": "string"
+    },
+    "descriptorSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "workflowRef": {
+      "type": "object",
+      "properties": {
+        "workflowId": {
+          "type": "string"
+        },
+        "workflowVersion": {
+          "type": "string"
+        },
+        "definitionSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "workflowId",
+        "workflowVersion",
+        "definitionSha256"
+      ],
+      "additionalProperties": false
+    },
+    "workflowId": {
+      "type": "string"
+    },
+    "workflowVersion": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "catalogId",
+    "catalogVersion",
+    "catalogSha256",
+    "contractVersion",
+    "capabilityId",
+    "capabilityVersion",
+    "descriptorSha256",
+    "workflowRef",
+    "workflowId",
+    "workflowVersion"
+  ],
+  "additionalProperties": false
+}

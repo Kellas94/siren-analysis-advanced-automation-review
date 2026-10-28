@@ -1,0 +1,182 @@
+{
+  "catalogRevision": 7,
+  "updatedAt": "2026-10-26T09:16:03.942Z",
+  "snapshots": {
+    "snap_1793006163797_3055e4f7ceb6": {
+      "snapshotId": "snap_1793006163797_3055e4f7ceb6",
+      "snapshotPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_recovery\\storage\\sealed\\snap_1793006163797_3055e4f7ceb6.csv",
+      "originalPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_recovery\\fixtures\\account_balances.csv",
+      "nodeId": "node_accounts",
+      "format": "csv",
+      "contentSha256": "fcb9325482646db20a72ec0761c04a76990a8ff5fc30a22ec6b621659cb72251",
+      "byteCount": 66,
+      "capturedAt": "2026-10-26T09:16:03.798Z",
+      "originalBeforeStat": {
+        "size": 66,
+        "mtimeMs": 1793006163799.7832,
+        "ctimeMs": 1793006163799.7832
+      },
+      "originalAfterStat": {
+        "size": 66,
+        "mtimeMs": 1793006163799.7832,
+        "ctimeMs": 1793006163799.7832
+      },
+      "originalModifiedDuringCapture": false,
+      "status": "SEALED",
+      "leases": {},
+      "registeredAt": "2026-10-26T09:16:03.798Z",
+      "verifiedOnRecovery": true,
+      "recoveryError": null
+    }
+  },
+  "jobs": {
+    "job_accounts_01": {
+      "jobId": "job_accounts_01",
+      "status": "SUCCESS",
+      "currentAttemptId": "attempt_1",
+      "currentSessionToken": "72f13acc-6e66-4ad4-b9b9-34e79e26c180",
+      "createdAt": "2026-10-26T09:16:03.798Z",
+      "attempts": [
+        {
+          "attemptId": "attempt_1",
+          "sessionToken": "72f13acc-6e66-4ad4-b9b9-34e79e26c180",
+          "workerPid": null,
+          "startedAt": "2026-10-26T09:16:03.798Z",
+          "completedAt": "2026-10-26T09:16:03.925Z",
+          "status": "SUCCESS",
+          "error": null,
+          "receiptDigest": "a6856a655ae0948dce98e3856d28fc403f29bb66e75edaf4ddd7eb0143f4725c"
+        }
+      ],
+      "receipt": {
+        "receiptId": "rcpt_job_accounts_01_1793006163927",
+        "contract": "siren.analysis.execution-receipt/2",
+        "issuedAt": "2026-10-26T09:16:03.927Z",
+        "jobId": "job_accounts_01",
+        "nodeId": null,
+        "status": "SUCCESS",
+        "inputs": [
+          {
+            "inputIndex": 0,
+            "nodeId": "node_accounts",
+            "format": "csv",
+            "options": {},
+            "originalPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_recovery\\fixtures\\account_balances.csv",
+            "snapshotId": "snap_1793006163797_3055e4f7ceb6",
+            "snapshotPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_recovery\\storage\\sealed\\snap_1793006163797_3055e4f7ceb6.csv",
+            "capturedAt": "2026-10-26T09:16:03.798Z",
+            "snapshotSha256": "fcb9325482646db20a72ec0761c04a76990a8ff5fc30a22ec6b621659cb72251",
+            "snapshotByteCount": 66,
+            "originalBeforeStat": {
+              "size": 66,
+              "mtimeMs": 1793006163799.7832,
+              "ctimeMs": 1793006163799.7832
+            },
+            "originalAfterStat": {
+              "size": 66,
+              "mtimeMs": 1793006163799.7832,
+              "ctimeMs": 1793006163799.7832
+            },
+            "originalModifiedDuringCapture": false,
+            "sourceRowCount": "3"
+          }
+        ],
+        "compiledExecution": {
+          "sql": "SELECT * FROM read_csv_auto('D:/Siren analysis snapshot worker recovery/storage/test_recovery/storage/sealed/snap_1793006163797_3055e4f7ceb6.csv', allow_quoted_nulls=false) ORDER BY account_id ASC",
+          "sqlDigest": "2fb30c58150f16798275294314778563cc57a5ffbf47f92adbfc76712505efb2",
+          "engineVersion": "v2.0.0",
+          "workerId": "worker_pid_65044",
+          "queryPlan": {
+            "kind": "single",
+            "inputIds": [
+              "snap_1793006163797_3055e4f7ceb6"
+            ],
+            "options": {
+              "orderByClause": "account_id ASC"
+            }
+          }
+        },
+        "schema": [
+          {
+            "name": "account_id",
+            "type": "VARCHAR",
+            "nullable": true
+          },
+          {
+            "name": "balance",
+            "type": "DOUBLE",
+            "nullable": true
+          }
+        ],
+        "metrics": {
+          "inputRowCounts": {
+            "snap_1793006163797_3055e4f7ceb6": "3"
+          },
+          "outputRowCount": "3",
+          "nullCounts": {
+            "account_id": "0",
+            "balance": "0"
+          },
+          "capturedRows": 3,
+          "transferStatus": "COMPLETE"
+        },
+        "resultDigest": "74e721eca34e1fbd651074c0338e7e28ffee77f7deef388cc7854e68b34b469e",
+        "resultDigestScope": "captured-rows",
+        "executionTiming": {
+          "startedAt": "2026-10-26T09:16:03.887Z",
+          "completedAt": "2026-10-26T09:16:03.927Z",
+          "durationMs": 41
+        },
+        "lifecycle": {
+          "retryCount": 0,
+          "cancelled": false,
+          "crashed": false,
+          "error": null
+        },
+        "receiptDigest": "a6856a655ae0948dce98e3856d28fc403f29bb66e75edaf4ddd7eb0143f4725c"
+      },
+      "capturedRows": [
+        {
+          "account_id": "ACC_001",
+          "balance": 1500.5
+        },
+        {
+          "account_id": "ACC_002",
+          "balance": 2500.75
+        },
+        {
+          "account_id": "ACC_003",
+          "balance": 500
+        }
+      ],
+      "receiptValid": true,
+      "receiptError": null
+    },
+    "job_crashed_midflight": {
+      "jobId": "job_crashed_midflight",
+      "status": "INTERRUPTED",
+      "currentAttemptId": "attempt_1",
+      "currentSessionToken": "sess_lost",
+      "createdAt": "2026-10-26T09:16:03.926Z",
+      "attempts": [
+        {
+          "attemptId": "attempt_1",
+          "sessionToken": "sess_lost",
+          "workerPid": 99999,
+          "startedAt": "2026-10-26T09:16:03.926Z",
+          "completedAt": null,
+          "status": "RUNNING",
+          "error": null
+        }
+      ],
+      "receipt": null,
+      "capturedRows": null,
+      "error": "Job interrupted by ungraceful system crash or termination before completion",
+      "receiptValid": true,
+      "receiptError": null
+    }
+  },
+  "leases": {
+    "snap_1793006163797_3055e4f7ceb6": []
+  }
+}

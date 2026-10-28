@@ -1,0 +1,165 @@
+{
+  "catalogRevision": 6,
+  "updatedAt": "2026-10-26T09:16:03.677Z",
+  "snapshots": {
+    "snap_1793006163523_a19dcea4abd4": {
+      "snapshotId": "snap_1793006163523_a19dcea4abd4",
+      "snapshotPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_crash_retry\\storage\\sealed\\snap_1793006163523_a19dcea4abd4.csv",
+      "originalPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_crash_retry\\fixtures\\crash_test_data.csv",
+      "nodeId": "node_source",
+      "format": "csv",
+      "contentSha256": "face7a599063435d85e8f247bd5392be7f4d8cf07603454af8763a1c36a06403",
+      "byteCount": 36,
+      "capturedAt": "2026-10-26T09:16:03.525Z",
+      "originalBeforeStat": {
+        "size": 36,
+        "mtimeMs": 1793006163526.069,
+        "ctimeMs": 1793006163526.069
+      },
+      "originalAfterStat": {
+        "size": 36,
+        "mtimeMs": 1793006163526.069,
+        "ctimeMs": 1793006163526.069
+      },
+      "originalModifiedDuringCapture": false,
+      "status": "SEALED",
+      "leases": {},
+      "registeredAt": "2026-10-26T09:16:03.525Z"
+    }
+  },
+  "jobs": {
+    "job_crashed_test": {
+      "jobId": "job_crashed_test",
+      "status": "SUCCESS",
+      "currentAttemptId": "attempt_2",
+      "currentSessionToken": "4ad222f0-20a5-4b29-8194-d07f73ab889b",
+      "createdAt": "2026-10-26T09:16:03.528Z",
+      "attempts": [
+        {
+          "attemptId": "attempt_1",
+          "sessionToken": "b19c3324-6627-479f-ac9e-51efc353422d",
+          "workerPid": 16424,
+          "startedAt": "2026-10-26T09:16:03.529Z",
+          "completedAt": "2026-10-26T09:16:03.531Z",
+          "status": "CRASHED",
+          "error": "WORKER_PROCESS_CRASHED: Child process 16424 exited (code: null, signal: SIGKILL)"
+        },
+        {
+          "attemptId": "attempt_2",
+          "sessionToken": "4ad222f0-20a5-4b29-8194-d07f73ab889b",
+          "workerPid": null,
+          "startedAt": "2026-10-26T09:16:03.531Z",
+          "completedAt": "2026-10-26T09:16:03.666Z",
+          "status": "SUCCESS",
+          "error": null,
+          "receiptDigest": "4cca4ab8cf6811ea7a26ac3a62ffc3c6e5b855503f857a2ced1d3c54f03bcfb9"
+        }
+      ],
+      "receipt": {
+        "receiptId": "rcpt_job_crashed_test_1793006163667",
+        "contract": "siren.analysis.execution-receipt/2",
+        "issuedAt": "2026-10-26T09:16:03.667Z",
+        "jobId": "job_crashed_test",
+        "nodeId": null,
+        "status": "SUCCESS",
+        "inputs": [
+          {
+            "inputIndex": 0,
+            "nodeId": "node_source",
+            "format": "csv",
+            "options": {},
+            "originalPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_crash_retry\\fixtures\\crash_test_data.csv",
+            "snapshotId": "snap_1793006163523_a19dcea4abd4",
+            "snapshotPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_crash_retry\\storage\\sealed\\snap_1793006163523_a19dcea4abd4.csv",
+            "capturedAt": "2026-10-26T09:16:03.525Z",
+            "snapshotSha256": "face7a599063435d85e8f247bd5392be7f4d8cf07603454af8763a1c36a06403",
+            "snapshotByteCount": 36,
+            "originalBeforeStat": {
+              "size": 36,
+              "mtimeMs": 1793006163526.069,
+              "ctimeMs": 1793006163526.069
+            },
+            "originalAfterStat": {
+              "size": 36,
+              "mtimeMs": 1793006163526.069,
+              "ctimeMs": 1793006163526.069
+            },
+            "originalModifiedDuringCapture": false,
+            "sourceRowCount": "3"
+          }
+        ],
+        "compiledExecution": {
+          "sql": "SELECT * FROM read_csv_auto('D:/Siren analysis snapshot worker recovery/storage/test_crash_retry/storage/sealed/snap_1793006163523_a19dcea4abd4.csv', allow_quoted_nulls=false) ORDER BY id ASC",
+          "sqlDigest": "4608bc4c33d2601c8cee9ecc98248caf3f2e165bba568d9f2ed4eae60efd00b8",
+          "engineVersion": "v2.0.0",
+          "workerId": "worker_pid_39224",
+          "queryPlan": {
+            "kind": "single",
+            "inputIds": [
+              "snap_1793006163523_a19dcea4abd4"
+            ],
+            "options": {
+              "orderByClause": "id ASC"
+            }
+          }
+        },
+        "schema": [
+          {
+            "name": "id",
+            "type": "VARCHAR",
+            "nullable": true
+          },
+          {
+            "name": "value",
+            "type": "DOUBLE",
+            "nullable": true
+          }
+        ],
+        "metrics": {
+          "inputRowCounts": {
+            "snap_1793006163523_a19dcea4abd4": "3"
+          },
+          "outputRowCount": "3",
+          "nullCounts": {
+            "id": "0",
+            "value": "0"
+          },
+          "capturedRows": 3,
+          "transferStatus": "COMPLETE"
+        },
+        "resultDigest": "937dd42451ad4b69e938327f4c7498778b5faea06cbf0c4bf5c97ddd25c9cc27",
+        "resultDigestScope": "captured-rows",
+        "executionTiming": {
+          "startedAt": "2026-10-26T09:16:03.619Z",
+          "completedAt": "2026-10-26T09:16:03.667Z",
+          "durationMs": 48
+        },
+        "lifecycle": {
+          "retryCount": 1,
+          "cancelled": false,
+          "crashed": false,
+          "error": null
+        },
+        "receiptDigest": "4cca4ab8cf6811ea7a26ac3a62ffc3c6e5b855503f857a2ced1d3c54f03bcfb9"
+      },
+      "capturedRows": [
+        {
+          "id": "001",
+          "value": 10.5
+        },
+        {
+          "id": "002",
+          "value": 20.5
+        },
+        {
+          "id": "003",
+          "value": 30.5
+        }
+      ],
+      "error": "WORKER_PROCESS_CRASHED: Child process 16424 exited (code: null, signal: SIGKILL)"
+    }
+  },
+  "leases": {
+    "snap_1793006163523_a19dcea4abd4": []
+  }
+}

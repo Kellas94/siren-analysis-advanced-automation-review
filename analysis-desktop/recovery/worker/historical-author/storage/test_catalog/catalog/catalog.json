@@ -1,0 +1,55 @@
+{
+  "catalogRevision": 3,
+  "updatedAt": "2026-10-26T09:16:03.377Z",
+  "snapshots": {
+    "snap_001": {
+      "snapshotId": "snap_001",
+      "snapshotPath": "D:\\Siren analysis snapshot worker recovery\\storage\\test_catalog\\storage\\sealed\\snap_001.csv",
+      "originalPath": "D:/source/data.csv",
+      "format": "csv",
+      "contentSha256": "01dc4c18cf53750038dfd00f7e5762041a2b2224c5367dac77e6fdc6976f2835",
+      "byteCount": 19,
+      "capturedAt": "2026-10-26T10:00:00.000Z",
+      "originalBeforeStat": {
+        "size": 15,
+        "mtimeMs": 1729930000000
+      },
+      "originalAfterStat": {
+        "size": 15,
+        "mtimeMs": 1729930000000
+      },
+      "originalModifiedDuringCapture": false,
+      "registeredAt": "2026-10-26T09:16:03.372Z",
+      "verifiedOnRecovery": true,
+      "recoveryError": null
+    }
+  },
+  "jobs": {
+    "job_alpha": {
+      "jobId": "job_alpha",
+      "status": "INTERRUPTED",
+      "currentAttemptId": "attempt_1",
+      "currentSessionToken": "sess_123",
+      "createdAt": "2026-10-26T09:16:03.373Z",
+      "attempts": [
+        {
+          "attemptId": "attempt_1",
+          "sessionToken": "sess_123",
+          "workerPid": 4567,
+          "startedAt": "2026-10-26T09:16:03.373Z",
+          "completedAt": null,
+          "status": "RUNNING",
+          "error": null
+        }
+      ],
+      "receipt": null,
+      "capturedRows": null,
+      "error": "Job interrupted by ungraceful system crash or termination before completion",
+      "receiptValid": true,
+      "receiptError": null
+    }
+  },
+  "leases": {
+    "snap_001": []
+  }
+}

@@ -1,0 +1,38 @@
+# Evidence lanes and custody
+
+All runs use fresh named directories with owned synthetic data. Original464/a4e1 donor remains byte-identical. No original D delivery, UI Builder owner, installed/main source, Terminal/migration session, real data or Windows policy was changed.
+
+Current source/model review: `review/history-provider-source-review.md` on e0bf/e156/53dc/196c/f710. Eleven provider/state groups and4 meaningful removed-guard mutants,7 bootstrap groups and5 transport models are separate finite cohorts. No native run by that reviewer. The source/model gate alone is not durable/runtime acceptance.
+
+Store author evidence and independent store/source-path review are separate. Generic store53dc actualFS10 groups and pureJSON3 groups/2 mutants are separate from author oldaf633 large bounds/race tests, which are not relabeled current. Reviewer-authored host scripts were read then operated by Root with owned files and FakeRunner; this is independent test design/artifact review, not the reviewer's separate native rerun. `semantic-path-host-v3` preserved actual sourceA→B retarget red; v4 refused it before FakeRunner and retained5 preservation/mutant records. Its final stdout `runnerConstructed:true` counts later preservation constructors; the actual adverse record is false and the immediate count assertion is unchanged. Full old47cc/388 source bytes were not separately archived: selected hashes, reproduction script and original output are retained, while complete current corrected bytes are retained. Do not claim full old-source custody.
+
+## Root RPC/native — rpc-v2
+
+Nine strict named records, not a sum of assertion counts. Five distinct ready parents close normally0, four distinct refused starts exit1/never-ready/no worker receipts and are closed as startupRefused. Ten completed jobs are separate from one confirmed cancelled job and one pre-job missing-source refusal. Registered catalog71→77, revisions0..7/eight physical commits. Old2452-byte form SHA7133f3e664c9666f16ec3708a15a20c934d41e1c551b4938acc5f5ef86195f22 survives normal close/new provider with **no registry**, executes exact2.0.1 pin while latest2.0.7, and exact registry retries append nothing.
+
+Count/text source90, Lookup result80/transferred50/SAMPLED with17typed columns, scalar result1/COMPLETE, Boolean false53. Retained SUM source92 and exact63050394783186951; DECIMAL1053.0000000027 with configured minimum0. These populations are distinct. Changing one current source empty label yields9/new capture identity without changing historical workflow/form; restoring yields10. Missing source metadata loads, actual execute fails with no output, restored source retries in a fresh connection. Native own worker cancellation is confirmed and retry succeeds. Wrong grant/missing store/coherent old-unit rewrite/missing middle record refuse startup; original commits/form and pending stage remain intact.
+
+The466-file native proof packet roster6f56df373394f5df9563ce0a4de3ed2ce2b124556245a6b1dfb0aed24e4f5dff is the before-RPC identity. Final467 packet additionally includes the subsequently created browser-history startup server; native executor/provider/consumer pins are unchanged. Do not claim that unused later server existed during RPC.
+
+## Root browser — browser-v1
+
+Actual Edge session `history-browser-v1`, copied generic reference workbench/consumer/service, real RPC/native jobs. Physical Save, publication and catalog Refresh, unsaved criterion edit, Reopen saved form and new Run are real UI actions. Provider restart is explicitly a private owner setup HTTP request: HTTP server and browser remain open while provider64740 closes0 and fresh provider46640 loads durable history without registry. This is a provider restart, not a full designer/browser/HTTP-machine restart.
+
+Old saved2.0.1 pin/emptytext retained with latest2.0.5/75capabilities; both actual jobs return10, BIGINT string unitrows, source90/result1/transferred1/COMPLETE. Reopen discards CHANGED_UNSAVED and restores physical configured emptytext. Saved2503-byte form and source pins remain unchanged. Two normal parent/managed-worker close receipts, browser named close, HTTP server tool session19572 exited0. Screenshot read visually by Root; snapshots and physical/raw results are retained separately. Before/after whole467 manifest93ac0baf3f24b0d1acaeb9947fee3b12f1fb385f82b640e72202fd59093a4a1b identical.
+
+## Retained failed attempts
+
+- Default restricted FS attempts returned EPERM on exclusive-link primitive; approved owned host runs followed. No policy/ACL change or rename workaround.
+- rpc-v1 stopped because the probe checked error text for a machine code rather than actual `.code=SOURCE_UNAVAILABLE`. Failure/result/schema correct; source restored and owned consumer closed. First subsequent rpc-v2 launch from wrong cwd failed MODULE_NOT_FOUND with no new cohort/host. Completed rpc-v2 is a fresh actual run with corrected assertion and a fresh connection after owned pre-job error closes its session.
+- Existing global QA launcher points at a moved bundled Node. It refused before browser launch and was not edited. Owned `scripts/run-browser.py` uses the existing CLI0.1.22/Playwright1.64alpha with current bundled Node24.22.1; Analysis parents use their separately pinned actual Node24.16 runtime. Default-context CLI could not see the elevated owned session; same-context command succeeded. One guessed nonexistent option timed out before selecting the actual catalog ID. All commands retained; none are product findings or passing actions.
+- Reviewer initialization/import/module-cache/reader-shape failures remain in their numbered directories; final reports distinguish these from reproduced defects and current controls.
+
+## Independent review
+
+Root's implementation and own passing tests are not independent acceptance. Final verdict must read and pin distinct source/model, store/source-path, actual RPC artifact and actual browser/process artifact review. Retrospective readers and corruption controls do not become independently repeated native/browser execution. Report counts per named cohort; never pool them into an invented total.
+
+## Actual owned metadata processes — process-v1
+
+Helper-author driver/worker sources were read FULL by Root, frozen f7284eda/3f8e613c, then syntax checked and run by Root in approved host context against captured exact Store53dc. Three strict named groups pass: BEFORE_LINK_STOP_CONSERVES_ACK, COMMITTED_STOP_COLD_RECOVERY, TWO_WRITER_CONFLICT_REFRESH_RETRY. Nine distinct captured child handles: two intentional SIGTERM stops with no ACK, seven normal0 closes including one explicit conflict. Before-link cold reader keeps prior ACK/pending1; after-link-beforeACK cold reader recognizes committed sequence2. Race winnerB/loserA refresh/retry conserves base/winner/loser with three committed records and original losing stage pending1. All handles closed; no unexpected cleanup; driver/worker/store original+captured pins unchanged. No provider, engine, SQL or native app is involved in this cohort. Author-operated helper design is not independent review of that author's store; independent retrospective process artifact review is separate.
+
+Final source/native/reference/startup manifest467/64,303,151/93ac0b matches both browser bookends. Previous464/a4e1 donor rehashed unchanged. Read-only bounded process census v2 observed797 processes/180 unavailable command lines,0 visible stage Node/Electron/Edge and0 retained knownPID matches. v1's default-context denied CIM query yielded invalid zero data and is explicitly excluded in evidence/TOOLING_ATTEMPTS.md. These observations and individual close receipts cannot establish global absence or offline qualification.
