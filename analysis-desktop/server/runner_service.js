@@ -29,6 +29,7 @@ export class RunnerService {
     this.currentWorkerId = null;
     this.workerCounter = 0;
     this.activeJobPromiseResolvers = null;
+    this.retiringWorkers = new Map();
     this.isDestroyed = false;
 
     this.initWorker();
@@ -38,20 +39,27 @@ export class RunnerService {
     if (this.isDestroyed) return;
 
     if (this.worker) {
-      try {
-        this.worker.kill('SIGTERM');
-      } catch (e) {}
+      if (this.activeJobId) throw new Error('WORKER_BUSY');
+      const previous = this.worker;
       this.worker = null;
+      this.currentWorkerId = null;
+      this.terminateWorker(previous);
     }
 
     const workerId = `worker_${++this.workerCounter}_${Date.now()}`;
     this.currentWorkerId = workerId;
 
     const workerPath = path.join(__dirname, '../engine/worker_process.js');
-    const child = fork(workerPath, [], {
-      stdio: ['inherit', 'inherit', 'inherit', 'ipc'],
-      env: { ...process.env, NODE_ENV: 'production' }
-    });
+    let child;
+    try {
+      child = fork(workerPath, [], {
+        stdio: ['inherit', 'inherit', 'inherit', 'ipc'],
+        env: { ...process.env, NODE_ENV: 'production' }
+      });
+    } catch (error) {
+      this.currentWorkerId = null;
+      throw error;
+    }
 
     this.worker = child;
 
@@ -64,47 +72,79 @@ export class RunnerService {
     child.on('error', (err) => {
       if (this.currentWorkerId !== workerId) return;
       console.error(`[Worker ${workerId} Error]:`, err);
-      if (this.activeJobId) {
-        const job = this.jobs.get(this.activeJobId);
-        if (job && job.status === 'running') {
-          job.status = 'failed';
-          job.error = `Worker process encountered error: ${err.message}`;
-          job.completedAt = new Date().toISOString();
-        }
-      }
+      this.handleWorkerFailure(workerId, new Error(`Worker process encountered error: ${err.message}`), true);
     });
 
     child.on('exit', (code, signal) => {
       this.handleWorkerExit(workerId, code, signal);
     });
+    // Spawn/channel failures can close without a preceding exit event.
+    child.on('close', (code, signal) => this.handleWorkerExit(workerId, code, signal));
+    child.on('disconnect', () => this.handleWorkerFailure(workerId, new Error('Worker IPC channel disconnected'), true));
   }
 
   handleWorkerExit(workerId, code, signal) {
-    if (this.isDestroyed) return;
+    this.handleWorkerFailure(workerId, new Error(`Worker process exited unexpectedly (code: ${code}, signal: ${signal})`));
+  }
 
-    // Ignore exit events from previous terminated workers
-    if (this.currentWorkerId !== workerId) return;
+  settleActiveJob(jobId, error = null) {
+    const request = this.activeJobPromiseResolvers;
+    if (!request || request.jobId !== jobId || this.activeJobId !== jobId) return false;
+    // Retire ownership before any continuation or queue dispatch can replace it.
+    this.activeJobPromiseResolvers = null;
+    this.activeJobId = null;
+    if (error) request.reject(error);
+    else request.resolve(this.jobs.get(jobId));
+    return true;
+  }
 
-    if (this.activeJobId) {
-      const job = this.jobs.get(this.activeJobId);
-      if (job && job.status === 'running') {
-        job.status = 'failed';
-        job.error = `Worker process exited unexpectedly (code: ${code}, signal: ${signal})`;
-        job.completedAt = new Date().toISOString();
-        if (this.activeJobPromiseResolvers) {
-          this.activeJobPromiseResolvers.reject(new Error(job.error));
-          this.activeJobPromiseResolvers = null;
-        }
-      }
-      this.activeJobId = null;
-    }
-
+  handleWorkerFailure(workerId, error, terminate = false) {
+    if (this.isDestroyed || this.currentWorkerId !== workerId) return;
+    const child = this.worker;
     this.worker = null;
     this.currentWorkerId = null;
-
-    // Automatically respawn clean worker and process any queued jobs
-    this.initWorker();
+    const request = this.activeJobPromiseResolvers;
+    if (request?.workerId === workerId && request.jobId === this.activeJobId) {
+      const job = this.jobs.get(request.jobId);
+      if (job) {
+        job.status = 'failed';job.error = error.message;
+        job.completedAt = new Date().toISOString();
+        job.progress.stepName = `Execution failed: ${error.message}`;
+      }
+      this.settleActiveJob(request.jobId, error);
+    }
+    if (terminate) this.terminateWorker(child);
+    // A queued request starts on a new generation. Idle failures do not create
+    // an unbounded automatic respawn loop; the next explicit run starts it.
     this.processNextInQueue();
+  }
+
+  terminateWorker(child, signal = 'SIGTERM') {
+    if (!child || child.exitCode != null || child.signalCode != null) return;
+    let record = this.retiringWorkers.get(child);
+    if (record) {
+      if (signal === 'SIGKILL') {
+        if (record.timer) clearTimeout(record.timer);
+        record.timer = null;
+        try { child.kill(signal); } catch (e) {}
+      }
+      return;
+    }
+    record = { timer: null };
+    this.retiringWorkers.set(child, record);
+    child.once('close', () => {
+      if (record.timer) clearTimeout(record.timer);
+      this.retiringWorkers.delete(child);
+    });
+    try { child.kill(signal); } catch (e) {}
+    if (signal !== 'SIGKILL' && this.retiringWorkers.has(child)) {
+      record.timer = setTimeout(() => {
+        if (child.exitCode == null && child.signalCode == null) {
+          try { child.kill('SIGKILL'); } catch (e) {}
+        }
+      }, 300);
+      record.timer.unref?.();
+    }
   }
 
   ensureWorker() {
@@ -115,15 +155,11 @@ export class RunnerService {
   }
 
   handleWorkerMessage(msg) {
-    if (!msg || !msg.jobId) return;
+    if (this.isDestroyed || !msg || !msg.jobId) return;
     const job = this.jobs.get(msg.jobId);
-    if (!job) return;
-
-    // Critical State Protection: If parent already marked job as 'cancelled',
-    // ignore any delayed 'COMPLETED' or 'STEP_RESULT' messages from worker!
-    if (job.status === 'cancelled') {
-      return;
-    }
+    const request = this.activeJobPromiseResolvers;
+    if (!job || job.status !== 'running' || this.activeJobId !== msg.jobId ||
+        request?.jobId !== msg.jobId || request.workerId !== this.currentWorkerId) return;
 
     switch (msg.type) {
       case 'PROGRESS':
@@ -157,7 +193,9 @@ export class RunnerService {
           rowCount: msg.rowCount,
           schema: msg.schema || [],
           preview: msg.preview || [],
-          isOutdated: false
+          isOutdated: false,
+          ...(msg.nodeType === 'export' && msg.producerExport !== undefined
+            ? { producerExport: JSON.parse(JSON.stringify(msg.producerExport)) } : {})
         };
         break;
 
@@ -172,11 +210,7 @@ export class RunnerService {
         job.progress.percent = 100;
         job.progress.stepName = 'Completed successfully';
 
-        if (this.activeJobPromiseResolvers) {
-          this.activeJobPromiseResolvers.resolve(job);
-          this.activeJobPromiseResolvers = null;
-        }
-        this.activeJobId = null;
+        this.settleActiveJob(job.jobId);
         this.processNextInQueue();
         break;
 
@@ -186,11 +220,7 @@ export class RunnerService {
         job.progress.stepName = 'Execution cancelled by user';
         job.telemetry = msg.telemetry || job.telemetry;
 
-        if (this.activeJobPromiseResolvers) {
-          this.activeJobPromiseResolvers.reject(new Error('JOB_CANCELLED_BY_USER'));
-          this.activeJobPromiseResolvers = null;
-        }
-        this.activeJobId = null;
+        this.settleActiveJob(job.jobId, new Error('JOB_CANCELLED_BY_USER'));
         this.processNextInQueue();
         break;
 
@@ -201,11 +231,7 @@ export class RunnerService {
         job.telemetry = msg.telemetry || job.telemetry;
         job.progress.stepName = `Execution failed: ${msg.error}`;
 
-        if (this.activeJobPromiseResolvers) {
-          this.activeJobPromiseResolvers.reject(new Error(msg.error));
-          this.activeJobPromiseResolvers = null;
-        }
-        this.activeJobId = null;
+        this.settleActiveJob(job.jobId, new Error(msg.error));
         this.processNextInQueue();
         break;
     }
@@ -227,7 +253,7 @@ export class RunnerService {
         stepName: 'Queued in runner',
         percent: 0
       },
-      nodeOutputs: {}, // nodeId -> { nodeId, viewName, rowCount, preview, isOutdated }
+      nodeOutputs: Object.create(null), // Own-key-safe for all admitted node IDs.
       telemetry: {
         durationMs: 0,
         timeToFirstRowMs: null,
@@ -246,8 +272,10 @@ export class RunnerService {
   }
 
   async runJob(jobId) {
+    if (this.isDestroyed) throw new Error('RUNNER_SERVICE_DESTROYED');
     const job = this.jobs.get(jobId);
     if (!job) throw new Error(`Job "${jobId}" not found`);
+    if (this.activeJobId === jobId || this.jobQueue.some(q => q.jobId === jobId)) throw new Error('JOB_ALREADY_SCHEDULED');
 
     if (this.activeJobId && this.activeJobId !== jobId) {
       // Concurrency management: Queue the job
@@ -260,16 +288,17 @@ export class RunnerService {
   }
 
   dispatchJobToWorker(job) {
-    this.ensureWorker();
-    this.activeJobId = job.jobId;
-    job.status = 'running';
-    job.startedAt = new Date().toISOString();
-    job.error = null;
-
     return new Promise((resolve, reject) => {
-      this.activeJobPromiseResolvers = { resolve, reject };
-
-      this.worker.send({
+      try { this.ensureWorker(); } catch (error) {
+        job.status = 'failed';job.error = error.message;job.completedAt = new Date().toISOString();
+        reject(error);Promise.resolve().then(() => this.processNextInQueue());return;
+      }
+      this.activeJobId = job.jobId;
+      job.status = 'running';job.startedAt = new Date().toISOString();job.error = null;
+      const workerId = this.currentWorkerId;
+      const request = { jobId: job.jobId, workerId, resolve, reject };
+      this.activeJobPromiseResolvers = request;
+      try { this.worker.send({
         type: 'START_JOB',
         jobId: job.jobId,
         pipelineDef: job.pipelineDef,
@@ -279,7 +308,8 @@ export class RunnerService {
           threads: this.options.threads,
           tempDirectory: this.options.tempDir
         }
-      });
+      }, error => { if (error && this.activeJobPromiseResolvers === request) this.handleWorkerFailure(workerId, error, true); }); }
+      catch (error) { if (this.activeJobPromiseResolvers === request) this.handleWorkerFailure(workerId, error, true); }
     });
   }
 
@@ -325,10 +355,7 @@ export class RunnerService {
       job.progress.stepName = 'Execution cancelled by user';
 
       // Settle active promise immediately with cancellation error
-      if (this.activeJobPromiseResolvers) {
-        this.activeJobPromiseResolvers.reject(new Error('JOB_CANCELLED_BY_USER'));
-        this.activeJobPromiseResolvers = null;
-      }
+      this.settleActiveJob(jobId, new Error('JOB_CANCELLED_BY_USER'));
 
       // Isolate and terminate current worker process:
       // Never dispatch next jobs on a worker executing a cancelled query!
@@ -340,20 +367,14 @@ export class RunnerService {
       if (dyingWorker) {
         try {
           dyingWorker.send({ type: 'CANCEL_JOB', jobId });
-          dyingWorker.kill('SIGTERM');
         } catch (e) {}
-
-        // Hard kill fallback
-        setTimeout(() => {
-          try {
-            dyingWorker.kill('SIGKILL');
-          } catch (e) {}
-        }, 300);
+        this.terminateWorker(dyingWorker);
       }
 
       // Initialize a fresh, clean worker for subsequent jobs
       if (!this.isDestroyed) {
-        this.initWorker();
+        try { this.initWorker(); }
+        catch (error) { console.error('Replacement worker could not start after cancellation:', error); }
       }
 
       // Advance queue on the fresh worker
@@ -433,6 +454,7 @@ export class RunnerService {
   }
 
   destroy() {
+    if (this.isDestroyed) return;
     this.isDestroyed = true;
 
     // Settle all queued requests
@@ -444,20 +466,10 @@ export class RunnerService {
     this.jobQueue = [];
 
     // Settle active running job
-    if (this.activeJobPromiseResolvers) {
-      try {
-        this.activeJobPromiseResolvers.reject(new Error('RUNNER_SERVICE_DESTROYED'));
-      } catch (e) {}
-      this.activeJobPromiseResolvers = null;
-    }
-    this.activeJobId = null;
-
-    if (this.worker) {
-      try {
-        this.worker.kill('SIGKILL');
-      } catch (e) {}
-      this.worker = null;
-      this.currentWorkerId = null;
-    }
+    this.settleActiveJob(this.activeJobId, new Error('RUNNER_SERVICE_DESTROYED'));
+    const child = this.worker;
+    this.worker = null;this.currentWorkerId = null;
+    this.terminateWorker(child, 'SIGKILL');
+    for (const retired of this.retiringWorkers.keys()) if (retired !== child) this.terminateWorker(retired, 'SIGKILL');
   }
 }

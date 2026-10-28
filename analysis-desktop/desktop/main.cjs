@@ -17,6 +17,7 @@ const path = require('node:path');
 const fs = require('node:fs');
 const crypto = require('node:crypto');
 const { CloseCoordinator, destroyRunnerAndWait } = require('./close_coordinator.cjs');
+const { atomicSaveWorkflow } = require('./atomic_workflow_save.cjs');
 
 let registryBridge = null;
 let histogramService = null;
@@ -400,7 +401,7 @@ ipcMain.handle('siren:saveWorkflow', async (event, workflowObj, targetPath) => {
     filePath = result.filePath;
   }
   try {
-    fs.writeFileSync(filePath, JSON.stringify(workflowObj, null, 2), 'utf8');
+    atomicSaveWorkflow(filePath, workflowObj);
     return { canceled: false, filePath };
   } catch (err) {
     return { canceled: false, error: err.message };

@@ -63,14 +63,14 @@
     },
     {
       "path": "engine/pipeline_compiler.js",
-      "desktop": "d70416a3cf5e373f1ff21d4455a59c940b5da52d5cce380f0d3abd3ec56fa938",
-      "provider": "d70416a3cf5e373f1ff21d4455a59c940b5da52d5cce380f0d3abd3ec56fa938",
+      "desktop": "04e217923c12555542e09450eb4210ea1f618c973a198ea1af8876da40692439",
+      "provider": "04e217923c12555542e09450eb4210ea1f618c973a198ea1af8876da40692439",
       "same": true
     },
     {
       "path": "engine/worker_process.js",
-      "desktop": "3d44ca209f32c7c154d9257489f9e15b7da7d74c84a0a44cf67c038cbf6124ef",
-      "provider": "3d44ca209f32c7c154d9257489f9e15b7da7d74c84a0a44cf67c038cbf6124ef",
+      "desktop": "11d31cc091252768b10d5b911f7dee43e8ffc315385564134b3c78cd0d6901b9",
+      "provider": "11d31cc091252768b10d5b911f7dee43e8ffc315385564134b3c78cd0d6901b9",
       "same": true
     },
     {
@@ -81,8 +81,44 @@
     },
     {
       "path": "server/runner_service.js",
-      "desktop": "e055a16b0f34205b6f79150ebaa3b946098088bb54d74ba7abe06a45475f3ee7",
-      "provider": "e055a16b0f34205b6f79150ebaa3b946098088bb54d74ba7abe06a45475f3ee7",
+      "desktop": "5a1c7f01906972640fe06324f5868e206024de776c38921c749dcda8224f6160",
+      "provider": "5a1c7f01906972640fe06324f5868e206024de776c38921c749dcda8224f6160",
+      "same": true
+    },
+    {
+      "path": "engine/export_identity.js",
+      "desktop": "f8b539d0369e5fb56898a3ee89f6d0fe8bf937ed68e95671bb568d05e9776fb1",
+      "provider": "f8b539d0369e5fb56898a3ee89f6d0fe8bf937ed68e95671bb568d05e9776fb1",
+      "same": true
+    },
+    {
+      "path": "adapter/src/analysis_to_charts_adapter.js",
+      "desktop": "ed8292cb5a5b785386520c6a13a894624c58d9c82a6c309e2bc4d1f843740f4c",
+      "provider": "ed8292cb5a5b785386520c6a13a894624c58d9c82a6c309e2bc4d1f843740f4c",
+      "same": true
+    },
+    {
+      "path": "adapter/src/coverage_validator.js",
+      "desktop": "55c0e3c2dc7d151f70ff391d8b30b3d73f063109e410c89826dbdc485c2ff408",
+      "provider": "55c0e3c2dc7d151f70ff391d8b30b3d73f063109e410c89826dbdc485c2ff408",
+      "same": true
+    },
+    {
+      "path": "adapter/src/identity_helper.js",
+      "desktop": "5734d045bbedbb6174257e27b219d153657a29d72eaa65e778ed4dc967f3bf40",
+      "provider": "5734d045bbedbb6174257e27b219d153657a29d72eaa65e778ed4dc967f3bf40",
+      "same": true
+    },
+    {
+      "path": "adapter/src/type_mapper.js",
+      "desktop": "45b82cdb81e5a9bee93718554fbd0071b8a9a4f0677e19e0ce5945802a0f0ace",
+      "provider": "45b82cdb81e5a9bee93718554fbd0071b8a9a4f0677e19e0ce5945802a0f0ace",
+      "same": true
+    },
+    {
+      "path": "chart-core.cjs",
+      "desktop": "34e07aecb5e1a9bf7c325018521795f0539a6b211fa4954af3aa760486626aee",
+      "provider": "34e07aecb5e1a9bf7c325018521795f0539a6b211fa4954af3aa760486626aee",
       "same": true
     }
   ]

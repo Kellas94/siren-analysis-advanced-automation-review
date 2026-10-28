@@ -17,3 +17,4 @@ jobs:
           node-version: '24.16.0'
           package-manager-cache: false
       - run: node review/check-source.mjs
+      - run: node review/critical-regression.mjs

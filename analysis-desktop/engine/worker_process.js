@@ -10,6 +10,7 @@ import { PipelineCompiler } from './pipeline_compiler.js';
 import {assertFilterSchema} from './filter-binding.js';
 import {assertDerivedSchema} from './derived-binding.js';
 import {assertFunctionSchema} from './conditional-binding.js';
+import {prepareExport,publishProducedExport} from './export_identity.js';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -95,6 +96,7 @@ async function handleStartJob(msg) {
 
     // 3. Step-by-step execution
     let stepIndex = 0;
+    const producedOutputs = new Map();
     for (const step of sqlSteps) {
       if (isCancelled) {
         throw new Error('JOB_CANCELLED_BY_USER');
@@ -123,8 +125,17 @@ async function handleStartJob(msg) {
         assertFilterSchema(step.filterSchemaCheck.columns,actual);
       }
 
-      // Execute view creation or export
+      // Each COPY writes a unique sibling file; public destination is published only after producer identity capture.
+      let preparedExport = null;
+      if (step.nodeType === 'export') {
+        const inputEdge = pipelineDef.edges.find(edge => edge.target === step.nodeId);
+        preparedExport = prepareExport(step, producedOutputs.get(inputEdge?.source));
+        step.sql = preparedExport.sql;
+        step.exportDestination = preparedExport.filePath;
+        process.send({ type: 'COMPILED_SQL', jobId, sqlSteps });
+      }
       await activeRunner.run(step.sql);
+      if (isCancelled) throw new Error('JOB_CANCELLED_BY_USER');
 
       // Inspect output if not export
       if (step.nodeType !== 'export') {
@@ -135,6 +146,7 @@ async function handleStartJob(msg) {
           schema = await activeRunner.getTableSchema(step.viewName);
         } catch (e) {}
 
+        producedOutputs.set(step.nodeId, {nodeId:step.nodeId,viewName:step.viewName,rowCount:count});
         process.send({
           type: 'STEP_RESULT',
           jobId,
@@ -146,12 +158,14 @@ async function handleStartJob(msg) {
           preview
         });
       } else {
+        const producerExport = publishProducedExport(preparedExport, {jobId,exportNodeId:step.nodeId});
         process.send({
           type: 'STEP_RESULT',
           jobId,
           nodeId: step.nodeId,
           nodeType: step.nodeType,
           exported: true,
+          producerExport,
           rowCount: 0,
           schema: [],
           preview: []
