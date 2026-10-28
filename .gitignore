@@ -1,0 +1,15 @@
+**/node_modules/
+**/desktop_package/
+**/dist/
+**/profiles/
+**/__pycache__/
+**/.env
+**/.env.*
+*.node
+*.dll
+*.exe
+*.duckdb
+*.parquet
+*.csv
+!**/DEPENDENCIES.csv
+*.log
