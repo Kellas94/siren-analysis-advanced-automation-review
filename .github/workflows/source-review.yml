@@ -18,3 +18,4 @@ jobs:
           package-manager-cache: false
       - run: node review/check-source.mjs
       - run: node review/critical-regression.mjs
+      - run: node review/p2-regression.mjs

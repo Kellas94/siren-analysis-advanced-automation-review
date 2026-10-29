@@ -9,6 +9,11 @@ const integerWireBounds = new Map([
   ['uint64', { min:0n, max:18446744073709551615n, maxLength:20 }],
   ['uint128', { min:0n, max:340282366920938463463374607431768211455n, maxLength:39 }]
 ]);
+// Result-value bounds are separate from logical parameter schemas and wire descriptors.
+const nativeIntegerBounds = new Map([
+  ['TINYINT', [-128,127]], ['SMALLINT', [-32768,32767]], ['INTEGER', [-2147483648,2147483647]],
+  ['UTINYINT', [0,255]], ['USMALLINT', [0,65535]], ['UINTEGER', [0,4294967295]]
+]);
 export class ContractError extends Error {
   constructor(code, message, details = {}) { super(message); this.code = code; this.details = details; }
 }
@@ -120,6 +125,7 @@ export function checkReference(catalog, binding) {
 }
 export function createBinding(catalog, entry) { return { catalogId:catalog.catalogId,catalogVersion:catalog.catalogVersion,catalogSha256:catalog.catalogSha256,contractVersion:catalog.contractVersion,capabilityId:entry.id,capabilityVersion:entry.version,descriptorSha256:entry.descriptorSha256,workflowRef:structuredClone(entry.workflowRef),workflowId:entry.workflowRef.workflowId,workflowVersion:entry.workflowRef.workflowVersion }; }
 export function validateResult(result) {
+  if (!result || typeof result !== 'object' || Array.isArray(result)) fail('INVALID_RESULT', 'Result must be an object');
   if (!Array.isArray(result.schema) || !result.schema.length || !Array.isArray(result.rows)) fail('INVALID_RESULT', 'Missing schema/rows');
   const names = result.schema.map(c => c.name);
   if (new Set(names).size !== names.length) fail('INVALID_RESULT', 'Duplicate columns');
@@ -129,7 +135,11 @@ export function validateResult(result) {
   }
   for (const row of result.rows) {
     if (canonical(Object.keys(row).sort()) !== canonical([...names].sort())) fail('INVALID_RESULT', 'Row/schema mismatch');
-    for (const c of result.schema) { try { validate({ ...c.wireSchema, nullable: c.nullable }, row[c.name], c.name); } catch (e) { fail('INVALID_RESULT', e.message); } }
+    for (const c of result.schema) { try {
+      const value=row[c.name];validate({ ...c.wireSchema, nullable: c.nullable }, value, c.name);
+      const bounds=nativeIntegerBounds.get(c.dbType);
+      if (bounds && value !== null && (value < bounds[0] || value > bounds[1])) fail('INVALID_RESULT', c.name + ': ' + c.dbType + ' range exceeded');
+    } catch (e) { fail('INVALID_RESULT', e.message); } }
   }
   const c = result.coverage;
   for (const n of [c?.resultRows, c?.transferredRows]) if (!Number.isSafeInteger(n) || n < 0) fail('INVALID_RESULT', 'Invalid counts');
@@ -138,8 +148,42 @@ export function validateResult(result) {
   if (!['COMPLETE', 'SAMPLED', 'TRUNCATED'].includes(c.status)) fail('INVALID_RESULT', 'Unknown coverage');
   if ((c.status === 'COMPLETE') !== (c.resultRows === c.transferredRows)) fail('INVALID_RESULT', 'Contradictory coverage');
   if (c.status !== 'COMPLETE' && !c.reason) fail('INVALID_RESULT', 'Missing coverage reason');
-  if (!result.provenance?.jobId || !result.provenance?.workflowRef || !result.resultId || !result.resultVersion) fail('INVALID_RESULT', 'Missing lineage');
+  const jobId=result.provenance?.jobId;
+  if (typeof jobId !== 'string' || !jobId || !result.provenance?.workflowRef || typeof result.resultId !== 'string' || typeof result.resultVersion !== 'string') fail('INVALID_RESULT', 'Missing typed lineage');
+  // Current contract publishes job-derived identities; an opaque version needs an explicit future policy.
+  if (!result.resultId.startsWith(jobId + ':') || result.resultId.length <= jobId.length + 1 || result.resultVersion !== 'job:' + jobId) fail('INVALID_RESULT', 'Result identity differs from its producing job');
   return result;
+}
+export function validateExecutionStatus(status,admission,{outputNodeId}={}) {
+  const object=v=>v!==null&&typeof v==='object'&&!Array.isArray(v),text=v=>typeof v==='string'&&v.length>0;
+  if (!object(status) || !object(admission) || admission.contractVersion!==CONTRACT || !text(admission.jobId) || !text(admission.requestId) || !object(admission.workflowRef) || status.contractVersion!==CONTRACT || status.jobId!==admission.jobId || status.requestId!==admission.requestId || canonical(status.workflowRef)!==canonical(admission.workflowRef)) fail('ANALYSIS_RECEIPT_IDENTITY_MISMATCH','Analysis status identity differs from the admitted request.');
+  if (!Object.hasOwn(status,'settled') || typeof status.settled !== 'boolean' || !Object.hasOwn(status,'status') || !['queued','running','completed','failed','cancelled'].includes(status.status)) fail('INVALID_EXECUTION_STATUS','Analysis status requires a known state and Boolean settled flag.');
+  // Runner completion can precede async verification/publication. Do not project or reject that pending result.
+  if (status.settled===false) return status;
+  if (!['completed','failed','cancelled'].includes(status.status)) fail('INVALID_EXECUTION_STATUS','A settled job must be terminal.');
+  if (status.status==='completed') {
+    if (status.error!==null || !object(status.result)) fail('INVALID_EXECUTION_STATUS','Completed Analysis status requires a result and no error.');
+    const result=validateResult(status.result),jobId=admission.jobId;
+    if (result.provenance.jobId!==jobId || result.provenance.requestId!==admission.requestId || canonical(result.provenance.workflowRef)!==canonical(admission.workflowRef) || !text(outputNodeId) || result.resultId !== jobId + ':' + outputNodeId) fail('ANALYSIS_RESULT_IDENTITY_MISMATCH','Result identity differs from the admitted job and published output.');
+  } else if (status.status==='failed') {
+    const error=status.error;
+    if (status.result!==null || !object(error) || !text(error.code) || typeof error.message!=='string' || (error.retryable!==undefined&&typeof error.retryable!=='boolean')) fail('INVALID_EXECUTION_STATUS','Failed Analysis status requires a typed error and no result.');
+  } else if (status.error!==null || status.result!==null) fail('INVALID_EXECUTION_STATUS','Cancelled Analysis status cannot publish a result or execution error.');
+  return status;
+}
+// A cancellation request is not a termination proof. Validate the producer's actual receipt forms.
+export function validateCancellationReceipt(receipt,{jobId}={}) {
+  if (!receipt || typeof receipt!=='object' || Array.isArray(receipt) || typeof jobId!=='string' || !jobId || receipt.jobId!==jobId) fail('ANALYSIS_CANCELLATION_IDENTITY_MISMATCH','Cancellation receipt differs from the admitted job.');
+  if (!Object.hasOwn(receipt,'requested') || typeof receipt.requested!=='boolean' || !Object.hasOwn(receipt,'confirmed') || typeof receipt.confirmed!=='boolean' || !Object.hasOwn(receipt,'status') || !['completed','failed','cancelled','cancellation-pending'].includes(receipt.status) || (Object.hasOwn(receipt,'workerExited')&&receipt.workerExited!==null&&typeof receipt.workerExited!=='boolean')) fail('INVALID_CANCELLATION_RECEIPT','Cancellation receipt requires typed state and confirmation fields.');
+  if (receipt.requested===false) {
+    if (receipt.reason!=='ALREADY_TERMINAL' || !['completed','failed','cancelled'].includes(receipt.status) || receipt.confirmed!==(receipt.status==='cancelled')) fail('INVALID_CANCELLATION_RECEIPT','Existing terminal state contradicts the cancellation receipt.');
+  } else if (receipt.status==='cancelled') {
+    // null is the real queued-cancel form: no running worker needed to exit.
+    if (receipt.confirmed!==true || !Object.hasOwn(receipt,'workerExited') || ![true,null].includes(receipt.workerExited) || receipt.reason==='ALREADY_TERMINAL') fail('INVALID_CANCELLATION_RECEIPT','Confirmed cancellation requires an exited worker or queued-job receipt.');
+  } else if (receipt.status==='cancellation-pending') {
+    if (receipt.confirmed!==false || receipt.workerExited!==false || receipt.reason==='ALREADY_TERMINAL') fail('INVALID_CANCELLATION_RECEIPT','Pending cancellation cannot confirm termination.');
+  } else fail('INVALID_CANCELLATION_RECEIPT','A newly requested cancellation cannot certify another terminal state.');
+  return receipt;
 }
 export async function verifyResult(result){
  validateResult(result);const {integritySha256,...body}=result;
