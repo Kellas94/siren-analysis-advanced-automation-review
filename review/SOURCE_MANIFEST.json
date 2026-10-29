@@ -1,5 +1,5 @@
 {
-  "scope": "Corrected source-only two-edition candidate, based on frozen091c0e7; selectively composed common backend. Not actual UI Builder/main/Terminal/migration, no package qualification.",
+  "scope": "P2 corrected source-only two-edition candidate; source/model and owned runtime evidence separate, no actual UI Builder/main/installed integration",
   "origins": [
     {
       "scope": "analysis-desktop",
@@ -8,7 +8,7 @@
       "fileCount": 2469,
       "bytes": 970016066,
       "rosterSha256": "15830f7226a05be010e3e9d6396105045cdc44ebb614297c50f12f6d6930fb9b",
-      "sourceFilesIncluded": 161,
+      "sourceFilesIncluded": 162,
       "historicalSourceFilesIncluded": 159
     },
     {
@@ -377,8 +377,8 @@
       "path": "analysis-contract/provider/src/contract.mjs",
       "scope": "analysis-contract",
       "originPath": "provider/src/contract.mjs",
-      "bytes": 13741,
-      "sha256": "b52ff1742a87f91450d16d39ec35158f60b7edb9066df95e83a0418a5d6916fe"
+      "bytes": 19185,
+      "sha256": "5fd69e3bf46f0d01c1fb2401e57f34a7680ea45179072ed7fc7473efee7d836d"
     },
     {
       "path": "analysis-contract/provider/src/demo-workflows.mjs",
@@ -419,15 +419,15 @@
       "path": "analysis-contract/reference-consumer/mini_ui/analysis_catalog_consumer.mjs",
       "scope": "analysis-contract",
       "originPath": "reference-consumer/mini_ui/analysis_catalog_consumer.mjs",
-      "bytes": 9408,
-      "sha256": "5bf9da4db35d94df6afce8803e67c49348e024a8b26c5aaaeba370b07e9eca57"
+      "bytes": 9782,
+      "sha256": "b5b75cc83bf9beabddee4f68cc165d8298303a7eade4dcf13e4e14688058cc7c"
     },
     {
       "path": "analysis-contract/reference-consumer/mini_ui/analysis_contract_reference.mjs",
       "scope": "analysis-contract",
       "originPath": "reference-consumer/mini_ui/analysis_contract_reference.mjs",
-      "bytes": 13741,
-      "sha256": "b52ff1742a87f91450d16d39ec35158f60b7edb9066df95e83a0418a5d6916fe"
+      "bytes": 19185,
+      "sha256": "5fd69e3bf46f0d01c1fb2401e57f34a7680ea45179072ed7fc7473efee7d836d"
     },
     {
       "path": "analysis-contract/reference-consumer/mini_ui/analysis_node_transport.mjs",
@@ -1532,8 +1532,8 @@
       "path": "analysis-desktop/src/App.jsx",
       "scope": "analysis-desktop",
       "originPath": "src/App.jsx",
-      "bytes": 70171,
-      "sha256": "0ae873785756ab5ee6732b7ba563c608005043dcc321a598401e5d4b647d1268"
+      "bytes": 73145,
+      "sha256": "5be112c786a8bb932fb914653885a3341890265776267f43e2888d093dbc59b8"
     },
     {
       "path": "analysis-desktop/src/components/CustomNodes.jsx",
@@ -1683,6 +1683,14 @@
       "sha256": "4fe02bd6a4ed0f3a1f561d2a1660ca5db2124833558f7790779fd55805de7242"
     },
     {
+      "path": "analysis-desktop/src/flow/import-shape.js",
+      "scope": "analysis-desktop",
+      "originPath": null,
+      "changeOrigin": "New P2 import-shape helper",
+      "bytes": 3545,
+      "sha256": "b672414d33991f8bb03e7a21308be5fee01a7dbb598fffa021cbda83df028879"
+    },
+    {
       "path": "analysis-desktop/src/flow/join-schema.js",
       "scope": "analysis-desktop",
       "originPath": "src/flow/join-schema.js",
@@ -1753,5 +1761,5 @@
       "sha256": "96762bfc2e7db625c3e70c32f247b3b4d0345e833129f903f1c59149ac5a6e62"
     }
   ],
-  "baselineHead": "091c0e7da78e5cb2586747febf1ef308aa80377c"
+  "baselineHead": "7b47e1d7f80197b0d39383ea500b0c1282b546fe"
 }

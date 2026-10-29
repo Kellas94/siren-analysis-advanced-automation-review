@@ -1,4 +1,4 @@
-import {CONTRACT,CATALOG,checkReference,createBinding,parameters,validateResult,canonical,fail} from './analysis_contract_reference.mjs';
+import {CONTRACT,CATALOG,checkReference,createBinding,parameters,validateResult,validateExecutionStatus,validateCancellationReceipt,canonical,fail} from './analysis_contract_reference.mjs';
 import {createHash} from 'node:crypto';
 const clone=structuredClone;
 function parameterView(name,schema,required){
@@ -50,28 +50,28 @@ export class AnalysisCatalogConsumer {
    const receipt=await this.provider.execute({requestId:jobId,binding:clone(prepared.function.reference),parameters:values});
    if(receipt.contractVersion!==CONTRACT||receipt.requestId!==jobId||typeof receipt.jobId!=='string'||!receipt.jobId||!same(receipt.workflowRef,prepared.function.reference.workflowRef))fail('ANALYSIS_RECEIPT_IDENTITY_MISMATCH','Analysis admission returned a different request/workflow identity.');
    state.analysisJobId=receipt.jobId;
-   if(state.cancelRequested)await this.provider.cancel(receipt.jobId);
+   if(state.cancelRequested)validateCancellationReceipt(await this.provider.cancel(receipt.jobId),{jobId:receipt.jobId});
    for(;;){
     const status=await this.provider.status(receipt.jobId);
-    if(status.jobId!==receipt.jobId||status.requestId!==jobId||status.contractVersion!==CONTRACT||!same(status.workflowRef,receipt.workflowRef))fail('ANALYSIS_RECEIPT_IDENTITY_MISMATCH','Analysis status identity differs from the admitted request.');
-    if(status.settled){
-     if(status.status!=='completed')return outcome={...identity,analysisJobId:receipt.jobId,status:status.status==='cancelled'?'CANCELLED':'FAILED',code:status.error?.code,error:status.error?.message||status.status,outputs:{},execution:status};
+    validateExecutionStatus(status,receipt,{outputNodeId:entry.result?.schema?.expectedNodeId});
+    if(status.settled===true){
+     if(status.status!=='completed')return outcome={...identity,analysisJobId:receipt.jobId,status:status.status==='cancelled'?'CANCELLED':'FAILED',code:status.error?.code,error:status.error?.message||status.status,outputs:{},execution:{...status,stopped:true}};
      const result=validateResult(status.result);
      if(result.provenance.jobId!==receipt.jobId||result.provenance.requestId!==jobId||!same(result.provenance.workflowRef,receipt.workflowRef))fail('ANALYSIS_RESULT_IDENTITY_MISMATCH','Result provenance differs from the admitted request.');
      const {integritySha256,...body}=result,hash=createHash('sha256').update(canonical(body)).digest('hex');if(integritySha256!==hash)fail('ANALYSIS_RESULT_INTEGRITY_MISMATCH','Result integrity digest differs.');
      if(result.rows.length>50)fail('ANALYSIS_PREVIEW_LIMIT_EXCEEDED','The current owner contract permits at most 50 transferred preview rows.');
      const outputs=Object.fromEntries(prepared.action.outputs.map(o=>{if(o.mode!=='table'||o.field!=='result')fail('UNSUPPORTED_OUTPUT_BINDING','Select the Analysis result table.');return [o.controlId,{kind:'table',...clone(result),rowCount:result.coverage.resultRows,returnedRows:result.coverage.transferredRows}];}));
-     return outcome={...identity,analysisJobId:receipt.jobId,status:'COMPLETED',outputs,execution:status};
+     return outcome={...identity,analysisJobId:receipt.jobId,status:'COMPLETED',outputs,execution:{...status,stopped:true}};
     }
     await new Promise(r=>setTimeout(r,25));
    }
   }catch(e){
    let stopped=!state.dispatchStarted,details;
-   if(state.analysisJobId)try{details=await this.provider.cancel(state.analysisJobId);stopped=details.confirmed||['completed','failed','cancelled'].includes(details.status);}catch{}
+   if(state.analysisJobId)try{details=await this.provider.cancel(state.analysisJobId);validateCancellationReceipt(details,{jobId:state.analysisJobId});stopped=details.status!=='cancellation-pending';}catch(error){details={receipt:details,error:{code:error.code||'ANALYSIS_CANCELLATION_FAILED',message:error.message}};}
    if(!stopped&&this.provider.ownedSession===true)try{const closed=await this.provider.close();stopped=closed?.closed===true;details={...details,ownedSessionClose:closed};}catch{}
    return outcome={...identity,analysisJobId:state.analysisJobId,status:'FAILED',code:e.code||'ANALYSIS_EXECUTION_FAILED',error:e.message,outputs:{},execution:{stopped,cancellation:details}};
   }finally{
-   const stopped=outcome?.execution?.stopped!==false;
+   const stopped=outcome?.execution?.stopped===true;
    state.outcome=outcome;
    if(stopped){this.active.delete(jobId);this.completed.set(jobId,{status:outcome?.status,stopped:true});if(this.completed.size>1000)this.completed.delete(this.completed.keys().next().value);}
    finish(outcome);
@@ -80,10 +80,11 @@ export class AnalysisCatalogConsumer {
  async cancelJob(jobId){
   const state=this.active.get(jobId);if(!state)return {success:false,stopped:!!this.completed.get(jobId),reason:'NOT_ACTIVE',...this.completed.get(jobId)};
   state.cancelRequested=true;
-  if(!state.analysisJobId){const result=await state.finished;return {success:result?.status==='CANCELLED',stopped:result?.execution?.stopped!==false,status:result?.status,jobId};}
-  const receipt=await this.provider.cancel(state.analysisJobId),stopped=receipt.confirmed||['completed','failed','cancelled'].includes(receipt.status);
+  if(!state.analysisJobId){const result=await state.finished,stopped=result?.execution?.stopped===true;return {success:stopped&&result?.status==='CANCELLED',stopped,status:result?.status,jobId};}
+  let receipt;try{receipt=await this.provider.cancel(state.analysisJobId);validateCancellationReceipt(receipt,{jobId:state.analysisJobId});}catch(error){return {success:false,stopped:false,jobId,analysisJobId:state.analysisJobId,code:error.code||'ANALYSIS_CANCELLATION_FAILED',error:error.message,details:receipt};}
+  const stopped=receipt.status!=='cancellation-pending';
   if(stopped){this.active.delete(jobId);this.completed.set(jobId,{status:receipt.status==='cancelled'?'CANCELLED':receipt.status.toUpperCase(),stopped:true});}
-  return {success:receipt.confirmed&&receipt.status==='cancelled',stopped,jobId,analysisJobId:state.analysisJobId,details:receipt};
+  return {success:receipt.confirmed===true&&receipt.status==='cancelled',stopped,jobId,analysisJobId:state.analysisJobId,details:receipt};
  }
  async close(){return this.provider.close?.();}
 }

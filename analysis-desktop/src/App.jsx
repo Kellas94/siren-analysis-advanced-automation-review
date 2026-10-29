@@ -1,4 +1,5 @@
 import {assertNodeViewIdentities} from '../engine/graph-identity.js';
+import {assertWorkflowImportShapes} from './flow/import-shape.js';
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import {flushSync} from 'react-dom';
 import {
@@ -35,14 +36,46 @@ import './flow/flow.css';
 import {DefinitionHistory,definition,semanticKey,restoreDefinition} from './flow/history.js';
 import {DefinitionConfirm} from './flow/DefinitionConfirm.jsx';
 
-// Prepare only the existing import structure and node identities. Partial
+// Admit render-safe structure before any replacement state changes. Partial
 // workflows remain editable; execution validates the complete graph later.
 function prepareWorkflowImport(parsed) {
   if (!Array.isArray(parsed?.nodes) || !Array.isArray(parsed?.edges)) {
     throw new Error('Invalid workflow format: missing nodes or edges array');
   }
+  assertWorkflowImportShapes(parsed);
   assertNodeViewIdentities(parsed.nodes);
   return definition(parsed.nodes,parsed.edges);
+}
+
+// Drop malformed/foreign observations before they can latch a terminal state.
+// This is renderer shape admission, not the shared analytical wire validator.
+function isWorkflowPollFrame(value, jobId) {
+  const record = item => item !== null && typeof item === 'object' && !Array.isArray(item);
+  const number = item => typeof item === 'number' && Number.isFinite(item) && item >= 0;
+  if (!record(value) || value.jobId !== jobId || !['queued','running','completed','cancelled','failed'].includes(value.status)) return false;
+  if (value.progress != null) {
+    if (!record(value.progress)) return false;
+    if (value.progress.percent != null && (!number(value.progress.percent) || value.progress.percent > 100)) return false;
+    if (value.progress.stepName != null && typeof value.progress.stepName !== 'string') return false;
+  }
+  if (value.status === 'failed' && value.error != null && typeof value.error !== 'string') return false;
+  if (value.status !== 'completed') return true;
+  if (value.error != null) return false;
+  if (value.pipelineDef != null) {
+    try { assertWorkflowImportShapes(value.pipelineDef); } catch { return false; }
+  }
+  if (value.generatedSQL != null && (!Array.isArray(value.generatedSQL) || value.generatedSQL.some(step => !record(step) || typeof step.sql !== 'string'))) return false;
+  if (value.telemetry != null && (!record(value.telemetry) || ['durationMs','peakRssMB','tempDiskSpillBytes'].some(key => value.telemetry[key] != null && !number(value.telemetry[key])))) return false;
+  if (value.nodeOutputs != null) {
+    if (!record(value.nodeOutputs)) return false;
+    for (const output of Object.values(value.nodeOutputs)) {
+      if (!record(output)) return false;
+      if (output.rowCount != null && (!Number.isSafeInteger(output.rowCount) || output.rowCount < 0)) return false;
+      if (output.preview != null && (!Array.isArray(output.preview) || output.preview.some(row => !record(row)))) return false;
+      if (output.schema != null && (!Array.isArray(output.schema) || output.schema.some(column => !record(column) || typeof column.name !== 'string' || typeof column.type !== 'string'))) return false;
+    }
+  }
+  return true;
 }
 
 // Default Workflow: Alteryx-style Pipeline
@@ -390,7 +423,7 @@ export default function App() {
   const renderedEdges=useMemo(()=>visibleEdges(nodes,edges),[nodes,edges]);
   const addOperation=useCallback((type,position)=>{
     const selected=nodes.find(n=>n.id===selectedNodeRef.current);
-    const node=createNode(type,position||{x:(selected?.position.x??0)+300,y:selected?.position.y??80});
+    const node=createNode(type,position||{x:(selected?.position?.x??0)+300,y:selected?.position?.y??80});
     draftSeqRef.current++;exportSeqRef.current++;selectedNodeRef.current=node.id;setSelectedNodeId(node.id);
     const current=graphRef.current;
     recordGraph([...invalidateGraph(current.nodes.map(n=>({...n,selected:false}))),{...node,selected:true}],current.edges);
@@ -632,8 +665,15 @@ export default function App() {
       setActiveJobId(jobId);
       setStatusMessage(`Job [${jobId}] accepted. Polling worker execution...`);
 
-      // Begin separate polling loop
+      // Own observations within this run as well as across runs/documents.
+      // Clearing an interval does not retire promises already awaiting a reply.
+      let observationSeq = 0, appliedObservation = 0, terminalObservation = false;
+      const ownsObservation = observation => executionSeqRef.current === currentSeq &&
+        runView === viewSeqRef.current && activeJobRef.current === jobId &&
+        !closingWindowRef.current && !terminalObservation && observation > appliedObservation;
       const intervalId = setInterval(async () => {
+        const observation = ++observationSeq;
+        if (terminalObservation) return;
         if (executionSeqRef.current !== currentSeq) {
           clearPolling(currentSeq);
           return;
@@ -641,15 +681,13 @@ export default function App() {
 
         try {
           const jobData = await transportClient.getJobStatus(jobId);
-          if (!jobData) return;
-
-          if (executionSeqRef.current !== currentSeq) {
-            clearPolling(currentSeq);
-            return;
-          }
+          if (!ownsObservation(observation)) return;
+          if (!isWorkflowPollFrame(jobData, jobId)) return;
+          appliedObservation = observation;
+          if (['completed','cancelled','failed'].includes(jobData.status)) terminalObservation = true;
 
           if (jobData.status === 'running' || jobData.status === 'queued') {
-            setProgressPercent(jobData.progress?.percent || 20);
+            setProgressPercent(jobData.progress?.percent ?? 20);
             setStatusMessage(`Job [${jobId}]: ${jobData.progress?.stepName || 'Processing in native DuckDB...'}`);
           } else if (jobData.status === 'completed') {
             clearPolling(currentSeq);
@@ -717,7 +755,7 @@ export default function App() {
             );
           }
         } catch (pollErr) {
-          console.warn('[Polling Error]:', pollErr);
+          if (ownsObservation(observation)) console.warn('[Polling Error]:', pollErr);
         }
       }, 100);
       pollingIntervalRef.current = { id: intervalId, owner: currentSeq };
